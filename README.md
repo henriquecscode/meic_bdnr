@@ -6,6 +6,9 @@ Instructions on running orientDb in a docker container.
 The docker documentation can be found here: https://hub.docker.com/_/orientdb
 
 #### How to create and run the image:
+
+First create a database folder where you are running the docker container
+
 ```
 docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -v database:/orientdb/databases \
@@ -54,4 +57,5 @@ The path chosen is also the path you must use when you connect to the database i
 Connect to the database
 ```
 connect remote:localhost/orientdb/databases/mydb admin admin
+connect remote:localhost/orientdb/databases/test1 admin admin
 ```
