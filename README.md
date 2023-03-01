@@ -27,8 +27,13 @@ cd bin
 ./console.sh
 ```
 
+Alternatively, start a new console from the standard terminal 
+```
+docker exec -it orientdb /bin/bash/
+```
 
-#### How to run the ETL:
+
+#### (OPTIONAL) How to run the ETL:
 ```
 docker run  --rm -it -v <config_path>:/orientdb/config orientdb /orientdb/bin/oetl.sh ../config/oetl-config.json
 ```
@@ -39,6 +44,17 @@ After Orient is running you should be able to access it on
 localhost:2480 (unless you have changed the base configurations)
 
 First however, you need to create a database to which we can add data to and operate on.
+
+#### Option 1
+
+Go to the GUI by accessing `localhost:2480`
+
+Click the button `New DB` and use the orientDB credentials. 
+`Server User: root` and `Server Password: rootpwd`
+Name the datbase `mydb` and click `Create Database`
+
+The default database credentials will be `admin` and `admin`
+#### Option 2
 
 Before all open the console.
 
@@ -51,11 +67,10 @@ Create a database. Choose any name. In this case we chose `mydb`
 ```
 create database plocal:/orientdb/databases/mydb
 ```
-The default credentials will be admin admin. 
+The default credentials will be `admin` and `admin`. 
 The path chosen is also the path you must use when you connect to the database in the next steps
 
 Connect to the database
 ```
 connect remote:localhost/orientdb/databases/mydb admin admin
-connect remote:localhost/orientdb/databases/test1 admin admin
 ```
