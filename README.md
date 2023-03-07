@@ -51,9 +51,12 @@ Go to the GUI by accessing `localhost:2480`
 
 Click the button `New DB` and use the orientDB credentials. 
 `Server User: root` and `Server Password: rootpwd`
-Name the datbase `mydb` and click `Create Database`
+Name the datbase `mydb`, click `Create Database` and check `Create Admin user`
 
 The default database credentials will be `admin` and `admin`
+
+You can also check the advanced options and choose the Storage Type as well as the Database Type.
+
 #### Option 2
 
 Before all open the console.
@@ -70,7 +73,7 @@ create database plocal:/orientdb/databases/mydb
 The default credentials will be `admin` and `admin`. 
 The path chosen is also the path you must use when you connect to the database in the next steps
 
-Connect to the database
+You can now directly connect to the created database from the console:
 ```
 connect remote:localhost/orientdb/databases/mydb admin admin
 ```
