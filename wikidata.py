@@ -3,17 +3,26 @@ import pandas as pd
 
 def get_awards(imdb_id): 
     awards_query = f"""
-        SELECT ?awardLabel
+        SELECT ?awardLabel ?dateLabel ?workLabel ?workIMDbId
         WHERE 
         {{
             ?p wdt:P345 "{imdb_id}" ;
-                wdt:P166 ?award .
+               p:P166 ?s .
+            ?s ps:P166 ?award .
+            OPTIONAL {{ 
+                ?s pq:P585 ?date .
+            }}
+            OPTIONAL {{
+                ?s pq:P1686 ?work .    # P1686 = for work
+                ?work wdt:P345 ?workIMDbId . 
+            }}
             SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }} # Helps get the label in your language, if not, then en language      
         }}
         """
 
     awards_result = mkwikidata.run_query(awards_query, params={ })
-    return [x["awardLabel"]["value"] for x in awards_result["results"]["bindings"]]
+
+    return [{"name_award": x["awardLabel"]["value"], "received_on": x["dateLabel"]["value"] if "dateLabel" in x else None, "imdb_id":  x["workIMDbId"]["value"] if "workLabel" in x else None} for x in awards_result["results"]["bindings"]]
 
 def actor_info(imdb_id):
     # Add country info
@@ -67,7 +76,7 @@ def film_info(imdb_id):
 
 
 # Jennifer Lawrence Info
-#actor_info("nm2225369")
+actor_info("nm2225369")
 
 # Avatar Info
 film_info("tt0499549")
