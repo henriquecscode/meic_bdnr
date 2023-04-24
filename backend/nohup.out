@@ -1,0 +1,592 @@
+/c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< xyz.dassiorleando:spring-orientdb >------------------
+[INFO] Building spring-alibabacloud-blog 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) > test-compile @ spring-orientdb >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ spring-orientdb ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ spring-orientdb ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ spring-orientdb ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ spring-orientdb ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) < test-compile @ spring-orientdb <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) @ spring-orientdb ---
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.5.RELEASE)
+
+2023-04-24 15:44:36.355  INFO 6472 --- [           main] x.d.s.SpringOrientDBApplication          : Starting SpringOrientDBApplication on LAPTOP-3E5L1RAD with PID 6472 (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes started by henri in C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend)
+2023-04-24 15:44:36.358 DEBUG 6472 --- [           main] x.d.s.SpringOrientDBApplication          : Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2023-04-24 15:44:36.361  INFO 6472 --- [           main] x.d.s.SpringOrientDBApplication          : No active profile set, falling back to default profiles: default
+2023-04-24 15:44:36.420  INFO 6472 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@75aace54: startup date [Mon Apr 24 15:44:36 BST 2023]; root of context hierarchy
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.springframework.cglib.core.ReflectUtils$1 (file:/C:/Users/henri/.m2/repository/org/springframework/spring-core/5.0.9.RELEASE/spring-core-5.0.9.RELEASE.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of org.springframework.cglib.core.ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2023-04-24 15:44:37.650  INFO 6472 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-24 15:44:37.690  INFO 6472 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-24 15:44:37.691  INFO 6472 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2023-04-24 15:44:37.708  INFO 6472 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.10\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\henri\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\henri\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C;C:\Program Files\nodejs;C:\Program Files (x86)\Pandoc;C:\Program Files\ghc-8.10.7\bin;C:\Henrique\Escola\Fac3ano\C\javacc21\bin;C:\Program Files\Gradle\gradle-7.4\bin;C:\Program Files\Java\jdk-11.0.10\bin;C:\Program Files\dotnet;C:\Program Files\Docker\Docker\resources\bin;C:\Users\henri\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\CLion 2020.2.4\bin;C:\Users\henri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\doxygen\bin;C:\Users\henri\AppData\Roaming\npm;C:\Program Files\ghc-8.10.7\bin;C:\Program Files\Gradle\gradle-7.4\bin;C:\Henrique\Escola\Fac3ano\ESOF\Flutter\flutter\bin;C:\Users\henri\AppData\Local\Programs\Python\Python310;C:\Users\henri\AppData\Local\Programs\Python\Python310\Scripts;C:\Users\henri\AppData\Local\Programs\Python\Python37;C:\Users\henri\AppData\Local\Programs\Python\Python37\Scripts;C:\Users\henri\.dotnet\tools;C:\Program Files\Java\apache-maven-3.9.1-src\apache-maven-3.9.1\apache-maven\src\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;.]
+2023-04-24 15:44:37.830  INFO 6472 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-24 15:44:37.830  INFO 6472 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1417 ms
+2023-04-24 15:44:37.919  INFO 6472 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2023-04-24 15:44:37.923  INFO 6472 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2023-04-24 15:44:37.923  INFO 6472 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2023-04-24 15:44:37.923  INFO 6472 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2023-04-24 15:44:37.924  INFO 6472 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+Warning: Nashorn engine is planned to be removed from a future JDK release
+2023-04-24 15:44:38.341  INFO 6472 --- [           main] c.orientechnologies.common.jna.ONative   : Windows OS is detected, 262144 limit of open files will be set for the disk cache.
+2023-04-24 15:44:38.362  INFO 6472 --- [           main] c.orientechnologies.common.jna.ONative   : 17085616128 B/16294 MB/15 GB of physical memory were detected on machine
+2023-04-24 15:44:38.362  INFO 6472 --- [           main] c.orientechnologies.common.jna.ONative   : Detected memory limit for current process is 17085616128 B/16294 MB/15 GB
+2023-04-24 15:44:38.363  INFO 6472 --- [           main] emoryAndLocalPaginatedEnginesInitializer : JVM can use maximum 4074MB of heap memory
+2023-04-24 15:44:38.364  INFO 6472 --- [           main] emoryAndLocalPaginatedEnginesInitializer : Because OrientDB is running outside a container 2g of memory will be left unallocated according to the setting 'memory.leftToOS' not taking into account heap memory
+2023-04-24 15:44:38.364  INFO 6472 --- [           main] com.orientechnologies                    : OrientDB auto-config DISKCACHE=10�172MB (heap=4�074MB os=16�294MB)
+2023-04-24 15:44:38.364  INFO 6472 --- [           main] c.o.o.c.e.local.OEngineLocalPaginated    : System is started under an effective user : `henri`
+2023-04-24 15:44:38.458 ERROR 6472 --- [           main] c.o.o.c.s.i.l.p.OLocalPaginatedStorage   : Exception `7F4384AE` in storage `plocal:C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog`: 3.0.5 - Veloce (build 8e57e3ac781054604de425f088bd1b0a276bc760, branch 3.0.x)
+
+com.orientechnologies.orient.core.exception.OStorageException: Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.open(OAbstractPaginatedStorage.java:373) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at com.orientechnologies.orient.core.db.OrientDBEmbedded.open(OrientDBEmbedded.java:131) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:903) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:497) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2023-04-24 15:44:38.460  WARN 6472 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+2023-04-24 15:44:38.462  INFO 6472 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-04-24 15:44:38.479  INFO 6472 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-04-24 15:44:38.482 ERROR 6472 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:497) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 39 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 52 common frames omitted
+Caused by: com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+	at com.orientechnologies.orient.core.db.OrientDBEmbedded.open(OrientDBEmbedded.java:140) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:903) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 53 common frames omitted
+Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.open(OAbstractPaginatedStorage.java:373) ~[orientdb-core-3.0.5.jar:3.0.5]
+	at com.orientechnologies.orient.core.db.OrientDBEmbedded.open(OrientDBEmbedded.java:131) ~[orientdb-core-3.0.5.jar:3.0.5]
+	... 65 common frames omitted
+
+[WARNING] 
+java.lang.reflect.InvocationTargetException
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:732)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:732)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+    at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod (ConstructorResolver.java:590)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod (AbstractAutowireCapableBeanFactory.java:1247)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1096)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+    at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate (SimpleInstantiationStrategy.java:185)
+    at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod (ConstructorResolver.java:582)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod (AbstractAutowireCapableBeanFactory.java:1247)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1096)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+    at com.orientechnologies.orient.core.db.OrientDBEmbedded.open (OrientDBEmbedded.java:140)
+    at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open (ODatabaseDocumentTx.java:903)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
+    at org.springframework.cglib.proxy.MethodProxy.invokeSuper (MethodProxy.java:228)
+    at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept (ConfigurationClassEnhancer.java:365)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate (SimpleInstantiationStrategy.java:154)
+    at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod (ConstructorResolver.java:582)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod (AbstractAutowireCapableBeanFactory.java:1247)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1096)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog
+    at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.open (OAbstractPaginatedStorage.java:373)
+    at com.orientechnologies.orient.core.db.OrientDBEmbedded.open (OrientDBEmbedded.java:131)
+    at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open (ODatabaseDocumentTx.java:903)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
+    at org.springframework.cglib.proxy.MethodProxy.invokeSuper (MethodProxy.java:228)
+    at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept (ConfigurationClassEnhancer.java:365)
+    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate (SimpleInstantiationStrategy.java:154)
+    at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod (ConstructorResolver.java:582)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod (AbstractAutowireCapableBeanFactory.java:1247)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1096)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate (DependencyDescriptor.java:251)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency (DefaultListableBeanFactory.java:1135)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency (DefaultListableBeanFactory.java:1062)
+    at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument (ConstructorResolver.java:818)
+    at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:724)
+    at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1124)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean (AbstractAutowireCapableBeanFactory.java:535)
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean (AbstractAutowireCapableBeanFactory.java:495)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0 (AbstractBeanFactory.java:317)
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton (DefaultSingletonBeanRegistry.java:222)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean (AbstractBeanFactory.java:315)
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean (AbstractBeanFactory.java:199)
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons (DefaultListableBeanFactory.java:759)
+    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization (AbstractApplicationContext.java:869)
+    at org.springframework.context.support.AbstractApplicationContext.refresh (AbstractApplicationContext.java:550)
+    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh (ServletWebServerApplicationContext.java:140)
+    at org.springframework.boot.SpringApplication.refresh (SpringApplication.java:780)
+    at org.springframework.boot.SpringApplication.refreshContext (SpringApplication.java:412)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
+    at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
+    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:566)
+    at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
+    at java.lang.Thread.run (Thread.java:834)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.574 s
+[INFO] Finished at: 2023-04-24T15:44:38+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) on project spring-orientdb: An exception occurred while running. null: InvocationTargetException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog': Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+/c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]   
+[ERROR]   The project xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+/c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]   
+[ERROR]   The project xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
