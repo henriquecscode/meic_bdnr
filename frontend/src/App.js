@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import NavBar from "./components/layout/navigation/NavBar.js";
+import Login from "./views/authentication/Login.js";
+import Profile from "./views/profile/Profile.js";
+import Movies from "./views/movies/Movies.js";
+import MovieDetails from "./views/movies/MovieDetails.js";
+import Recommendations from "./views/recommendations/Recommendations.js";
+import Analytics from "./views/analytics/Analytics.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <h1 className="App-title">Welcome to React</h1>
       </header>
+
+      <Router>
+        <NavBar />
+
+        <hr />
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          <Route path="/recommendations" element={<Recommendations />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
