@@ -350,10 +350,10 @@ def get_titles_info(df=None):
 
     # Save
     print("Saving film info and rewards...")
-    df.to_csv(os.path.join(PROCESSED_DIR, 'film_info.csv'),
+    df.to_csv(os.path.join(PROCESSED_DIR, 'titles_info.csv'),
               sep=',', index=False)
     award_df.to_csv(os.path.join(
-        PROCESSED_DIR, 'film_awards.csv'), sep=',', index=False)
+        PROCESSED_DIR, 'titles_awards.csv'), sep=',', index=False)
     print("Saved")
 
 
@@ -387,10 +387,10 @@ def get_people_info(df = None):
 
     # Save
     print("Saving actor info and rewards...")
-    df.to_csv(os.path.join(PROCESSED_DIR, 'actor_info.csv'),
+    df.to_csv(os.path.join(PROCESSED_DIR, 'names_info.csv'),
               sep=',', index=False)
     award_df.to_csv(os.path.join(
-        PROCESSED_DIR, 'actor_awards.csv'), sep=',', index=False)
+        PROCESSED_DIR, 'names_awards.csv'), sep=',', index=False)
     print("Saved")
 
 
