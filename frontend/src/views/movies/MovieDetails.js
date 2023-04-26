@@ -1,65 +1,36 @@
 import React from "react";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image'
+import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import CommentCard from "../../components/cards/CommentCard";
+import HorizontalRule from "../../components/layout/navigation/HorizontalRule";
+import SeriesCard from "../../components/cards/SeriesCard";
+import UserListCard from "../../components/cards/UsersListCard";
 
 function MovieDetails() {
-  const series = [{ name: "Avatar", nr: 1 }, { name: "Avatar: Way of Water", nr: 2 }]
-  const comments = [{ comment: "Amazing", author: "Catarina" }, { comment: "BEST MOVIE EVER!", author: "John Doe" }]
-  const users = [{ name: "Catarina" }, { name: "Henrique" }, { name: "Patricia" }, { name: "John Doe" }]
-
-  const getSeriesCard = (film) => {
-    return <div className="p-2 bd-highlight"><Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{film.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Series number: {film.nr}</Card.Subtitle>
-        <Card.Text>
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-      </Card.Body>
-    </Card> </div>;
-  }
-
-  const getCommentCard = (comment, author) => {
-    return <div className="p-2 bd-highlight">
-      <Card>
-        <Card.Body>
-          <blockquote className="blockquote d-inline mb-0">
-            <p>
-              {' '} {comment} {' '} <span className="blockquote-footer"> <cite title="Source Title">{author}</cite> </span>
-            </p>
-          </blockquote>
-        </Card.Body>
-      </Card>
-    </div>;
-  }
-
-  const getUserCard = (author) => {
-    return <ListGroup.Item>{author}</ListGroup.Item>;
-  }
+  const details = [{ field: "Name", value: "Avatar" }, { field: "Director", value: "James Cameron" }];
+  const awards = [{ name: "Academy Award for Best Cinematography", year: "2010" }, { name: "Golden Globe Award for Best Motion Picture – Drama", year: "2010" }];
+  const series = [{ name: "Avatar", nr: 1 }, { name: "Avatar: Way of Water", nr: 2 }];
+  const comments = [{ text: "Amazing", author: "Catarina" }, { text: "BEST MOVIE EVER!", author: "John Doe" }];
+  const users = [{ name: "Catarina" }, { name: "Henrique" }, { name: "Patricia" }, { name: "John Doe" }];
 
   return (
     <div>
       <h1 className="text-center m-5">Avatar</h1>
 
-      <div className="container">
-        <div className="row mt-5 pb-2">
-          <div className="col">
-            Image
-          </div>
-          <div className="col">
+      <Container>
+        <Row className="mt-5 pb-2">
+          <Col className="align-self-center text-center">
+            <Image src="/logo192.png" fluid />
+          </Col>
+          <Col>
             <div>
               <h5 className="text-center">Details</h5>
               <Table striped bordered hover size="sm">
                 <tbody>
-                  <tr>
-                    <td>Name</td>
-                    <td>Avatar</td>
-                  </tr>
-                  <tr>
-                    <td>Director</td>
-                    <td>James Cameron</td>
-                  </tr>
+                  {details.map(d => <tr><td>{d.field}</td><td>{d.value}</td></tr>)}
                 </tbody>
               </Table>
             </div>
@@ -74,47 +45,39 @@ function MovieDetails() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Academy Award for Best Cinematography </td>
-                    <td>2010</td>
-                  </tr>
-                  <tr>
-                    <td>Golden Globe Award for Best Motion Picture – Drama </td>
-                    <td>2010</td>
-                  </tr>
+                  {awards.map(a => <tr><td>{a.name}</td><td>{a.year}</td></tr>)}
                 </tbody>
               </Table>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
-        <div className="row mt-5 pb-2">
-          <div className="col d-flex flex-column align-items-center">
+        <HorizontalRule text={"Social"} />
+
+        <Row className="mt-5 pb-2 pt-4 pb-4">
+          <Col className="d-flex flex-column align-items-center bg-light rounded-2" style={{ marginRight: "10px" }}>
             <h4 className="text-center">People that watched</h4>
-            <Card className="w-50 text-center">
-              <ListGroup variant="flush">
-                {users.map(u => getUserCard(u.name))}
-              </ListGroup>
-            </Card>
-          </div>
-          <div className="col">
+            <UserListCard users={users} />
+          </Col>
+          <Col className="bg-light rounded-2">
             <h4 className="text-center">Comments</h4>
             <div className="d-flex flex-column bd-highlight mb-3">
-              {comments.map(c => getCommentCard(c.comment, c.author))}
+              {comments.map(c => <CommentCard comment={c} />)}
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
-        <div className="row mt-5 pb-2">
-          <div className="col">
-            <h4 className="text-center">Series</h4>
+        <HorizontalRule text={"Series"} />
+
+        <Row className="mt-5 pb-2">
+          <Col>
             <div className="d-flex flex-row bd-highlight mb-3">
-              {series.map(s => getSeriesCard(s))}
+              {series.map(s => <SeriesCard film={s} />)}
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
-      </div>
+      </Container>
     </div>
   );
 }
