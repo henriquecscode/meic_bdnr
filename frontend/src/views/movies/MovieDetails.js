@@ -24,14 +24,10 @@ function MovieDetails() {
     return <div className="p-2 bd-highlight">
       <Card>
         <Card.Body>
-          <blockquote className="blockquote mb-0">
+          <blockquote className="blockquote d-inline mb-0">
             <p>
-              {' '}
-              {comment} {' '}
+              {' '} {comment} {' '} <span className="blockquote-footer"> <cite title="Source Title">{author}</cite> </span>
             </p>
-            <footer className="blockquote-footer">
-              <cite title="Source Title">{author}</cite>
-            </footer>
           </blockquote>
         </Card.Body>
       </Card>
@@ -93,9 +89,9 @@ function MovieDetails() {
         </div>
 
         <div className="row mt-5 pb-2">
-          <div className="col">
+          <div className="col d-flex flex-column align-items-center">
             <h4 className="text-center">People that watched</h4>
-            <Card style={{ width: '18rem' }}>
+            <Card className="w-50 text-center">
               <ListGroup variant="flush">
                 {users.map(u => getUserCard(u.name))}
               </ListGroup>
