@@ -12,14 +12,9 @@ import Analytics from "./views/analytics/Analytics.js";
 function App() {
   return (
     <div>
-      <header>
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-
       <Router>
         <NavBar />
 
-        <hr />
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
