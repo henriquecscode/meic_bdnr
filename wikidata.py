@@ -49,22 +49,27 @@ def actor_info(imdb_id):
 #title P1476, summary P921 (subject?), duration P2047, release P577
 def film_info(imdb_id):
     query = f"""
-        SELECT ?filmLabel ?seriesLabel ?countryLabel ?genreLabel ?locationLabel ?producerCompanyLabel
+        SELECT ?filmLabel ?seriesLabel ?nrSerieLabel ?countryLabel ?genreLabel ?locationLabel ?producerCompanyLabel
         WHERE 
         {{
             ?film wdt:P345 "{imdb_id}" ;
-                wdt:P179 ?series ;   # P179 = part of series
                 wdt:P136 ?genre  ;   # P136 = genre
                 wdt:P495 ?country ;  # P495 = country
                 wdt:P272 ?producerCompany ; # P272 = production company
                 wdt:P915 ?location ; # P915 = filming location
+
+            OPTIONAL {{
+                ?film p:P179 ?s .   
+                ?s ps:P179 ?series .   # P179 = part of series
+                ?s pq:P1545 ?nrSerie
+            }}
             SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }} # Helps get the label in your language, if not, then en language      
         }}
         """
     
     query_result = mkwikidata.run_query(query, params={ })
 
-    data = [{"film" : x["filmLabel"]["value"], "series" : x["seriesLabel"]["value"], "country" :  x["countryLabel"]["value"]} for x in query_result["results"]["bindings"]]
+    data = [{"film" : x["filmLabel"]["value"], "series" : x["seriesLabel"]["value"] if "seriesLabel" in x else None, "seriesNr" : x["nrSerieLabel"]["value"]  if "nrSerieLabel" in x else None, "country" :  x["countryLabel"]["value"]} for x in query_result["results"]["bindings"]]
     data[0]["genres"] = list(set([x["genreLabel"]["value"] for x in query_result["results"]["bindings"]]))
     data[0]["producer company"] = list(set([x["producerCompanyLabel"]["value"] for x in query_result["results"]["bindings"]]))
     data[0]["location"] = list(set([x["locationLabel"]["value"] for x in query_result["results"]["bindings"]]))
