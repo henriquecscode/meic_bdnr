@@ -82,14 +82,8 @@ def film_info(imdb_id):
     except Exception as e:
         return {}
 
-<<<<<<< HEAD
-    data = [{"film" : x["filmLabel"]["value"], "series" : x["seriesLabel"]["value"] if "seriesLabel" in x else None, "seriesNr" : x["nrSerieLabel"]["value"]  if "nrSerieLabel" in x else None, "country" :  x["countryLabel"]["value"]} for x in query_result["results"]["bindings"]]
-    data[0]["genres"] = list(set([x["genreLabel"]["value"] for x in query_result["results"]["bindings"]]))
-    data[0]["producer company"] = list(set([x["producerCompanyLabel"]["value"] for x in query_result["results"]["bindings"]]))
-    data[0]["location"] = list(set([x["locationLabel"]["value"] for x in query_result["results"]["bindings"]]))
-=======
-    data = [{"film": x["filmLabel"]["value"], "series": x["seriesLabel"]["value"],
-             "country":  x["countryLabel"]["value"]} for x in query_result["results"]["bindings"]]
+    data = [{"film": x["filmLabel"]["value"], "series": x["seriesLabel"]["value"] if "seriesLabel" in x else None, "seriesNr": x["nrSerieLabel"]
+             ["value"] if "nrSerieLabel" in x else None, "country":  x["countryLabel"]["value"]} for x in query_result["results"]["bindings"]]
     if len(data) == 0:
         data = [{}]
     data[0]["genres"] = list(set([x["genreLabel"]["value"]
@@ -98,7 +92,6 @@ def film_info(imdb_id):
         [x["producerCompanyLabel"]["value"] for x in query_result["results"]["bindings"]]))
     data[0]["location"] = list(
         set([x["locationLabel"]["value"] for x in query_result["results"]["bindings"]]))
->>>>>>> 5e2ed0a... wikidata exception safety
     data[0]["awards"] = get_awards(imdb_id)
 
     df = pd.DataFrame(data)
