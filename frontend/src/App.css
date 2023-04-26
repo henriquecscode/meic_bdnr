@@ -2,6 +2,7 @@
   background-color: #0c1d36;
 }
 
-.app-logo {
-  display: inline;
+.thumbnail-image {
+  border-radius: 50%;
+  object-fit: cover;
 }
