@@ -341,7 +341,7 @@ def get_people_info(df=None):
         for award in info['awards']:
             award_name = award['name_award'] if 'name_award' in award else ''
             award_date = award['received_on'] if 'received_on' in award else ''
-            award_imdb = award['imbd_id'] if 'imbd_id' in award else ''
+            award_imdb = award['imdb_id'] if 'imdb_id' in award else ''
             award_data.append([name, award_name, award_date, award_imdb])
 
     award_df = pd.DataFrame(award_data, columns=[
