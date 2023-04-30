@@ -24,11 +24,15 @@ def sanitize_df(df):
     return df.apply(sanitize_row, axis=0)
 
 
-def save(df, path):
+def save(df, path, append=False):
     print("Sanitizing data")
     df = sanitize_df(df)
     print("Saving sample to: ", path)
-    df.to_csv(path, sep=',', index=False)
+    if not append:
+        df.to_csv(path, sep=',', index=False)
+    else:
+        df.to_csv(path, sep=',', index=False, mode='a',
+                  header=not os.path.exists(path))
     print("Sample saved")
     return df
 
@@ -266,11 +270,13 @@ def sample_names():
 
 def get_titles_info(df=None):
     if df is None:
+        save_append = False
         path = os.path.join(PROCESSED_DIR, 'titles.csv')
         print("Reading data from: ", path)
         df = pd.read_csv(path, sep=',')
         print("Data read. Rows: ", len(df))
     else:
+        save_append = True
         print("Dataframe provided. Rows: ", len(df))
     df['wiki_film'] = ''
     df['wiki_series'] = ''
@@ -304,19 +310,22 @@ def get_titles_info(df=None):
 
     # Save
     print("Saving film info and rewards...")
-    titles_save = save(df, os.path.join(PROCESSED_DIR, 'titles_info.csv'))
+    titles_save = save(df, os.path.join(
+        PROCESSED_DIR, 'titles_info.csv'), save_append)
     titles_awards_save = save(award_df, os.path.join(
-        PROCESSED_DIR, 'titles_awards.csv'))
+        PROCESSED_DIR, 'titles_awards.csv'), save_append)
     return [titles_save, titles_awards_save]
 
 
 def get_people_info(df=None):
     if df is None:
+        save_append = False
         path = os.path.join(PROCESSED_DIR, 'names.csv')
         print("Reading data from: ", path)
         df = pd.read_csv(path, sep=',')
         print("Data read. Rows: ", len(df))
     else:
+        save_append = True
         print("Dataframe provided. Rows: ", len(df))
     df['wiki_name'] = ''
     df['wiki_country'] = ''
@@ -340,9 +349,10 @@ def get_people_info(df=None):
 
     # Save
     print("Saving actor info and rewards...")
-    names_save = save(df, os.path.join(PROCESSED_DIR, 'names_info.csv'))
+    names_save = save(df, os.path.join(
+        PROCESSED_DIR, 'names_info.csv'), save_append)
     names_awards_save = save(award_df, os.path.join(
-        PROCESSED_DIR, 'names_awards.csv'))
+        PROCESSED_DIR, 'names_awards.csv'), save_append)
     return [names_save, names_awards_save]
 
 
