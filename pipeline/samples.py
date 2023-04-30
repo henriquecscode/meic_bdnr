@@ -11,6 +11,27 @@ SAMPLE_SIZE = 100
 # Titles
 
 
+def sanitize_string(string):
+    return string.replace(",", "").replace('"', '').replace("'", "")
+
+
+def sanitize_row(row):
+    return pd.Series([sanitize_string(value) if type(value) is str else value for value in row])
+
+
+def sanitize_df(df):
+    return df.apply(sanitize_row, axis=0)
+
+
+def save(df, path):
+    print("Sanitizing data")
+    df = sanitize_df(df)
+    print("Saving sample to: ", path)
+    df.to_csv(path, sep=',', index=False)
+    print("Sample saved")
+    return df
+
+
 def get_sample_titles():
     titles = set()
     path = os.path.join(PROCESSED_DIR, 'titles.csv')
@@ -80,9 +101,7 @@ def save_titles(df):
 
     # Save
     save_path = os.path.join(PROCESSED_DIR, 'titles.csv')
-    df.to_csv(save_path,
-              sep=',', index=False)
-    print("Sample saved to: ", save_path)
+    return save(df, save_path)
 
 
 def sample_titles(sample_size=SAMPLE_SIZE):
@@ -133,6 +152,7 @@ def sample_better_titles(sample_size=SAMPLE_SIZE):
     save_titles(df)
     return df
 
+
 def sample_best_titles(sample_size=SAMPLE_SIZE):
     df = get_movies()
     rating_df = get_ratings()
@@ -149,8 +169,8 @@ def sample_best_titles(sample_size=SAMPLE_SIZE):
     # Transform
     df['genres'] = df['genres'].str.replace(',', ';')
 
-    save_titles(df)
-    return df
+    return save_titles(df)
+
 
 def sample_principals():
     titles = get_sample_titles()
@@ -170,6 +190,9 @@ def sample_principals():
                 # Add to df
                 line[5] = line[5].replace("\"", "").replace(
                     "[", "").replace("]", "")
+                for i, string in enumerate(line):
+                    line[i] = sanitize_string(string)
+
                 data.append(line)
     print("Data read. Rows: ", len(data))
     print("Creating dataframe...")
@@ -177,12 +200,8 @@ def sample_principals():
     print("Dataframe created. Rows: ", len(df))
     # Save
 
-    print("Saving sample...")
     save_path = os.path.join(PROCESSED_DIR, 'principals.csv')
-    df.to_csv(save_path,
-              sep=',', index=False)
-    print("Sample saved to: ", save_path)
-    return True
+    return save(df, save_path)
 
 
 def sample_crew():
@@ -210,12 +229,8 @@ def sample_crew():
     print("Dataframe created. Rows: ", len(df))
 
     # Save
-    print("Saving sample...")
     save_path = os.path.join(PROCESSED_DIR, 'crew.csv')
-    df.to_csv(save_path,
-              sep=',', index=False)
-    print("Sample saved to: ", save_path)
-    return True
+    return save(df, save_path)
 
 
 def sample_names():
@@ -244,10 +259,8 @@ def sample_names():
     print("Dataframe created. Rows: ", len(df))
 
     # Save
-    print("Saving sample...")
     save_path = os.path.join(PROCESSED_DIR, 'names.csv')
-    df.to_csv(save_path,
-              sep=',', index=False)
+    return save(df, save_path)
 
 
 def read_titles():
@@ -332,8 +345,8 @@ def get_titles_info(df=None):
         row['wiki_film'] = info['film'] if 'film' in info else ''
         row['wiki_series'] = info['series'] if 'series' in info else ''
         row['wiki_country'] = info['country'] if 'country' in info else ''
-        row['wiki_genres'] = info['genres'] if 'genres' in info else ''
-        # row['wiki_genres'] = row['wiki_genres'].replace(',', ';')
+        row['wiki_genres'] = ';'.join(
+            info['genres']) if 'genres' in info else ''
         row['wiki_producer_company'] = info['producer_company'] if 'producer_company' in info else ''
         # row['wiki_producer_company'] = row['wiki_producer_company'].replace(',', ';')
         row['wiki_location'] = info['location'] if 'location' in info else ''
@@ -350,14 +363,13 @@ def get_titles_info(df=None):
 
     # Save
     print("Saving film info and rewards...")
-    df.to_csv(os.path.join(PROCESSED_DIR, 'titles_info.csv'),
-              sep=',', index=False)
-    award_df.to_csv(os.path.join(
-        PROCESSED_DIR, 'titles_awards.csv'), sep=',', index=False)
-    print("Saved")
+    titles_save = save(df, os.path.join(PROCESSED_DIR, 'titles_info.csv'))
+    titles_awards_save = save(award_df, os.path.join(
+        PROCESSED_DIR, 'titles_awards.csv'))
+    return [titles_save, titles_awards_save]
 
 
-def get_people_info(df = None):
+def get_people_info(df=None):
     if df is None:
         path = os.path.join(PROCESSED_DIR, 'names.csv')
         print("Reading data from: ", path)
@@ -387,11 +399,10 @@ def get_people_info(df = None):
 
     # Save
     print("Saving actor info and rewards...")
-    df.to_csv(os.path.join(PROCESSED_DIR, 'names_info.csv'),
-              sep=',', index=False)
-    award_df.to_csv(os.path.join(
-        PROCESSED_DIR, 'names_awards.csv'), sep=',', index=False)
-    print("Saved")
+    names_save = save(df, os.path.join(PROCESSED_DIR, 'names_info.csv'))
+    names_awards_save = save(award_df, os.path.join(
+        PROCESSED_DIR, 'names_awards.csv'))
+    return [names_save, names_awards_save]
 
 
 def pipeline():
@@ -402,47 +413,52 @@ def pipeline():
     names_df = sample_names()
     get_titles_info(title_df)
     get_people_info(names_df)
+    print("Pipeline finished.")
+
+
+def info_pipeline():
+    title_df = pd.read_csv(os.path.join(PROCESSED_DIR, 'titles.csv'), sep=',')
+    names_df = pd.read_csv(os.path.join(PROCESSED_DIR, 'names.csv'), sep=',')
+    get_titles_info(title_df)
+    get_people_info(names_df)
+    print("Info pipeline finished.")
 
 
 if __name__ == '__main__':
+    options = [
+        ["Sample titles", sample_titles],
+        ["Sample better titles", sample_better_titles],
+        ["Sample best titles", sample_best_titles],
+        ["Sample principals", sample_principals],
+        ["Sample crew", sample_crew],
+        ["Sample names", sample_names],
+        ["Get sample people", get_sample_crew_people],
+        ["Get titles info", get_titles_info],
+        ["Get people info", get_people_info],
+        ["Read titles", read_titles],
+        ["Read ratings", read_ratings],
+        ["Pipeline", pipeline],
+        ["Info Pipeline", info_pipeline]
+
+
+    ]
     # Create a menu with the function sample titles
     op = -1
     while op != 0:
-        print("1. Sample titles")
-        print("2. Sample principals")
-        print("3. Sample crew")
-        print("4. Sample names")
-        print("5. Get sample people")
-        print("6. Get titles info")
-        print("7. Sample better titles")
-        print("8. Read titles")
-        print("10. Read ratings")
-        print("11. Pipeline")
-        print("12. Get people info")
-        print("0. Exit")
-        op = int(input("Enter an option: "))
-        if op == 1:
-            sample_titles()
-        if op == 2:
-            # read_principals()
-            sample_principals()
-        if op == 3:
-            # read_crew()
-            sample_crew()
-        if op == 4:
-            # read_names()
-            sample_names()
-        if op == 5:
-            get_sample_crew_people()
-        if op == 6:
-            get_titles_info()
-        if op == 7:
-            sample_better_titles()
-        if op == 8:
-            read_titles()
-        if op == 10:
-            read_ratings()
-        if op == 11:
-            pipeline()
-        if op == 12:
-            get_people_info()
+        print("Options:")
+        for i, option in enumerate(options):
+            print(i+1, "-", option[0])
+        print("0 - Exit")
+        try:
+            op = int(input("Enter an option: "))
+        except Exception as e:
+            print("Invalid option")
+            continue
+        try:
+            if op == 0:
+                break
+            options[op-1][1]()
+        except Exception as e:
+            print(e)
+            continue
+    print("Exiting")
