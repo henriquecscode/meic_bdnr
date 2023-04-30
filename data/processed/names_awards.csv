@@ -1,12 +1,12 @@
 nconst,name_award,received_on,imbd_id
-nm0000123,Golden Globe Award for Best Actor – Motion Picture Drama,2011-01-01T00:00:00Z,
-nm0000123,Academy Award for Best Supporting Actor,2005-01-01T00:00:00Z,
-nm0000123,Golden Globe Award for Best Actor – Motion Picture Musical or Comedy,2000-01-01T00:00:00Z,
-nm0000123,BAFTA Award for Best Film,2012-01-01T00:00:00Z,
-nm0000123,European Film Award for Best Non-European Film,2005-01-01T00:00:00Z,
-nm0000123,Indiana Film Journalists Association Award for Best Actor,2009-01-01T00:00:00Z,
-nm0000123,Academy Award for Best Picture,2013-01-01T00:00:00Z,
-nm0000123,Golden Globe Award for Best Supporting Actor – Motion Picture,2005-01-01T00:00:00Z,
+nm0000123,Golden Globe Award for Best Actor – Motion Picture Drama,2011-01-01T00:00:00Z,tt1033575
+nm0000123,Academy Award for Best Supporting Actor,2005-01-01T00:00:00Z,tt0365737
+nm0000123,Golden Globe Award for Best Actor – Motion Picture Musical or Comedy,2000-01-01T00:00:00Z,tt0190590
+nm0000123,BAFTA Award for Best Film,2012-01-01T00:00:00Z,tt1024648
+nm0000123,European Film Award for Best Non-European Film,2005-01-01T00:00:00Z,tt0433383
+nm0000123,Indiana Film Journalists Association Award for Best Actor,2009-01-01T00:00:00Z,tt1193138
+nm0000123,Academy Award for Best Picture,2013-01-01T00:00:00Z,tt1024648
+nm0000123,Golden Globe Award for Best Supporting Actor – Motion Picture,2005-01-01T00:00:00Z,tt0365737
 nm0000123,Chevalier des Arts et des Lettres,,
 nm0000123,Saturn Award for the Best Actor,1996-01-01T00:00:00Z,
 nm0000123,Golden Globe Cecil B. DeMille Award,2015-01-01T00:00:00Z,
@@ -16,14 +16,14 @@ nm0000123,Screen Actors Guild Award for Outstanding Performance by an Ensemble i
 nm0000123,National Board of Review Award for Best Film,,
 nm0000123,MTV Movie Award for Best Breakthrough Performance,1996-01-01T00:00:00Z,
 nm0000123,Screen Actors Guild Award for Outstanding Performance by an Ensemble in a Drama Series,1996-01-01T00:00:00Z,
-nm0000603,Volpi Cup for Best Actress,1994-01-01T00:00:00Z,
-nm0000603,"Golden Globe Award for Best Supporting Actress – Series, Miniseries or Television Film",2001-01-01T00:00:00Z,
-nm0000603,Cannes Film Festival Award for Best Actress,1969-01-01T00:00:00Z,
-nm0000603,Academy Award for Best Supporting Actress,1977-01-01T00:00:00Z,
-nm0000603,Primetime Emmy Award for Outstanding Supporting Actress in a Miniseries or a Movie,2000-01-01T00:00:00Z,
-nm0000603,Golden Globe Award for Best Supporting Actress – Motion Picture,1978-01-01T00:00:00Z,
-nm0000603,Cannes Film Festival Award for Best Actress,1966-01-01T00:00:00Z,
-nm0000603,Primetime Emmy Award for Outstanding Lead Actress in a Miniseries or a Movie,1981-01-01T00:00:00Z,
+nm0000603,Volpi Cup for Best Actress,1994-01-01T00:00:00Z,tt0110365
+nm0000603,Golden Globe Award for Best Supporting Actress – Series Miniseries or Television Film,2001-01-01T00:00:00Z,tt0206036
+nm0000603,Cannes Film Festival Award for Best Actress,1969-01-01T00:00:00Z,tt0063141
+nm0000603,Academy Award for Best Supporting Actress,1977-01-01T00:00:00Z,tt0076245
+nm0000603,Primetime Emmy Award for Outstanding Supporting Actress in a Miniseries or a Movie,2000-01-01T00:00:00Z,tt0206036
+nm0000603,Golden Globe Award for Best Supporting Actress – Motion Picture,1978-01-01T00:00:00Z,tt0076245
+nm0000603,Cannes Film Festival Award for Best Actress,1966-01-01T00:00:00Z,tt0060714
+nm0000603,Primetime Emmy Award for Outstanding Lead Actress in a Miniseries or a Movie,1981-01-01T00:00:00Z,tt0081344
 nm0000603,Dame Commander of the Order of the British Empire,2022-01-01T00:00:00Z,
 nm0000603,Academy Fellowship Award,2010-01-01T00:00:00Z,
 nm0000603,Evening Standard Theatre Award for Best Actress,,
@@ -33,7 +33,57 @@ nm0000603,Dame Commander of the Order of the British Empire,,
 nm0000603,Tony Award for Best Actress in a Play,2003-01-01T00:00:00Z,
 nm0000603,Commander of the Order of the British Empire,,
 nm0000603,Commandeur des Arts et des Lettres,,
-nm0001221,Academy Award for Best Actress,1974-01-01T00:00:00Z,
+nm0001221,Academy Award for Best Actress,1974-01-01T00:00:00Z,tt0073486
 nm0001221,BAFTA Award for Best Actress in a Leading Role,,
 nm0001221,Mary Pickford Award,,
 nm0005000,James Joyce Awards,,
+nm0000016,Academy Award for Best Original Score,1979-01-01T00:00:00Z,tt0079477
+nm0000016,Commandeur des Arts et des Lettres,,
+nm0000016,Prix de Rome,1949-01-01T00:00:00Z,
+nm0000140,Donostia Award,1997-01-01T00:00:00Z,
+nm0000140,Commandeur des Arts et des Lettres,2011-01-01T00:00:00Z,
+nm0000140,AFI Life Achievement Award,2009-01-01T00:00:00Z,
+nm0000140,Theatre World Award,1971-01-01T00:00:00Z,
+nm0000140,star on Hollywood Walk of Fame,,
+nm0000140,New Jersey Hall of Fame,,
+nm0000140,Golden Globe Award,,
+nm0000140,Satellite Award for Best Actor in a Musical or Comedy,2001-01-01T00:00:00Z,tt0185014
+nm0000140,Academy Award for Best Actor,1988-01-01T00:00:00Z,tt0094291
+nm0000140,Screen Actors Guild Award for Outstanding Performance by a Cast in a Motion Picture,2001-01-01T00:00:00Z,tt0181865
+nm0000140,Academy Award for Best Picture,1976-01-01T00:00:00Z,tt0073486
+nm0000140,Primetime Emmy Award for Outstanding Lead Actor in a Miniseries or a Movie,2013-01-01T00:00:00Z,tt1291580
+nm0000162,Lucy Award,2000-01-01T00:00:00Z,tt0206036
+nm0000162,National Board of Review Award for Best Supporting Actress,1997-01-01T00:00:00Z,tt0120885
+nm0000162,Soap Opera Digest Award for Outstanding Lead Actress in a Daytime Drama,1992-01-01T00:00:00Z,tt0057731
+nm0000162,Daytime Emmy Award for Outstanding Younger Actress in a Drama Series,1991-01-01T00:00:00Z,tt0057731
+nm0000197,California Hall of Fame,2008-01-01T00:00:00Z,
+nm0000197,New Jersey Hall of Fame,,
+nm0000197,AFI Life Achievement Award,1994-01-01T00:00:00Z,
+nm0000197,Kennedy Center Honors,,
+nm0000197,Screen Actors Guild Award,,
+nm0000197,star on Hollywood Walk of Fame,,
+nm0000197,Ordre des Arts et des Lettres,,
+nm0000197,Golden Globe Cecil B. DeMille Award,1999-01-01T00:00:00Z,
+nm0000197,Academy Award for Best Actor,1976-01-01T00:00:00Z,tt0073486
+nm0000197,BAFTA Award for Best Actor in a Supporting Role,1983-01-01T00:00:00Z,tt0082979
+nm0000197,Golden Globe Award for Best Actor – Motion Picture Drama,2003-01-01T00:00:00Z,tt0257360
+nm0000197,Academy Award for Best Supporting Actor,1984-01-01T00:00:00Z,tt0086425
+nm0000197,Golden Globe Award for Best Actor – Motion Picture Musical or Comedy,1998-01-01T00:00:00Z,tt0119822
+nm0000197,Golden Globe Award for Best Actor – Motion Picture Musical or Comedy,1986-01-01T00:00:00Z,tt0089841
+nm0000197,BAFTA Award for Best Actor in a Leading Role,1975-01-01T00:00:00Z,tt0071315
+nm0000197,Academy Award for Best Actor,1998-01-01T00:00:00Z,tt0119822
+nm0000197,Golden Globe Award for Best Supporting Actor – Motion Picture,1984-01-01T00:00:00Z,tt0086425
+nm0000197,Golden Globe Award for Best Actor – Motion Picture Drama,1976-01-01T00:00:00Z,tt0073486
+nm0000197,BAFTA Award for Best Actor in a Leading Role,1977-01-01T00:00:00Z,tt0073486
+nm0000197,Golden Globe Award for Best Actor – Motion Picture Drama,1975-01-01T00:00:00Z,tt0071315
+nm0000197,MTV Movie Award for Best Villain,2007-01-01T00:00:00Z,tt0407887
+nm0000255,Saturn Award,,
+nm0000255,Screen Actors Guild Award,1998-01-01T00:00:00Z,
+nm0000255,César Award,,
+nm0000255,Directors Guild of America Award,,
+nm0000255,BAFTA Award for Best Direction,,
+nm0000255,Golden Globe Award for Best Screenplay,1998-01-01T00:00:00Z,tt0119217
+nm0000255,Academy Award for Best Writing Original Screenplay,1998-01-01T00:00:00Z,tt0119217
+nm0000255,Academy Award for Best Picture,2011-01-01T00:00:00Z,tt1024648
+nm0000255,Volpi Cup for Best Actor,2006-01-01T00:00:00Z,tt0427969
+nm1373849,Career Intelligence Medal,1998-01-01T00:00:00Z,
