@@ -13,7 +13,7 @@ SAMPLE_SIZE = 100
 
 
 def sanitize_string(string):
-    return string.replace(",", "").replace('"', '').replace("'", "")
+    return string.replace(",", "").replace('"', ' ').replace("'", " ")
 
 
 def sanitize_row(row):
@@ -35,6 +35,31 @@ def save(df, path, append=False):
                   header=not os.path.exists(path))
     print("Sample saved")
     return df
+
+
+def save_titles(df):
+
+    # Save
+    save_path = os.path.join(PROCESSED_DIR, 'titles.csv')
+    return save(df, save_path)
+
+
+def sanitize_principals_characters(characters):
+    if characters == '\\N':
+        return characters
+    return ';'.join(eval(characters))
+
+
+def save_principals(df, append=False):
+    # Save
+    save_path = os.path.join(PROCESSED_DIR, 'principals.csv')
+
+    for index, row in df.iterrows():
+        characters = row['characters']
+        df.loc[index, 'characters'] = sanitize_principals_characters(
+            characters)
+
+    save(df, save_path, append)
 
 
 def get_sample_titles():
@@ -100,13 +125,6 @@ def get_movies():
     # Filter by movies
     df = df[df['titleType'] == 'movie']
     return df
-
-
-def save_titles(df):
-
-    # Save
-    save_path = os.path.join(PROCESSED_DIR, 'titles.csv')
-    return save(df, save_path)
 
 
 def sample_titles(sample_size=SAMPLE_SIZE):
@@ -193,11 +211,7 @@ def sample_principals():
             line = line.strip().split('\t')
             if line[0] in titles:
                 # Add to df
-                line[5] = line[5].replace("\"", "").replace(
-                    "[", "").replace("]", "")
-                for i, string in enumerate(line):
-                    line[i] = sanitize_string(string)
-
+                line[5] = sanitize_principals_characters(line[5])
                 data.append(line)
     print("Data read. Rows: ", len(data))
     print("Creating dataframe...")
@@ -294,9 +308,10 @@ def get_titles_info(df=None):
         row['wiki_country'] = info['country'] if 'country' in info else ''
         row['wiki_genres'] = ';'.join(
             info['genres']) if 'genres' in info else ''
-        row['wiki_producer_company'] = info['producer_company'] if 'producer_company' in info else ''
+        row['wiki_producer_company'] = ';'.join(info['producer company']) if 'producer company' in info else ''
         # row['wiki_producer_company'] = row['wiki_producer_company'].replace(',', ';')
-        row['wiki_location'] = info['location'] if 'location' in info else ''
+        row['wiki_location'] = ';'.join(
+            info['location']) if 'location' in info else ''
         if 'awards' not in info:
             continue
         for award in info['awards']:
@@ -375,9 +390,10 @@ def info_pipeline():
     print("Info pipeline finished.")
 
 
-def get_titles_data(titles_df, titles_set):
+def get_titles_data(titles_df, ratings_df, titles_set):
     sample_titles_df = titles_df[titles_df['tconst'].isin(titles_set)]
-
+    sample_titles_df = sample_titles_df.merge(
+        ratings_df, on='tconst', how='left')
     # Transform
     sample_titles_df['genres'] = sample_titles_df['genres'].str.replace(
         ',', ';')
@@ -496,13 +512,13 @@ def recursive_data_completion(titles=None, names=None, names_awards=None, max_ti
 
     print("Reading processed data")
     if titles is None:
-        info_titles_df = pd.read_csv(os.path.join(
-            PROCESSED_DIR, 'titles_info.csv'), sep=',')
-        titles = set(info_titles_df['tconst'])
+        used_titles_df = pd.read_csv(os.path.join(
+            PROCESSED_DIR, 'titles.csv'), sep=',')
+        titles = set(used_titles_df['tconst'])
     if names is None:
-        info_names_df = pd.read_csv(os.path.join(
-            PROCESSED_DIR, 'names_info.csv'), sep=',')
-        names = set(info_names_df['nconst'])
+        used_names_df = pd.read_csv(os.path.join(
+            PROCESSED_DIR, 'names.csv'), sep=',')
+        names = set(used_names_df['nconst'])
     if names_awards is None:
         names_awards = pd.read_csv(os.path.join(
             PROCESSED_DIR, 'names_awards.csv'), sep=',')
@@ -520,6 +536,8 @@ def recursive_data_completion(titles=None, names=None, names_awards=None, max_ti
     data_names_df = pd.read_csv(os.path.join(
         DATA_DIR, 'name_basics', 'data.tsv'), sep='\t')
     print("Name data read. Rows: ", len(data_names_df))
+    data_ratings_df = pd.read_csv(os.path.join(
+        DATA_DIR, 'title_ratings', 'data.tsv'), sep='\t')
     new_titles = set()
     new_names = set()
 
@@ -534,7 +552,8 @@ def recursive_data_completion(titles=None, names=None, names_awards=None, max_ti
 
         if len(new_titles) == 0:
             break
-        titles_df = get_titles_data(data_titles_df, new_titles)
+        titles_df = get_titles_data(
+            data_titles_df, data_ratings_df, new_titles)
 
         crews_df = get_crew_data(new_titles, data_crew_df)
         principals_df = get_principals_data(new_titles, data_principals_df)
@@ -553,8 +572,10 @@ def recursive_data_completion(titles=None, names=None, names_awards=None, max_ti
 
         get_titles_info(titles_df)
         _, names_awards = get_people_info(names_df)
+        save(titles_df, os.path.join(PROCESSED_DIR, 'titles.csv'), True)
         save(crews_df, os.path.join(PROCESSED_DIR, 'crews.csv'), True)
-        save(principals_df, os.path.join(PROCESSED_DIR, 'principals.csv'), True)
+        save_principals(principals_df, True)
+        save(names_df, os.path.join(PROCESSED_DIR, 'names.csv'), True)
 
         names = names.union(new_names)
         titles = titles.union(new_titles)
@@ -592,11 +613,7 @@ if __name__ == '__main__':
         except Exception as e:
             print("Invalid option")
             continue
-        try:
-            if op == 0:
-                break
-            options[op-1][1]()
-        except Exception as e:
-            print(e)
-            continue
+        if op == 0:
+            break
+        options[op-1][1]()
     print("Exiting")
