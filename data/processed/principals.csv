@@ -12,7 +12,7 @@ tt0160316,9,nm0928376,archive_footage,\N,\N
 tt0389937,1,nm0573270,actor,\N,Don
 tt0389937,2,nm1043243,actress,\N,Lori
 tt0389937,3,nm4188689,actress,\N,Mary
-tt0389937,4,nm1097231,actor,\N,"Don's Inner Child,Red Headed Boy"
+tt0389937,4,nm1097231,actor,\N,Dons Inner ChildRed Headed Boy
 tt0389937,5,nm0676671,director,\N,\N
 tt0389937,6,nm0888113,composer,\N,\N
 tt10218112,1,nm10756172,self,\N,Self
@@ -683,3 +683,291 @@ tt9080346,6,nm3530768,writer,\N,\N
 tt9080346,7,nm9126120,producer,producer,\N
 tt9080346,8,nm8279090,cinematographer,\N,\N
 tt9080346,9,nm9877320,editor,\N,\N
+tt0060714,10,nm0878045,cinematographer,\N,\N
+tt0060714,1,nm0001831,actor,\N,[Morgan]
+tt0060714,2,nm0000603,actress,\N,[Leonie]
+tt0060714,3,nm0827137,actor,\N,[Napier]
+tt0060714,4,nm0359566,actress,\N,[Mrs. Delt]
+tt0060714,5,nm0718554,director,\N,\N
+tt0060714,6,nm0580256,writer,written by,\N
+tt0060714,7,nm0167061,producer,producer,\N
+tt0060714,8,nm0006023,composer,\N,\N
+tt0060714,9,nm0005831,cinematographer,\N,\N
+tt0063141,10,nm0698957,writer,\N,\N
+tt0063141,1,nm0000603,actress,\N,[Isadora]
+tt0063141,2,nm0289038,actor,\N,[Craig]
+tt0063141,3,nm0001673,actor,\N,[Singer]
+tt0063141,4,nm0292159,actor,\N,[Roger]
+tt0063141,5,nm0718554,director,\N,\N
+tt0063141,6,nm0103905,writer,adaptation,\N
+tt0063141,7,nm0236578,writer,additional dialogue,\N
+tt0063141,8,nm0241984,writer,book My Life,\N
+tt0063141,9,nm0264088,writer,screenplay,\N
+tt0073486,10,nm0000140,producer,producer,\N
+tt0073486,1,nm0000197,actor,\N,[R.P. McMurphy]
+tt0073486,2,nm0001221,actress,\N,[Nurse Ratched]
+tt0073486,3,nm0077720,actor,\N,[Ellis]
+tt0073486,4,nm0110480,actor,\N,[Col. Matterson]
+tt0073486,5,nm0001232,director,\N,\N
+tt0073486,6,nm0369142,writer,screenplay,\N
+tt0073486,7,nm0325743,writer,screenplay,\N
+tt0073486,8,nm0450181,writer,based on the novel by,\N
+tt0073486,9,nm0913670,writer,the play version: One Flew Over the Cuckoos Nest by,\N
+tt0076245,10,nm0005878,cinematographer,director of photography,\N
+tt0076245,1,nm0000404,actress,\N,[Lillian]
+tt0076245,2,nm0000603,actress,\N,[Julia]
+tt0076245,3,nm0001673,actor,\N,[Hammett]
+tt0076245,4,nm0001703,actor,\N,[Johann]
+tt0076245,5,nm0003593,director,\N,\N
+tt0076245,6,nm0375484,writer,based upon the story by,\N
+tt0076245,7,nm0765091,writer,screenplay,\N
+tt0076245,8,nm10607011,producer,producer,\N
+tt0076245,9,nm0000016,composer,\N,\N
+tt0081344,10,nm0006075,composer,\N,\N
+tt0081344,1,nm0000603,actress,\N,[Fania Fenelon]
+tt0081344,2,nm0000737,actress,\N,[Alma Rose]
+tt0081344,3,nm0000726,actress,\N,[Mala]
+tt0081344,4,nm0004724,actress,\N,[Olga]
+tt0081344,5,nm0542702,director,\N,\N
+tt0081344,6,nm0765121,director,\N,\N
+tt0081344,7,nm0007186,writer,written by,\N
+tt0081344,8,nm0299666,writer,autobiography: The Musicians of Auschwitz,\N
+tt0081344,9,nm0947388,producer,executive producer,\N
+tt0110365,1,nm0000619,actor,\N,[Joshua Shapira]
+tt0110365,2,nm0000411,actor,\N,[Reuben Shapira]
+tt0110365,3,nm0446702,actress,\N,[Alla Shustervich]
+tt0110365,4,nm0000603,actress,\N,[Irina Shapira]
+tt0110365,5,nm0336695,director,\N,\N
+tt0110365,6,nm0916986,producer,producer,\N
+tt0110365,7,nm0725166,cinematographer,\N,\N
+tt0110365,8,nm0364643,editor,\N,\N
+tt0110365,9,nm0860384,production_designer,\N,\N
+tt0190590,10,nm0177504,editor,\N,\N
+tt0190590,1,nm0000123,actor,\N,[Everett]
+tt0190590,2,nm0001806,actor,\N,[Pete Hogwallop]
+tt0190590,3,nm0625789,actor,\N,[Delmar ODonnell]
+tt0190590,4,nm0000422,actor,\N,[Big Dan Teague]
+tt0190590,5,nm0001054,director,\N,\N
+tt0190590,6,nm0001053,director,\N,\N
+tt0190590,7,nm0392955,writer,epic poem The Odyssey,\N
+tt0190590,8,nm0122439,composer,\N,\N
+tt0190590,9,nm0005683,cinematographer,director of photography,\N
+tt0206036,10,nm0908620,writer,created by,\N
+tt0206036,1,nm0000603,actress,\N,[Edith Tree (segment \1961\)]
+tt0206036,2,nm0783033,actress,\N,[Abby Hedley (segment \1961\)]
+tt0206036,3,nm0316079,actor,\N,[Ted Hedley (segment \1961\)]
+tt0206036,4,nm0001610,actress,\N,[Alice Hedley (segment \1961\)]
+tt0206036,5,nm0026862,director,\N,\N
+tt0206036,6,nm0004838,director,\N,\N
+tt0206036,7,nm0000162,director,\N,\N
+tt0206036,8,nm0796359,writer,teleplay,\N
+tt0206036,9,nm0796357,writer,story,\N
+tt0365737,10,nm0006035,composer,\N,\N
+tt0365737,1,nm0000123,actor,\N,[Bob Barnes]
+tt0365737,2,nm0000354,actor,\N,[Bryan Woodman]
+tt0365737,3,nm0001605,actress,\N,[Julie Woodman]
+tt0365737,4,nm1315378,actor,\N,[Arash]
+tt0365737,5,nm0300866,director,\N,\N
+tt0365737,6,nm1373849,writer,book See No Evil: The True Story of a Ground Soldier in the CIAs War on Terrorism,\N
+tt0365737,7,nm0289048,producer,producer,\N
+tt0365737,8,nm0434133,producer,producer,\N
+tt0365737,9,nm0637602,producer,producer,\N
+tt0433383,1,nm0000657,actor,\N,[Edward R. Murrow]
+tt0433383,2,nm0000123,actor,\N,[Fred Friendly]
+tt0433383,3,nm0165101,actress,\N,[Shirley Wershba]
+tt0433383,4,nm0001099,actor,\N,[Sig Mickelson]
+tt0433383,5,nm0381416,writer,written by,\N
+tt0433383,6,nm0660518,composer,\N,\N
+tt0433383,7,nm0005696,cinematographer,director of photography,\N
+tt0433383,8,nm0592537,editor,\N,\N
+tt0433383,9,nm0084304,production_designer,\N,\N
+tt1024648,10,nm0006035,composer,\N,\N
+tt1024648,1,nm0000255,actor,\N,[Tony Mendez]
+tt1024648,2,nm0186505,actor,\N,[Jack ODonnell]
+tt1024648,3,nm0000422,actor,\N,[John Chambers]
+tt1024648,4,nm0000273,actor,\N,[Lester Siegel]
+tt1024648,5,nm0006516,writer,screenplay by,\N
+tt1024648,6,nm5410196,writer,based on a selection from The Master of Disguise by,\N
+tt1024648,7,nm2646452,writer,based on the Wired Magazine article The Great Escape by,\N
+tt1024648,8,nm0000123,producer,producer,\N
+tt1024648,9,nm0381416,producer,producer,\N
+tt1033575,10,nm0852591,producer,producer,\N
+tt1033575,1,nm0000123,actor,\N,[Matt King]
+tt1033575,2,nm0940362,actress,\N,[Alexandra King]
+tt1033575,3,nm3837786,actress,\N,[Scottie King]
+tt1033575,4,nm1975228,actor,\N,[Sid]
+tt1033575,5,nm0668247,director,\N,\N
+tt1033575,6,nm0269542,writer,screenplay,\N
+tt1033575,7,nm0711110,writer,screenplay,\N
+tt1033575,8,nm2655611,writer,novel,\N
+tt1033575,9,nm0121724,producer,producer,\N
+tt1193138,10,nm0718645,producer,producer,\N
+tt1193138,1,nm0000123,actor,\N,[Ryan Bingham]
+tt1193138,2,nm0267812,actress,\N,[Alex Goran]
+tt1193138,3,nm0447695,actress,\N,[Natalie Keener]
+tt1193138,4,nm0000867,actor,\N,[Craig Gregory]
+tt1193138,5,nm0718646,director,\N,\N
+tt1193138,6,nm1174529,writer,novel,\N
+tt1193138,7,nm1417242,writer,screenplay,\N
+tt1193138,8,nm0166641,producer,producer,\N
+tt1193138,9,nm0239277,producer,producer,\N
+tt0057731,10,nm0524591,actress,\N,[Paulina CarlinoPaulina CoryPaulina Cory Carlino]
+tt0057731,1,nm0943920,actress,\N,[Rachel Davis CoryRachel DavisRachel Davis Hutchins]
+tt0057731,2,nm0285576,actress,\N,[Ada LucasAda Lucas McGowanAda Hobson]
+tt0057731,3,nm0549280,actor,\N,[Jim Matthews]
+tt0057731,4,nm0200451,actress,\N,[Felicia GallantFelicia Gallant BlakeFelicia Gallant St. George]
+tt0057731,5,nm0680460,writer,creator,\N
+tt0057731,6,nm0068589,writer,creator,\N
+tt0057731,7,nm0571979,actress,\N,[Iris Carrington]
+tt0057731,8,nm0774156,actor,\N,[Cass WinthropRex Allingham]
+tt0057731,9,nm0835646,actress,\N,[Donna LoveDonna Love HudsonDonna Love Cory]
+tt0071315,10,nm0642714,editor,film editor,\N
+tt0071315,1,nm0000197,actor,\N,[J.J. Gittes]
+tt0071315,2,nm0001159,actress,\N,[Evelyn Mulwray]
+tt0071315,3,nm0001379,actor,\N,[Noah Cross]
+tt0071315,4,nm0520164,actor,\N,[Escobar]
+tt0071315,5,nm0000591,director,\N,\N
+tt0071315,6,nm0001801,writer,written by,\N
+tt0071315,7,nm0263172,producer,producer,\N
+tt0071315,8,nm0000025,composer,\N,\N
+tt0071315,9,nm0002166,cinematographer,director of photography,\N
+tt0079477,10,nm0000016,composer,\N,\N
+tt0079477,1,nm0000059,actor,\N,[Julius]
+tt0079477,2,nm0000178,actress,\N,[Lauren]
+tt0079477,3,nm0076400,actor,\N,[Daniel]
+tt0079477,4,nm0384050,actor,\N,[Richard King]
+tt0079477,5,nm0001351,director,\N,\N
+tt0079477,6,nm0122560,writer,screenplay by,\N
+tt0079477,7,nm0460104,writer,novel E=MC² mon amour,\N
+tt0079477,8,nm0186683,producer,producer,\N
+tt0079477,9,nm0746073,producer,producer,\N
+tt0082979,10,nm0843129,production_designer,\N,\N
+tt0082979,1,nm0000886,actor,\N,[John Reed]
+tt0082979,2,nm0000473,actress,\N,[Louise Bryant]
+tt0082979,3,nm0001346,actor,\N,[Max Eastman]
+tt0082979,4,nm0467085,actor,\N,[Grigory Zinoviev]
+tt0082979,5,nm0341767,writer,written by,\N
+tt0082979,6,nm0814227,composer,\N,\N
+tt0082979,7,nm0005886,cinematographer,\N,\N
+tt0082979,8,nm0020441,editor,\N,\N
+tt0082979,9,nm0570947,editor,\N,\N
+tt0086425,10,nm0686895,production_designer,\N,\N
+tt0086425,1,nm0000511,actress,\N,[Aurora Greenway]
+tt0086425,2,nm0000700,actress,\N,[Emma Horton]
+tt0086425,3,nm0000197,actor,\N,[Garrett Breedlove]
+tt0086425,4,nm0000362,actor,\N,[Vernon Dahlart]
+tt0086425,5,nm0000985,director,\N,\N
+tt0086425,6,nm0573505,writer,based on the novel by,\N
+tt0086425,7,nm0330759,composer,\N,\N
+tt0086425,8,nm0005647,cinematographer,director of photography,\N
+tt0086425,9,nm0548943,editor,\N,\N
+tt0089841,10,nm0005647,cinematographer,director of photography,\N
+tt0089841,1,nm0000197,actor,\N,[Charley Partanna]
+tt0089841,2,nm0000678,actress,\N,[Irene Walker]
+tt0089841,3,nm0005162,actor,\N,[Eduardo Prizzi]
+tt0089841,4,nm0709907,actor,\N,[Angelo Pop Partanna]
+tt0089841,5,nm0001379,director,\N,\N
+tt0089841,6,nm0174410,writer,novel,\N
+tt0089841,7,nm0730027,writer,screenplay,\N
+tt0089841,8,nm0286048,producer,producer,\N
+tt0089841,9,nm0006218,composer,\N,\N
+tt0094291,10,nm0800943,editor,\N,\N
+tt0094291,1,nm0000221,actor,\N,[Bud Fox]
+tt0094291,2,nm0000140,actor,\N,[Gordon Gekko]
+tt0094291,3,nm0876645,actress,\N,[Carolyn]
+tt0094291,4,nm0184429,actor,\N,[Dan]
+tt0094291,5,nm0000231,director,\N,\N
+tt0094291,6,nm0007140,writer,written by,\N
+tt0094291,7,nm0696299,producer,producer,\N
+tt0094291,8,nm0004841,composer,\N,\N
+tt0094291,9,nm0724744,cinematographer,director of photography,\N
+tt0119217,10,nm0829681,production_designer,\N,\N
+tt0119217,1,nm0000245,actor,\N,[Sean]
+tt0119217,2,nm0000354,actor,\N,[Will]
+tt0119217,3,nm0000255,actor,\N,[Chuckie]
+tt0119217,4,nm0001745,actor,\N,[Lambeau]
+tt0119217,5,nm0001814,director,\N,\N
+tt0119217,6,nm0004744,producer,producer,\N
+tt0119217,7,nm0000384,composer,\N,\N
+tt0119217,8,nm0260389,cinematographer,director of photography,\N
+tt0119217,9,nm0768817,editor,\N,\N
+tt0119822,10,nm0007037,cinematographer,director of photography,\N
+tt0119822,1,nm0000197,actor,\N,[Melvin Udall]
+tt0119822,2,nm0000166,actress,\N,[Carol Connelly]
+tt0119822,3,nm0001427,actor,\N,[Simon Bishop]
+tt0119822,4,nm0000421,actor,\N,[Frank Sachs]
+tt0119822,5,nm0000985,director,\N,\N
+tt0119822,6,nm0029125,writer,story,\N
+tt0119822,7,nm0424660,producer,producer,\N
+tt0119822,8,nm0954034,producer,producer,\N
+tt0119822,9,nm0001877,composer,\N,\N
+tt0120885,10,nm0461360,composer,\N,\N
+tt0120885,1,nm0000163,actor,\N,[Stanley Motss]
+tt0120885,2,nm0000134,actor,\N,[Conrad Brean]
+tt0120885,3,nm0000162,actress,\N,[Winifred Ames]
+tt0120885,4,nm0000437,actor,\N,[Sgt. William Schumann]
+tt0120885,5,nm0001469,director,\N,\N
+tt0120885,6,nm0067248,writer,book American Hero,\N
+tt0120885,7,nm0377088,writer,screenplay,\N
+tt0120885,8,nm0000519,writer,screenplay,\N
+tt0120885,9,nm0742772,producer,producer,\N
+tt0181865,10,nm0001880,producer,producer,\N
+tt0181865,1,nm0000140,actor,\N,[Robert Wakefield]
+tt0181865,2,nm0001125,actor,\N,[Javier Rodríguez]
+tt0181865,3,nm0001876,actress,\N,[Helena Ayala]
+tt0181865,4,nm0889846,actor,\N,[Manolo Sanchez]
+tt0181865,5,nm0001752,director,\N,\N
+tt0181865,6,nm0601881,writer,miniseries Traffik,\N
+tt0181865,7,nm0300866,writer,screenplay,\N
+tt0181865,8,nm0081046,producer,producer,\N
+tt0181865,9,nm0380980,producer,producer,\N
+tt0185014,10,nm0005883,cinematographer,director of photography,\N
+tt0185014,1,nm0000140,actor,\N,[Grady Tripp]
+tt0185014,2,nm0001497,actor,\N,[James Leer]
+tt0185014,3,nm0000531,actress,\N,[Sara Gaskell]
+tt0185014,4,nm0000375,actor,\N,[Terry Crabtree]
+tt0185014,5,nm0000436,director,\N,\N
+tt0185014,6,nm0149290,writer,novel,\N
+tt0185014,7,nm0460141,writer,screenplay,\N
+tt0185014,8,nm0748784,producer,producer,\N
+tt0185014,9,nm0002366,composer,\N,\N
+tt0257360,10,nm0448843,composer,\N,\N
+tt0257360,1,nm0000197,actor,\N,[Warren Schmidt]
+tt0257360,2,nm0204706,actress,\N,[Jeannie Schmidt]
+tt0257360,3,nm0000551,actor,\N,[Randall Hertzel]
+tt0257360,4,nm0000870,actress,\N,[Roberta Hertzel]
+tt0257360,5,nm0668247,director,\N,\N
+tt0257360,6,nm1095201,writer,novel About Schmidt,\N
+tt0257360,7,nm0852591,writer,screenplay,\N
+tt0257360,8,nm0078698,producer,producer,\N
+tt0257360,9,nm0321228,producer,producer,\N
+tt0407887,10,nm0454752,producer,producer,\N
+tt0407887,1,nm0000138,actor,\N,[Billy]
+tt0407887,2,nm0000354,actor,\N,[Colin]
+tt0407887,3,nm0000197,actor,\N,[Costello]
+tt0407887,4,nm0000242,actor,\N,[Dignam]
+tt0407887,5,nm0000217,director,\N,\N
+tt0407887,6,nm1184258,writer,screenplay,\N
+tt0407887,7,nm0538320,writer,\N,\N
+tt0407887,8,nm0159039,writer,\N,\N
+tt0407887,9,nm0340522,producer,producer,\N
+tt0427969,10,nm0073490,editor,\N,\N
+tt0427969,1,nm0004778,actor,\N,[Louis Simo]
+tt0427969,2,nm0000255,actor,\N,[George Reeves]
+tt0427969,3,nm0000178,actress,\N,[Toni Mannix]
+tt0427969,4,nm0001364,actor,\N,[Eddie Mannix]
+tt0427969,5,nm0002339,director,\N,\N
+tt0427969,6,nm0076602,writer,written by,\N
+tt0427969,7,nm0932037,producer,producer,\N
+tt0427969,8,nm0953616,composer,\N,\N
+tt0427969,9,nm0293456,cinematographer,\N,\N
+tt1291580,10,nm0414423,producer,producer,\N
+tt1291580,1,nm0000140,actor,\N,[Liberace]
+tt1291580,2,nm0000354,actor,\N,[Scott Thorson]
+tt1291580,3,nm0000836,actor,\N,[Bob Black]
+tt1291580,4,nm0958420,actor,\N,[Lou]
+tt1291580,5,nm0001752,director,\N,\N
+tt1291580,6,nm0481418,writer,screenplay,\N
+tt1291580,7,nm1281443,writer,book,\N
+tt1291580,8,nm5674732,writer,book,\N
+tt1291580,9,nm0252382,producer,producer,\N
