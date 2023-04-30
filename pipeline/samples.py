@@ -375,6 +375,192 @@ def info_pipeline():
     print("Info pipeline finished.")
 
 
+def get_titles_data(titles_df, titles_set):
+    sample_titles_df = titles_df[titles_df['tconst'].isin(titles_set)]
+
+    # Transform
+    sample_titles_df['genres'] = sample_titles_df['genres'].str.replace(
+        ',', ';')
+    return sample_titles_df
+
+
+def get_crew_data(titles=None, crew_df=None):
+    if titles is None:
+        print("Getting sample titles")
+        titles = get_sample_titles()
+        print("Sample titles: ", len(titles))
+    else:
+        print("Titles provided. Titles: ", len(titles))
+    if crew_df is None:
+        path = os.path.join(DATA_DIR, 'title_crew', 'data.tsv')
+        print("Reading data from: ", path)
+        crew_df = pd.read_csv(path, sep='\t')
+        print("Data read. Rows: ", len(crew_df))
+    else:
+        print("Dataframe provided. Rows: ", len(crew_df))
+
+    crew_df = crew_df[crew_df['tconst'].isin(titles)]
+    return crew_df
+
+
+def get_principals_data(titles_set=None, principles_df=None):
+    if titles_set is None:
+        print("Getting sample titles")
+        titles_set = get_sample_titles()
+        print("Sample titles: ", len(titles_set))
+    else:
+        print("Titles provided. Titles: ", len(titles_set))
+    if principles_df is None:
+        path = os.path.join(DATA_DIR, 'title_principals', 'data.tsv')
+        print("Reading data from: ", path)
+        principles_df = pd.read_csv(path, sep='\t')
+        print("Data read. Rows: ", len(principles_df))
+    else:
+        print("Dataframe provided. Rows: ", len(principles_df))
+
+    principles_df = principles_df[principles_df['tconst'].isin(titles_set)]
+    return principles_df
+
+
+def get_names_data(people=None, names_df=None):
+    if people is None:
+        print("Getting sample people")
+        people = get_all_samples_people()
+        print("Sample people: ", len(people))
+    else:
+        print("People provided. People: ", len(people))
+    if names_df is None:
+        path = os.path.join(DATA_DIR, 'name_basics', 'data.tsv')
+        print("Reading data from: ", path)
+        names_df = pd.read_csv(path, sep='\t')
+        print("Data read. Rows: ", len(names_df))
+    else:
+        print("Dataframe provided. Rows: ", len(names_df))
+
+    names_df = names_df[names_df['nconst'].isin(people)]
+    return names_df
+
+
+def get_titles_from_name_awards(names_awards_df=None):
+    if names_awards_df is None:
+        save_append = False
+        path = os.path.join(PROCESSED_DIR, 'names_awards.csv')
+        print("Reading data from: ", path)
+        names_awards_df = pd.read_csv(path, sep=',')
+        print("Data read. Rows: ", len(names_awards_df))
+    else:
+        save_append = True
+        print("Dataframe provided. Rows: ", len(names_awards_df))
+
+    # Get titles
+    titles = set()
+    for index, row in names_awards_df.iterrows():
+        title = row['imbd_id']
+        if pd.isna(title):
+            continue
+        if title not in titles:
+            titles.add(title)
+    print("Titles: ", len(titles))
+
+    return titles
+
+
+def get_names_from_crew(crew_df=None):
+    names = set()
+    for index, row in crew_df.iterrows():
+        directors = row['directors']
+        writers = row['writers']
+        directors_names = directors.split(';')
+        writers_names = writers.split(';')
+        for name in directors_names:
+            if name not in names:
+                names.add(name)
+        for name in writers_names:
+            if name not in names:
+                names.add(name)
+    print("Crew Names", len(names))
+    return names
+
+
+def get_names_from_principals(principals_df=None):
+    names = set()
+    for index, row in principals_df.iterrows():
+        name = row['nconst']
+        if name not in names:
+            names.add(name)
+    print("Principal Names: ", len(names))
+    return names
+
+
+def recursive_data_completion(titles=None, names=None, names_awards=None, max_titles=SAMPLE_SIZE*2):
+
+    print("Reading processed data")
+    if titles is None:
+        info_titles_df = pd.read_csv(os.path.join(
+            PROCESSED_DIR, 'titles_info.csv'), sep=',')
+        titles = set(info_titles_df['tconst'])
+    if names is None:
+        info_names_df = pd.read_csv(os.path.join(
+            PROCESSED_DIR, 'names_info.csv'), sep=',')
+        names = set(info_names_df['nconst'])
+    if names_awards is None:
+        names_awards = pd.read_csv(os.path.join(
+            PROCESSED_DIR, 'names_awards.csv'), sep=',')
+
+    print("Reading raw data")
+    data_titles_df = pd.read_csv(os.path.join(
+        DATA_DIR, 'title_basics', 'data.tsv'), sep='\t')
+    print("Title data read. Rows: ", len(data_titles_df))
+    data_crew_df = pd.read_csv(os.path.join(
+        DATA_DIR, 'title_crew', 'data.tsv'), sep='\t')
+    print("Crew data read. Rows: ", len(data_crew_df))
+    data_principals_df = pd.read_csv(os.path.join(
+        DATA_DIR, 'title_principals', 'data.tsv'), sep='\t')
+    print("Principals data read. Rows: ", len(data_principals_df))
+    data_names_df = pd.read_csv(os.path.join(
+        DATA_DIR, 'name_basics', 'data.tsv'), sep='\t')
+    print("Name data read. Rows: ", len(data_names_df))
+    new_titles = set()
+    new_names = set()
+
+    print("Starting recursive data completion")
+    count = 0
+    while (len(titles) < max_titles):
+        print(f"Iteration {count}")
+        new_titles_from_awards = get_titles_from_name_awards(names_awards)
+
+        new_titles = new_titles_from_awards - titles
+        print(f"Got {len(new_titles)} new titles")
+
+        if len(new_titles) == 0:
+            break
+        titles_df = get_titles_data(data_titles_df, new_titles)
+
+        crews_df = get_crew_data(new_titles, data_crew_df)
+        principals_df = get_principals_data(new_titles, data_principals_df)
+
+        new_names_from_award_titles = get_names_from_crew(crews_df)
+        new_names_from_award_principals = get_names_from_principals(
+            principals_df)
+        new_names = new_names_from_award_titles.union(
+            new_names_from_award_principals) - names
+
+        print(f"Got {len(new_names)} new names")
+        if len(new_names) == 0:
+            break
+
+        names_df = get_names_data(new_names, data_names_df)
+
+        get_titles_info(titles_df)
+        _, names_awards = get_people_info(names_df)
+        save(crews_df, os.path.join(PROCESSED_DIR, 'crews.csv'), True)
+        save(principals_df, os.path.join(PROCESSED_DIR, 'principals.csv'), True)
+
+        names = names.union(new_names)
+        titles = titles.union(new_titles)
+        count += 1
+
+
 if __name__ == '__main__':
     options = [
         ["Sample titles", sample_titles],
@@ -389,7 +575,8 @@ if __name__ == '__main__':
         ["Read titles", read_titles],
         ["Read ratings", read_ratings],
         ["Pipeline", pipeline],
-        ["Info Pipeline", info_pipeline]
+        ["Info Pipeline", info_pipeline],
+        ["Recursive data completion", recursive_data_completion]
 
 
     ]
