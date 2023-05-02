@@ -32,6 +32,29 @@ function Profile() {
     },
   ];
 
+  const interactions = [
+    {
+      id: 1,
+      movie: {
+        id: 1,
+        title: "Movie 1",
+      },
+      vote: 1,
+      comment:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+    {
+      id: 2,
+      movie: {
+        id: 2,
+        title: "Movie 2",
+      },
+      vote: 1,
+      comment:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    },
+  ];
+
   const series = [
     {
       id: 1,
@@ -63,7 +86,10 @@ function Profile() {
             <Col sm={8}>
               <WatchList name={"WatchList"} movies={movies} />
               <br />
-              <InteractionsList />
+              <InteractionsList
+                name={"Interactions"}
+                interactions={interactions}
+              />
               <br />
               <SeriesList name={"Completed Series"} series={series} />
             </Col>

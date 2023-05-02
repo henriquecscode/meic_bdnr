@@ -7,7 +7,7 @@ function SeriesList({ name, series }) {
       <h4 className="mb-3">{name}</h4>
 
       {series && Array.isArray(series) && series.length > 0 ? (
-        <div className="cards-container">
+        <div className="cards-container mb-3">
           {series.map((serie) => (
             <Card key={serie.id} className="card-item">
               <Card.Img variant="top" src={serie.image} alt={serie.title} />
