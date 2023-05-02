@@ -1,10 +1,75 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import UserInfo from "../../components/layout/UserInfo";
+import FriendsList from "../../components/layout/lists/FriendsList";
+import WatchList from "../../components/layout/lists/WatchList";
+import InteractionsList from "../../components/layout/lists/InteractionsList";
+import SeriesList from "../../components/layout/lists/SeriesList";
 
 function Profile() {
+  const user = {
+    username: "John Doe",
+    email: "johndoe@gmail.com",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    nationality: "American",
+    picture: "user.png",
+  };
+
+  const movies = [
+    {
+      id: 1,
+      image: "movie1.jpg",
+      title: "Movie 1",
+      genre: "Action",
+    },
+    {
+      id: 2,
+      image: "movie2.jpg",
+      title: "Movie 2",
+      genre: "Action",
+    },
+  ];
+
+  const series = [
+    {
+      id: 1,
+      image: "series1.jpg",
+      title: "Series 1",
+      n_movies: 10,
+    },
+    {
+      id: 2,
+      image: "series2.jpg",
+      title: "Series 2",
+      n_movies: 10,
+    },
+  ];
+
   return (
     <div>
-      <h1>Profile</h1>
-      <p>Profile page</p>
+      <div className="profile-info">
+        <Container className="py-5">
+          <UserInfo user={user} />
+        </Container>
+      </div>
+      <div>
+        <Container className="py-5">
+          <Row>
+            <Col sm={4}>
+              <FriendsList />
+            </Col>
+            <Col sm={8}>
+              <WatchList name={"WatchList"} movies={movies} />
+              <br />
+              <InteractionsList />
+              <br />
+              <SeriesList name={"Completed Series"} series={series} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
