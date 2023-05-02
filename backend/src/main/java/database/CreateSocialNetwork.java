@@ -97,7 +97,7 @@ public class CreateSocialNetwork {
 //            create user
             OrientVertex user = graph.addVertex("class:User");
             user.setProperty("name", "User" + i);
-            user.setProperty("username", "user" + i);
+            user.setProperty("username", "username" + i);
             user.setProperty("password", "password" + i);
 
             Iterable<Vertex> films = graph.getVerticesOfClass("Title");

@@ -6,17 +6,6 @@ import com.orientechnologies.orient.core.db.OrientDB;
 import com.orientechnologies.orient.core.db.OrientDBConfig;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.schema.OType;
-import com.orientechnologies.orient.core.record.OEdge;
-import com.orientechnologies.orient.core.record.OVertex;
-import com.orientechnologies.orient.core.sql.executor.OResult;
-import com.orientechnologies.orient.core.sql.executor.OResultSet;
-
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
 public class DocumentSchema {
     // Using document API
     static ODatabaseSession db;
@@ -146,7 +135,7 @@ public class DocumentSchema {
         }
 
         if (title.getProperty("n_votes") == null) {
-            title.createProperty("n_reviews", OType.INTEGER);
+            title.createProperty("n_votes", OType.INTEGER);
         }
 
 
