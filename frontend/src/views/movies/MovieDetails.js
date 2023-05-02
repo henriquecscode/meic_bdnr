@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image'
 import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
 import CommentCard from "../../components/cards/CommentCard";
-import HorizontalRule from "../../components/layout/navigation/HorizontalRule";
+import HorizontalRule from "../../components/layout/HorizontalRule";
 import SeriesCard from "../../components/cards/SeriesCard";
 import UserListCard from "../../components/cards/UsersListCard";
 
