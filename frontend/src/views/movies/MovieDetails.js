@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
 import CommentCard from "../../components/cards/CommentCard";
 import HorizontalRule from "../../components/layout/HorizontalRule";
-import SeriesCard from "../../components/cards/SeriesCard";
+import FilmCard from "../../components/cards/FilmCard";
 import UserListCard from "../../components/cards/UsersListCard";
 
 function MovieDetails() {
@@ -72,7 +72,7 @@ function MovieDetails() {
         <Row className="mt-5 pb-2">
           <Col>
             <div className="d-flex flex-row bd-highlight mb-3">
-              {series.map(s => <SeriesCard film={s} />)}
+              {series.map(s => <FilmCard film={s} />)}
             </div>
           </Col>
         </Row>
