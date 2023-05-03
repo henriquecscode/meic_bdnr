@@ -12,9 +12,7 @@ export default function FilmCard({ film, username }) {
             </Card.Subtitle>
           ) : null}
           <Card.Text></Card.Text>
-          <Card.Link
-            href={(film.link ? film.link : "#") + `?username=${username}`}
-          >
+          <Card.Link href={`/movies/${film.id}?username=${username}`}>
             See details
           </Card.Link>
         </Card.Body>

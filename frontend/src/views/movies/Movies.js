@@ -5,8 +5,8 @@ import SearchForm from "../../components/layout/SearchForm";
 
 function Movies({ username }) {
   const movies = [
-    { name: "Avatar", link: "/movies/1" },
-    { name: "Avatar: Way of Water" },
+    { id: 1, name: "Avatar" },
+    { id: 2, name: "Avatar: Way of Water" },
   ];
 
   return (

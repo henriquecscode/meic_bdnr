@@ -22,8 +22,8 @@ function MovieDetails({ username }) {
     },
   ];
   const series = [
-    { name: "Avatar", nr: 1 },
-    { name: "Avatar: Way of Water", nr: 2 },
+    { id: 1, name: "Avatar", nr: 1 },
+    { id: 2, name: "Avatar: Way of Water", nr: 2 },
   ];
   const comments = [
     { text: "Amazing", author: "Catarina" },
