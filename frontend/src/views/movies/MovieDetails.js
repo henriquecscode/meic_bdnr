@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Image from 'react-bootstrap/Image'
+import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
-import Row from 'react-bootstrap/Row';
-import Table from 'react-bootstrap/Table';
+import Row from "react-bootstrap/Row";
+import Table from "react-bootstrap/Table";
 import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
@@ -40,7 +40,7 @@ function MovieDetails({ username }) {
   ];
 
   useEffect(() => {
-    document.title = details.find(d => d.field == "Name").value;
+    document.title = details.find((d) => d.field === "Name").value;
   }, []);
 
   return (
@@ -111,7 +111,9 @@ function MovieDetails({ username }) {
             <h4 className="text-center">Comments</h4>
             <div className="d-flex flex-column bd-highlight mb-3">
               {comments && Array.isArray(comments) && comments.length > 0 ? (
-                comments.map((c, index) => <CommentCard comment={c} key={index} />)
+                comments.map((c, index) => (
+                  <CommentCard comment={c} key={index} />
+                ))
               ) : (
                 <p>
                   <i>No comments</i>
