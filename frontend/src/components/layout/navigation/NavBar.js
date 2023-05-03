@@ -7,10 +7,8 @@ import Image from "react-bootstrap/Image";
 import logo from "./../../../assets/logo-darkblue.png";
 import thumbnail from "./../../../assets/thumbnail.png";
 
-function NavBar() {
-  const username = "Fernando";
-
-  const UserMenu = (
+function NavBar({ username }) {
+  const UserThumbnail = (
     <Image
       src={thumbnail}
       height={25}
@@ -41,24 +39,31 @@ function NavBar() {
               <Nav.Link href="/login">login</Nav.Link>
               <Nav.Link href="/signin">signin</Nav.Link>
             */}
-            <Nav.Link href="/analytics">Analytics</Nav.Link>
-            <Nav.Link href="/movies">Movies</Nav.Link>
+            <Nav.Link href={`/analytics?username=${username}`}>
+              Analytics
+            </Nav.Link>
+            <Nav.Link href={`/movies?username=${username}`}>Movies</Nav.Link>
 
             <NavDropdown
               id="collasible-nav-dropdown"
-              title={UserMenu}
+              title={UserThumbnail}
               align="end"
             >
               <NavDropdown.ItemText>
                 Logged in as <b>{username}</b>
               </NavDropdown.ItemText>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-              <NavDropdown.Item href="/recommendations">
+              <NavDropdown.Item href={`/profile?username=${username}`}>
+                My Profile
+              </NavDropdown.Item>
+              <NavDropdown.Item href={`/recommendations?username=${username}`}>
                 Recommend Me
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/logout">Log out</NavDropdown.Item>
+              {/*
+                TODO: when implementing authentication 
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/logout">Log out</NavDropdown.Item>
+              */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
