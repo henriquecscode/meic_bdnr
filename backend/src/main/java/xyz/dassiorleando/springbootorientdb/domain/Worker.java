@@ -7,9 +7,9 @@ public class Worker extends Person {
 
     private String nid;
 
-    private int birthYear;
+    private Integer birthYear;
 
-    private int deathYear;
+    private Integer deathYear;
 
     public Worker() {
     }
