@@ -6,6 +6,7 @@ import SearchForm from "../../components/layout/SearchForm";
 function Movies() {
   const movies = [{ name: "Avatar", link: "/movies/1" }, { name: "Avatar: Way of Water" }];
 
+  // TODO: Add text search
   return (
     <div>
       <h1 className="text-center m-5">Movies</h1>
@@ -18,7 +19,7 @@ function Movies() {
           <div className="p-2 w-100 bd-highlight">
             <h5>Results</h5>
             <div className="d-flex flex-column bd-highlight mb-3">
-              {movies.map(m => <FilmCard film={m} />)}
+              {movies.map((m, index) => <FilmCard film={m} key={index} />)}
             </div>
           </div>
         </div>

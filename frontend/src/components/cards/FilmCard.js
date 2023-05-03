@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 
-export default function FilmCard({film}) {
-  return <div className="p-2 bd-highlight">
+export default function FilmCard({film, index}) {
+  return <div className="p-2 bd-highlight" key={index}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>{film.name}</Card.Title>
