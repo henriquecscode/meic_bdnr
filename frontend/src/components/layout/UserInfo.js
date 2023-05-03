@@ -1,12 +1,21 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import getImageSrc from "../../utils/utils";
 
 function UserInfo({ user }) {
+
   return (
     <Row>
       <Col sm={3}>
-        <img className="profile-img" src={user.picture} alt="avatar" />
+        <Image
+          src={getImageSrc(user.picture)}
+          height={200}
+          width={200}
+          className="thumbnail-image profile-img"
+          alt="avatar"
+        />
       </Col>
       <Col sm={9}>
         <h2 className="mt-4 mb-1">{user.username}</h2>
