@@ -21,7 +21,6 @@ public class CountryResource {
 
     @GetMapping("")
     public List<Country> list() {
-        log.debug("We just get the list of countries one more time");
         return countryService.findAll();
     }
 

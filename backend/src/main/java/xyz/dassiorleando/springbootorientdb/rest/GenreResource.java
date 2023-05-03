@@ -24,7 +24,6 @@ public class GenreResource {
 
     @GetMapping("")
     public List<Genre> list() {
-        log.debug("We just get the list of genres one more time");
         return genreService.findAll();
     }
 }
