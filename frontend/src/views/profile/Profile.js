@@ -95,10 +95,10 @@ function Profile() {
       <div>
         <Container className="py-5">
           <Row>
-            <Col sm={4} className="pe-3 border-end">
+            <Col sm={3} className="pe-3 border-end">
               <FriendsList name={"Friends List"} friends={friends} />
             </Col>
-            <Col sm={8} className="ps-4">
+            <Col sm={9} className="ps-4">
               <WatchList name={"WatchList"} movies={movies} />
               <br />
               <InteractionsList
