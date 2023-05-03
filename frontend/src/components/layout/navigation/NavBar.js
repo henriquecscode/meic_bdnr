@@ -27,7 +27,7 @@ function NavBar({ username }) {
       sticky="top"
     >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={`/?username=${username}`}>
           <Image src={logo} height={30} alt="filmfriend logo" />
         </Navbar.Brand>
 
@@ -36,8 +36,8 @@ function NavBar({ username }) {
           <Nav className="ms-auto">
             {/* 
               TODO: if not logged in, show login and signin
-              <Nav.Link href="/login">login</Nav.Link>
-              <Nav.Link href="/signin">signin</Nav.Link>
+              <Nav.Link href={`/login?username=${username}`}>login</Nav.Link>
+              <Nav.Link href={`/signin?username=${username}`}>signin</Nav.Link>
             */}
             <Nav.Link href={`/analytics?username=${username}`}>
               Analytics
@@ -62,7 +62,7 @@ function NavBar({ username }) {
               {/*
                 TODO: when implementing authentication 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/logout">Log out</NavDropdown.Item>
+                <NavDropdown.Item href={`/logout?username=${username}`}>Log out</NavDropdown.Item>
               */}
             </NavDropdown>
           </Nav>

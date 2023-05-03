@@ -1,6 +1,6 @@
 import React from "react";
 
-function Recommendations() {
+function Recommendations({ username }) {
   return (
     <div>
       <h1>Recommendations</h1>

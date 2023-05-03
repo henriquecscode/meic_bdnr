@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import FilmCard from "../../components/cards/FilmCard";
 import SearchForm from "../../components/layout/SearchForm";
 
-function Movies() {
+function Movies({ username }) {
   const movies = [
     { name: "Avatar", link: "/movies/1" },
     { name: "Avatar: Way of Water" },
@@ -22,7 +22,7 @@ function Movies() {
             <h5>Results</h5>
             <div className="d-flex flex-column bd-highlight mb-3">
               {movies.map((m, index) => (
-                <FilmCard key={index} film={m} />
+                <FilmCard key={index} film={m} username={username} />
               ))}
             </div>
           </div>

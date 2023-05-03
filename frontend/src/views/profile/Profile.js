@@ -8,9 +8,9 @@ import WatchList from "../../components/layout/lists/WatchList";
 import InteractionsList from "../../components/layout/lists/InteractionsList";
 import SeriesList from "../../components/layout/lists/SeriesList";
 
-function Profile() {
+function Profile({ username }) {
   const user = {
-    username: "John Doe",
+    username: username,
     email: "johndoe@gmail.com",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
     nationality: "American",
