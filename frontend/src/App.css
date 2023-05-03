@@ -7,6 +7,15 @@
   color: #f9f9f9;
 }
 
+.btn-darkblue:hover,
+.btn-darkblue:focus,
+.btn-darkblue:active,
+.btn-darkblue:first-child:active,
+.btn-darkblue:focus-visible {
+  background-color: #123d7e;
+  color: #f9f9f9;
+}
+
 .thumbnail-image {
   border-radius: 50%;
   object-fit: cover;
@@ -37,4 +46,12 @@
 .card-item > .card-img-top {
   max-height: 12rem;
   object-fit: cover;
+}
+
+/*MOVIES CARD*/
+
+.card-movie-img {
+  width: 9rem;
+  height: 12rem;
+  padding: 1rem;
 }

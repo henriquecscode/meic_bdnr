@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function WatchList({ name, movies }) {
+  // TODO: change remove button - to options to remove but also to add to watched list (add interaction)
+
   const handleRemove = (id) => {
     // TODO: remove movie from watchlist
     console.log(id);
