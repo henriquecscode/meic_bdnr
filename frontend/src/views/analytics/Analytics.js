@@ -47,6 +47,8 @@ function Analytics({ username }) {
         return getCastTab();
       case 'awards':
         return getAwardsTab();
+      default:
+        return <></>;
     }
   }
 
