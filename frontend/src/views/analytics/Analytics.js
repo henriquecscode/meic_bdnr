@@ -1,6 +1,6 @@
 import React from "react";
 
-function Analytics() {
+function Analytics({ username }) {
   return (
     <div>
       <h1>Analytics</h1>
