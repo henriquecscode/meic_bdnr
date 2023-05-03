@@ -21,7 +21,7 @@ public class CreateSocialNetwork {
     static int NUMBER_USERS = 20;
     static float FILMS_INTERACTED = 0.5f;
     static float FILMS_WATCHED = 0.5f;
-    static float USERS_FOLLOWED = 0.1f;
+    static float USERS_FOLLOWED = 0.15f;
     static float COMMENT_PROBABILITY = 0.5f;
     static float VOTE_PROBABILITY = 0.5f;
     // Using document API
@@ -138,21 +138,22 @@ public class CreateSocialNetwork {
         graph.commit();
 
         //Follow users
-        for (Vertex v : users) {
-            for (int i = 0; i < users.size(); i++) {
+        for (int i = 0; i < users.size(); i++) {
+            Vertex v = users.get(i);
+            for (int j = 0; j < users.size(); j++) {
+                if (i == j) {
+                    continue;
+                }
                 r = random.nextFloat();
                 if (r < USERS_FOLLOWED) {
-                    while (true) {
-                        Vertex userToFollow = users.get(random.nextInt(NUMBER_USERS));
-                        if (!v.equals(userToFollow)) {
-                            Edge follows = v.addEdge("Follows", userToFollow);
-                            follows.setProperty("since", getDate(startTime, endTime));
-                            break;
-                        }
-                    }
+                    Vertex userToFollow = users.get(j);
+                    Edge follows = v.addEdge("Follows", userToFollow);
+                    follows.setProperty("since", getDate(startTime, endTime));
+
                 }
             }
         }
+
 
         // changes accumulates in the film side
         for (Vertex v : graph.getVerticesOfClass("Title")) {
@@ -180,7 +181,9 @@ public class CreateSocialNetwork {
         }
 
         graph.commit();
+
         closeComments();
+
     }
 
     private static List<CountryFrequency> getCountryDistribution() {
