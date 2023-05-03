@@ -77,4 +77,63 @@ public class ProfileService extends GeneralService {
 
         return userInfo;
     }
+
+    public boolean addFriend(String username, String friend) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundFriends = graph.getVertices("User.username", friend);
+
+        if (!foundUsers.iterator().hasNext() || !foundFriends.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex friendVertex = foundFriends.iterator().next();
+
+        if (userVertex.equals(friendVertex)) {
+            return false;
+        }
+
+        Iterable<Edge> foundFollows = userVertex.getEdges(Direction.OUT, "Follows");
+
+        for (Edge follows : foundFollows) {
+            Vertex followed = follows.getVertex(Direction.IN);
+            if (followed.equals(friendVertex)) {
+                follows.remove();
+                return false;
+            }
+        }
+        userVertex.addEdge("Follows", friendVertex);
+        graph.commit();
+        return true;
+    }
+
+    public boolean removeFriend(String username, String friend) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundFriends = graph.getVertices("User.username", friend);
+
+        if (!foundUsers.iterator().hasNext() || !foundFriends.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex friendVertex = foundFriends.iterator().next();
+
+        if (userVertex.equals(friendVertex)) {
+            return false;
+        }
+        Iterable<Edge> foundFollows = userVertex.getEdges(Direction.OUT, "Follows");
+        for (Edge follows : foundFollows) {
+            Vertex followed = follows.getVertex(Direction.IN);
+            if (followed.equals(friendVertex)) {
+                follows.remove();
+                graph.commit();
+                return true;
+            }
+        }
+        return false;
+    }
 }
