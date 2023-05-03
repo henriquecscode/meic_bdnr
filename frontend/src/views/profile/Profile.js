@@ -87,7 +87,7 @@ function Profile({ username }) {
 
   useEffect(() => {
     document.title = username;
-  }, []);
+  }, [username]);
 
   return (
     <div>
