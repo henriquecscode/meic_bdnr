@@ -24,9 +24,7 @@ function WatchList({ name, movies }) {
                 <Button
                   variant="danger"
                   size="sm"
-                  onClick={() => {
-                    handleRemove(movie.id);
-                  }}
+                  onClick={() => handleRemove(movie.id)}
                 >
                   Remove
                 </Button>
