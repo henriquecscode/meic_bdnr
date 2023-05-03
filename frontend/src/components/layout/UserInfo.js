@@ -6,7 +6,7 @@ function UserInfo({ user }) {
   return (
     <Row>
       <Col sm={3}>
-        <img src={user.picture} alt="avatar" />
+        <img className="profile-img" src={user.picture} alt="avatar" />
       </Col>
       <Col sm={9}>
         <h2 className="mt-4 mb-1">{user.username}</h2>

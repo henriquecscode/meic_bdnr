@@ -1,5 +1,10 @@
-.bg-darkblue {
+.bg-darkblue,
+.btn-darkblue {
   background-color: #0c1d36;
+}
+
+.btn-darkblue {
+  color: #f9f9f9;
 }
 
 .thumbnail-image {
@@ -14,6 +19,10 @@
   color: #f9f9f9;
 }
 
+.profile-info .profile-img {
+  aspect-ratio: 1/1;
+}
+
 .cards-container {
   display: flex;
   overflow-x: auto;
@@ -21,10 +30,11 @@
 }
 
 .card-item {
-  width: 10rem;
-  min-width: 10rem;
+  width: 12rem;
+  min-width: 12rem;
 }
 
-.card-item > .card-body {
-  padding: 0.5rem;
+.card-item > .card-img-top {
+  max-height: 12rem;
+  object-fit: cover;
 }

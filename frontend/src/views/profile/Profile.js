@@ -17,6 +17,21 @@ function Profile() {
     picture: "user.png",
   };
 
+  const friends = [
+    {
+      id: 1,
+      username: "John Doe",
+      picture: "user.png",
+      level: 1,
+    },
+    {
+      id: 2,
+      username: "John Doe",
+      picture: "user.png",
+      level: 1,
+    },
+  ];
+
   const movies = [
     {
       id: 1,
@@ -80,10 +95,10 @@ function Profile() {
       <div>
         <Container className="py-5">
           <Row>
-            <Col sm={4}>
-              <FriendsList />
+            <Col sm={4} className="pe-3 border-end">
+              <FriendsList name={"Friends List"} friends={friends} />
             </Col>
-            <Col sm={8}>
+            <Col sm={8} className="ps-4">
               <WatchList name={"WatchList"} movies={movies} />
               <br />
               <InteractionsList
