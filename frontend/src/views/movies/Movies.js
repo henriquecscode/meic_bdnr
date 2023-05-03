@@ -9,6 +9,7 @@ function Movies({ username }) {
     { id: 2, name: "Avatar: Way of Water" },
   ];
 
+  // TODO: Add text search
   return (
     <div>
       <h1 className="text-center m-5">Movies</h1>

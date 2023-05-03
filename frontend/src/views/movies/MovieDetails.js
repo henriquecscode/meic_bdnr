@@ -1,13 +1,16 @@
 import React from "react";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
-import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from "react-bootstrap/Form";
+import Image from 'react-bootstrap/Image'
+import InputGroup from "react-bootstrap/InputGroup";
+import Row from 'react-bootstrap/Row';
+import Table from 'react-bootstrap/Table';
 import CommentCard from "../../components/cards/CommentCard";
-import HorizontalRule from "../../components/layout/HorizontalRule";
+import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
-import UserListCard from "../../components/cards/UsersListCard";
+import HorizontalRule from "../../components/layout/HorizontalRule";
 
 function MovieDetails({ username }) {
   const details = [
@@ -30,10 +33,10 @@ function MovieDetails({ username }) {
     { text: "BEST MOVIE EVER!", author: "John Doe" },
   ];
   const users = [
-    { name: "Catarina" },
-    { name: "Henrique" },
-    { name: "Patricia" },
-    { name: "John Doe" },
+    { username: "Catarina" },
+    { username: "Henrique" },
+    { username: "Patricia" },
+    { username: "John Doe" },
   ];
 
   return (
@@ -90,14 +93,38 @@ function MovieDetails({ username }) {
             style={{ marginRight: "10px" }}
           >
             <h4 className="text-center">People that watched</h4>
-            <UserListCard users={users} />
+            {users && Array.isArray(users) && users.length > 0 ? (
+              users.map((friend, index) => (
+                <FriendCard friend={friend} key={index} />
+              ))
+            ) : (
+              <p>
+                <i>No users have watched</i>
+              </p>
+            )}
           </Col>
           <Col className="bg-light rounded-2">
             <h4 className="text-center">Comments</h4>
             <div className="d-flex flex-column bd-highlight mb-3">
-              {comments.map((c) => (
-                <CommentCard comment={c} />
-              ))}
+              {comments && Array.isArray(comments) && comments.length > 0 ? (
+                comments.map((c, index) => <CommentCard comment={c} key={index} />)
+              ) : (
+                <p>
+                  <i>No comments</i>
+                </p>
+              )}
+
+              <Form className="p-2 bd-highlight">
+                <InputGroup className="mb-3">
+                  <Form.Control
+                    aria-label="Comment"
+                    placeholder="Comment something..."
+                  />
+                  <Button type="submit" variant="darkblue">
+                    Comment
+                  </Button>
+                </InputGroup>
+              </Form>
             </div>
           </Col>
         </Row>
