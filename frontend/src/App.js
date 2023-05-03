@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/layout/navigation/NavBar.js";
-import Login from "./views/authentication/Login.js";
 import Profile from "./views/profile/Profile.js";
 import Movies from "./views/movies/Movies.js";
 import MovieDetails from "./views/movies/MovieDetails.js";
@@ -10,19 +10,34 @@ import Recommendations from "./views/recommendations/Recommendations.js";
 import Analytics from "./views/analytics/Analytics.js";
 
 function App() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const username = queryParams.has("username")
+    ? queryParams.get("username")
+    : "user1";
+
+  // TODO: page title personalizado
+
   return (
     <div>
       <Router>
-        <NavBar />
+        <NavBar username={username} />
 
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:id" element={<MovieDetails />} />
-          <Route path="/recommendations" element={<Recommendations />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="*" element={<Login />} />
+          <Route path="/profile" element={<Profile username={username} />} />
+          <Route path="/movies" element={<Movies username={username} />} />
+          <Route
+            path="/movies/:id"
+            element={<MovieDetails username={username} />}
+          />
+          <Route
+            path="/recommendations"
+            element={<Recommendations username={username} />}
+          />
+          <Route
+            path="/analytics"
+            element={<Analytics username={username} />}
+          />
+          <Route path="*" element={<Movies username={username} />} />
         </Routes>
       </Router>
     </div>

@@ -1,10 +1,13 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 import FilmCard from "../../components/cards/FilmCard";
 import SearchForm from "../../components/layout/SearchForm";
 
 function Movies() {
-  const movies = [{ name: "Avatar", link: "/movies/1" }, { name: "Avatar: Way of Water" }];
+  const movies = [
+    { name: "Avatar", link: "/movies/1" },
+    { name: "Avatar: Way of Water" },
+  ];
 
   // TODO: Add text search
   return (
@@ -19,7 +22,9 @@ function Movies() {
           <div className="p-2 w-100 bd-highlight">
             <h5>Results</h5>
             <div className="d-flex flex-column bd-highlight mb-3">
-              {movies.map((m, index) => <FilmCard film={m} key={index} />)}
+              {movies.map((m, index) => (
+                <FilmCard key={index} film={m} />
+              ))}
             </div>
           </div>
         </div>
