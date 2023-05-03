@@ -1,17 +1,17 @@
 package xyz.dassiorleando.springbootorientdb.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.tinkerpop.blueprints.Vertex;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import database.EntityAwards;
+import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class Title {
-
-    @NotNull
     private String tid;
-    @NotNull
+
     private String name;
 
     private String summary;
@@ -81,19 +81,19 @@ public class Title {
         this.summary = summary;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public int getStartYear() {
+    public Integer getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(int startYear) {
+    public void setStartYear(Integer startYear) {
         this.startYear = startYear;
     }
 
@@ -113,19 +113,19 @@ public class Title {
         this.awards = awards;
     }
 
-    public int getnComments() {
+    public Integer getnComments() {
         return nComments;
     }
 
-    public void setnComments(int nComments) {
+    public void setnComments(Integer nComments) {
         this.nComments = nComments;
     }
 
-    public int getnVotes() {
+    public Integer getnVotes() {
         return nVotes;
     }
 
-    public void setnVotes(int nVotes) {
+    public void setnVotes(Integer nVotes) {
         this.nVotes = nVotes;
     }
 
