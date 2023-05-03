@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class EntityAward implements Serializable {
     static private String SEP = "%";
-    private String awardName="";
-    private String receivedOn="";
+    private String awardName = "";
+    private String receivedOn = "";
 
     public EntityAward() {
 
@@ -20,6 +20,22 @@ public class EntityAward implements Serializable {
 
     public EntityAward(String awardName, String receivedOn) {
         this.awardName = awardName;
+        this.receivedOn = receivedOn;
+    }
+
+    public String getAwardName() {
+        return awardName;
+    }
+
+    public void setAwardName(String awardName) {
+        this.awardName = awardName;
+    }
+
+    public String getReceivedOn() {
+        return receivedOn;
+    }
+
+    public void setReceivedOn(String receivedOn) {
         this.receivedOn = receivedOn;
     }
 

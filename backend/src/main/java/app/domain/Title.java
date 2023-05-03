@@ -2,7 +2,6 @@ package app.domain;
 
 import com.tinkerpop.blueprints.Vertex;
 import com.orientechnologies.orient.core.record.impl.ODocument;
-import database.EntityAwards;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class Title {
         title.duration = oDocument.field("duration");
         title.startYear = oDocument.field("startYear");
         title.productionCompanies = oDocument.field("productionCompany");
-        title.awards = new EntityAwards(oDocument.field("awards"));
+        title.awards = new EntityAwards(new database.EntityAwards(oDocument.field("awards")));
         title.nComments = oDocument.field("n_comments");
         title.nVotes = oDocument.field("n_votes");
 
@@ -47,7 +46,7 @@ public class Title {
         title.duration = vertex.getProperty("duration");
         title.startYear = vertex.getProperty("startYear");
         title.productionCompanies = vertex.getProperty("productionCompany");
-        title.awards = new EntityAwards(vertex.getProperty("awards"));
+        title.awards = new EntityAwards(new database.EntityAwards(vertex.getProperty("awards")));
         title.nComments = vertex.getProperty("n_comments");
         title.nVotes = vertex.getProperty("n_votes");
 

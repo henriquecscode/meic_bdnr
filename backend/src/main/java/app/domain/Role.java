@@ -1,7 +1,6 @@
 package app.domain;
 
 import com.tinkerpop.blueprints.Edge;
-import database.EntityAwards;
 
 public class Role {
     protected EntityAwards entityAwards;
@@ -11,7 +10,7 @@ public class Role {
 
     public static Role fromEdge(Edge edge) {
         Role role = new Role();
-        role.entityAwards = new EntityAwards(edge.getProperty("awards"));
+        role.entityAwards = new EntityAwards(new database.EntityAwards(edge.getProperty("awards")));
 
         return role;
     }

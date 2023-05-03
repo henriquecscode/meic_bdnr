@@ -1,7 +1,6 @@
 package app.domain;
 
 import com.tinkerpop.blueprints.Edge;
-import database.EntityAwards;
 
 public class Crew extends Role {
 
@@ -12,7 +11,7 @@ public class Crew extends Role {
 
     public static Crew fromEdge(Edge edge) {
         Crew crew = new Crew();
-        crew.entityAwards = new EntityAwards(edge.getProperty("awards"));
+        crew.entityAwards = new EntityAwards(new database.EntityAwards(edge.getProperty("awards")));
         crew.type = edge.getProperty("type");
 
         return crew;
