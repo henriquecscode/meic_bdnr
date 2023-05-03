@@ -1,7 +1,7 @@
 /c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
 [INFO] Scanning for projects...
 [INFO] 
-[INFO] -----------------< xyz.dassiorleando:spring-orientdb >------------------
+[INFO] -----------------< app:spring-orientdb >------------------
 [INFO] Building spring-alibabacloud-blog 0.0.1-SNAPSHOT
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
@@ -69,12 +69,12 @@ com.orientechnologies.orient.core.exception.OStorageException: Cannot open the s
 	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.open(OAbstractPaginatedStorage.java:373) ~[orientdb-core-3.0.5.jar:3.0.5]
 	at com.orientechnologies.orient.core.db.OrientDBEmbedded.open(OrientDBEmbedded.java:131) ~[orientdb-core-3.0.5.jar:3.0.5]
 	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:903) ~[orientdb-core-3.0.5.jar:3.0.5]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -126,7 +126,7 @@ com.orientechnologies.orient.core.exception.OStorageException: Cannot open the s
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
-	at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
+	at app.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -134,14 +134,14 @@ com.orientechnologies.orient.core.exception.OStorageException: Cannot open the s
 	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:497) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2023-04-24 15:44:38.460  WARN 6472 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+2023-04-24 15:44:38.460  WARN 6472 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
 2023-04-24 15:44:38.462  INFO 6472 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2023-04-24 15:44:38.479  INFO 6472 --- [           main] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2023-04-24 15:44:38.482 ERROR 6472 --- [           main] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
@@ -161,14 +161,14 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
-	at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
+	at app.SpringOrientDBApplication.main(SpringOrientDBApplication.java:10) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
 	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:497) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
@@ -185,7 +185,7 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
 	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	... 25 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
@@ -208,12 +208,12 @@ Caused by: org.springframework.beans.BeanInstantiationException: Failed to insta
 Caused by: com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
 	at com.orientechnologies.orient.core.db.OrientDBEmbedded.open(OrientDBEmbedded.java:140) ~[orientdb-core-3.0.5.jar:3.0.5]
 	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:903) ~[orientdb-core-3.0.5.jar:3.0.5]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration.orientDBfactory(OrientDBConfiguration.java:26) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke(<generated>) ~[classes/:na]
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
-	at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
+	at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory(<generated>) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -233,7 +233,7 @@ java.lang.reflect.InvocationTargetException
     at java.lang.reflect.Method.invoke (Method.java:566)
     at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
     at java.lang.Thread.run (Thread.java:834)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
     at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:732)
     at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
@@ -253,14 +253,14 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
     at java.lang.reflect.Method.invoke (Method.java:566)
     at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
     at java.lang.Thread.run (Thread.java:834)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
     at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray (ConstructorResolver.java:732)
     at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor (ConstructorResolver.java:197)
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor (AbstractAutowireCapableBeanFactory.java:1267)
@@ -294,14 +294,14 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
     at java.lang.reflect.Method.invoke (Method.java:566)
     at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run (AbstractRunMojo.java:497)
     at java.lang.Thread.run (Thread.java:834)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
     at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod (ConstructorResolver.java:590)
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod (AbstractAutowireCapableBeanFactory.java:1247)
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance (AbstractAutowireCapableBeanFactory.java:1096)
@@ -348,7 +348,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -403,7 +403,7 @@ Caused by: org.springframework.beans.BeanInstantiationException: Failed to insta
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -413,12 +413,12 @@ Caused by: org.springframework.beans.BeanInstantiationException: Failed to insta
 Caused by: com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog'
     at com.orientechnologies.orient.core.db.OrientDBEmbedded.open (OrientDBEmbedded.java:140)
     at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open (ODatabaseDocumentTx.java:903)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
+    at config.app.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
     at org.springframework.cglib.proxy.MethodProxy.invokeSuper (MethodProxy.java:228)
     at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept (ConfigurationClassEnhancer.java:365)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -470,7 +470,7 @@ Caused by: com.orientechnologies.orient.core.exception.ODatabaseException: Canno
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -481,12 +481,12 @@ Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot
     at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.open (OAbstractPaginatedStorage.java:373)
     at com.orientechnologies.orient.core.db.OrientDBEmbedded.open (OrientDBEmbedded.java:131)
     at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open (ODatabaseDocumentTx.java:903)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
+    at config.app.OrientDBConfiguration.orientDBfactory (OrientDBConfiguration.java:26)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.CGLIB$orientDBfactory$0 (<generated>)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6$$FastClassBySpringCGLIB$$2e6ee938.invoke (<generated>)
     at org.springframework.cglib.proxy.MethodProxy.invokeSuper (MethodProxy.java:228)
     at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept (ConfigurationClassEnhancer.java:365)
-    at xyz.dassiorleando.springbootorientdb.config.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
+    at config.app.OrientDBConfiguration$$EnhancerBySpringCGLIB$$e8eae5f6.orientDBfactory (<generated>)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -538,7 +538,7 @@ Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:333)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1277)
     at org.springframework.boot.SpringApplication.run (SpringApplication.java:1265)
-    at xyz.dassiorleando.springbootorientdb.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
+    at app.SpringOrientDBApplication.main (SpringOrientDBApplication.java:10)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
     at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
@@ -551,7 +551,7 @@ Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot
 [INFO] Total time: 5.574 s
 [INFO] Finished at: 2023-04-24T15:44:38+01:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) on project spring-orientdb: An exception occurred while running. null: InvocationTargetException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\xyz\dassiorleando\springbootorientdb\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [xyz/dassiorleando/springbootorientdb/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog': Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog -> [Help 1]
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.0.5.RELEASE:run (default-cli) on project spring-orientdb: An exception occurred while running. null: InvocationTargetException: Error creating bean with name 'articleResource' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\rest\ArticleResource.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'articleService' defined in file [C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\target\classes\app\service\ArticleService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'orientDBfactory' defined in class path resource [app/config/OrientDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx]: Factory method 'orientDBfactory' threw exception; nested exception is com.orientechnologies.orient.core.exception.ODatabaseException: Cannot open database 'alibabacloudblog': Cannot open the storage 'alibabacloudblog' because it does not exist in path: C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\null\databases/alibabacloudblog -> [Help 1]
 [ERROR] 
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
@@ -561,12 +561,12 @@ Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot
 /c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
 [INFO] Scanning for projects...
 [ERROR] [ERROR] Some problems were encountered while processing the POMs:
-[FATAL] Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
+[FATAL] Non-resolvable parent POM for app:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
  @ 
 [ERROR] The build could not read 1 project -> [Help 1]
 [ERROR]   
-[ERROR]   The project xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
-[ERROR]     Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
+[ERROR]   The project app:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM for app:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
 [ERROR] 
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
@@ -577,12 +577,12 @@ Caused by: com.orientechnologies.orient.core.exception.OStorageException: Cannot
 /c/Henrique/Escola/Fac4ano/BNDR/meic_bdnr/backend
 [INFO] Scanning for projects...
 [ERROR] [ERROR] Some problems were encountered while processing the POMs:
-[FATAL] Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
+[FATAL] Non-resolvable parent POM for app:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10
  @ 
 [ERROR] The build could not read 1 project -> [Help 1]
 [ERROR]   
-[ERROR]   The project xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
-[ERROR]     Non-resolvable parent POM for xyz.dassiorleando:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
+[ERROR]   The project app:spring-orientdb:0.0.1-SNAPSHOT (C:\Henrique\Escola\Fac4ano\BNDR\meic_bdnr\backend\pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM for app:spring-orientdb:0.0.1-SNAPSHOT: Failure to find org.springframework.boot:spring-boot-starter-parent:pom:3.0.5.RELEASE in https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced and 'parent.relativePath' points at no local POM @ line 14, column 10 -> [Help 2]
 [ERROR] 
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
