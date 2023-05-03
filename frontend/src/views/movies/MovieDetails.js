@@ -57,8 +57,8 @@ function MovieDetails({ username }) {
               <h5 className="text-center">Details</h5>
               <Table striped bordered hover size="sm">
                 <tbody>
-                  {details.map((d) => (
-                    <tr>
+                  {details.map((d, index) => (
+                    <tr key={index}>
                       <td>{d.field}</td>
                       <td>{d.value}</td>
                     </tr>
@@ -77,8 +77,8 @@ function MovieDetails({ username }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {awards.map((a) => (
-                    <tr>
+                  {awards.map((a, index) => (
+                    <tr key={index}>
                       <td>{a.name}</td>
                       <td>{a.year}</td>
                     </tr>
