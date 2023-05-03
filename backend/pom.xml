@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>app</groupId>
-	<artifactId>spring-orientdb</artifactId>
+	<artifactId>orientdb-filmfriend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-alibabacloud-blog</name>
-	<description>Demo project for Spring Boot &amp; OrientDB on Alibabacloud ECS</description>
+	<name>Orientdb prototype</name>
+	<description>Demo project for Spring Boot &amp; OrientDB for MEIC BDNR class</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
