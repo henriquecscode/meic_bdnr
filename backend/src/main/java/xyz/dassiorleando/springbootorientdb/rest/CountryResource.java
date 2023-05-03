@@ -9,6 +9,7 @@ import xyz.dassiorleando.springbootorientdb.service.CountryService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/country")
 public class CountryResource {
     private final Logger log = LoggerFactory.getLogger(CountryResource.class);
 
@@ -18,7 +19,7 @@ public class CountryResource {
         this.countryService = countryService;
     }
 
-    @GetMapping("/country")
+    @GetMapping("")
     public List<Country> list() {
         log.debug("We just get the list of countries one more time");
         return countryService.findAll();

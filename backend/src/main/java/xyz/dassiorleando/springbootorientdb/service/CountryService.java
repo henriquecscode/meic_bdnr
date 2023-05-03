@@ -1,7 +1,6 @@
 package xyz.dassiorleando.springbootorientdb.service;
 
 import com.tinkerpop.blueprints.Vertex;
-import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.stereotype.Service;
 import xyz.dassiorleando.springbootorientdb.domain.Country;
@@ -10,16 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CountryService {
+public class CountryService extends GeneralService {
 
-    private final OrientGraphFactory factory;
 
     public CountryService(OrientGraphFactory factory) {
-        this.factory = factory;
+        super(factory);
     }
 
     public List<Country> findAll() {
-        OrientGraph graph = factory.getTx();
+        setGraph();
 
         List<Country> countries = new ArrayList<>();
 
