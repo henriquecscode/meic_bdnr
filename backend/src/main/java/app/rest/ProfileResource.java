@@ -26,12 +26,12 @@ public class ProfileResource {
         return userInfo;
     }
 
-    @PostMapping("friends/{friend}/add")
+    @PostMapping("/friends/{friend}/add")
     public boolean addFriend(@PathVariable String username, @PathVariable String friend) {
         return profileService.addFriend(username, friend);
     }
 
-    @PostMapping("friends/{friend}/remove")
+    @PostMapping("/friends/{friend}/remove")
     public boolean removeFriend(@PathVariable String username, @PathVariable String friend) {
         return profileService.removeFriend(username, friend);
     }
