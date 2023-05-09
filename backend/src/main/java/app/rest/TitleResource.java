@@ -1,15 +1,15 @@
 package app.rest;
 
 import app.domain.derivatives.MovieInfo;
+import app.domain.derivatives.Search;
+import app.service.SearchService;
 import app.service.TitleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import app.domain.Title;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,9 +19,11 @@ public class TitleResource {
     private final Logger log = LoggerFactory.getLogger(TitleResource.class);
 
     private final TitleService titleService;
+    private final SearchService searchService;
 
-    public TitleResource(TitleService titleService) {
+    public TitleResource(TitleService titleService, SearchService searchService) {
         this.titleService = titleService;
+        this.searchService = searchService;
     }
 
     @GetMapping("/{id}")
@@ -29,13 +31,17 @@ public class TitleResource {
         MovieInfo movieInfo = titleService.getInfoById(id);
         return movieInfo;
     }
-//    @GetMapping("/{id}")
-//    public Title findByTitle(@PathVariable String id) {
-//        log.debug("We just get the title of id {} one more time", id);
-//        Title title = titleService.findById(id);
-//
-//        return title;
-//    }
+
+    @GetMapping("/search")
+    public List<Title> findBy(@RequestBody Search body) {
+        List<Title> titles = new ArrayList<>();
+
+        if (body.getTitle() != null) {
+            titles = searchService.findByTitle(body.getTitle());
+        }
+
+        return titles;
+    }
 
     @GetMapping("")
     public List<Title> list() {

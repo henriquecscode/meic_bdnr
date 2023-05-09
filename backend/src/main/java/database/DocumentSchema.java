@@ -68,6 +68,8 @@ public class DocumentSchema {
         createRoleSchema();
         createCrewSchema();
         createCharacterSchema();
+
+        createFullTextIndex();
     }
 
 
@@ -398,6 +400,14 @@ public class DocumentSchema {
         if (actor.getProperty("name") == null) {
             actor.createProperty("name", OType.STRING);
         }
+    }
+
+    private static void createFullTextIndex() {
+        String Title_name_index_query = "create index Title.name on Title (name) FULLTEXT ENGINE LUCENE METADATA {\"allowLeadingWildcard\": true}";
+        String Watched_comment_index_query = "create index Watched.comment on Watched (comment) FULLTEXT ENGINE LUCENE METADATA {\"allowLeadingWildcard\": true}";
+
+        db.command(Title_name_index_query);
+        db.command(Watched_comment_index_query);
     }
 
 }

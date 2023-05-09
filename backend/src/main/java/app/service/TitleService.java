@@ -3,6 +3,7 @@ package app.service;
 import app.domain.*;
 import app.domain.Character;
 import app.domain.derivatives.*;
+import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.tinkerpop.blueprints.Direction;
 import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Vertex;
@@ -108,6 +109,25 @@ public class TitleService extends GeneralService {
         for (Vertex vertex : graph.getVerticesOfClass("Title")) {
             Title title = Title.fromVertex(vertex);
             titles.add(title);
+        }
+        return titles;
+    }
+
+    public List<Title> findByTitle(String title) {
+        setGraph();
+
+        String titleQueryWords[] = title.split(" ");
+        for (int i = 0; i < titleQueryWords.length; i++) {
+            titleQueryWords[i] = "*" + titleQueryWords[i] + "*";
+        }
+        title = String.join(" ", titleQueryWords);
+
+        String query = "SELECT FROM Title WHERE SEARCH_CLASS(\"name:" + title + "\") = true";
+        OCommandSQL queryCommand = new OCommandSQL(query);
+        List<Title> titles = new ArrayList<>();
+        for (Vertex vertex : graph.getVertices("Title.title", title)) {
+            Title foundTitle = Title.fromVertex(vertex);
+            titles.add(foundTitle);
         }
         return titles;
     }
