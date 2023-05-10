@@ -9,6 +9,8 @@ function Analytics({ username }) {
   const list = [{ name: "Item 1" }, { name: "Item 2" }, { name: "Item 2" }];
 
   const [awardsGenre, setAwardsGenre] = useState([]);
+  const [awardsWorkers, setAwardsWorkers] = useState([]);
+  const [awardsCountries, setAwardsCountries] = useState([]);
 
   useEffect(() => {
     const api = new AnalyticsAPI();
@@ -16,10 +18,34 @@ function Analytics({ username }) {
     api.getGenreAwards(
       5,
       (json) => {
-        setAwardsGenre(json.map((item) => item.genre));
+        setAwardsGenre(json.map((item) => { return { "name": item.genre.name, "awards": item.awards } }));
       },
       (error) => {
         setAwardsGenre([]);
+        console.log(error);
+      }
+    );
+
+
+    api.getWorkersAwards(
+      5,
+      (json) => {
+        setAwardsWorkers(json.map((item) => { return { "name": item.worker.name, "awards": item.awards, "nid": item.worker.nid } }));
+      },
+      (error) => {
+        setAwardsWorkers([]);
+        console.log(error);
+      }
+    );
+
+
+    api.getCountryAwards(
+      3,
+      (json) => {
+        setAwardsCountries(json.map((item) => { return { "name": item.country.name, "awards": item.awards } }));
+      },
+      (error) => {
+        setAwardsCountries([]);
         console.log(error);
       }
     );
@@ -55,13 +81,13 @@ function Analytics({ username }) {
         </div>
         <h5 className="text-center">TOP 5 most awarded workers</h5>
         <div className="my-4 d-flex justify-content-center">
-          <ListCard list={list} />
+          <ListCard list={awardsWorkers} />
         </div>
         <h5 className="text-center">
-          TOP 5 countries with the most awarded workers
+          TOP 3 countries with the most awarded workers
         </h5>
         <div className="my-4 d-flex justify-content-center">
-          <ListCard list={list} />
+          <ListCard list={awardsCountries} />
         </div>
       </>
     );

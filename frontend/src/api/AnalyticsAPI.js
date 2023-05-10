@@ -3,8 +3,6 @@ import API from "./API";
 export default class AnalyticsAPI {
   BASE_URL = "/analytics";
 
-  // constructor() { }
-
   getFriendsWatchedSeries(user, successCallback, errorCallback) {
     let endpoint = this.BASE_URL + `/friends/${user}/movies/series/complete`;
     API.request("GET", endpoint, successCallback, errorCallback);
@@ -21,7 +19,7 @@ export default class AnalyticsAPI {
   }
 
   getWorkersAwards(limit, successCallback, errorCallback) {
-    let endpoint = this.BASE_URL + `/awards/workers/${limit}`;
+    let endpoint = this.BASE_URL + `/awards/worker/${limit}`;
     API.request("GET", endpoint, successCallback, errorCallback);
   }
 
