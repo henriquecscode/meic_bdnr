@@ -1,70 +1,110 @@
-import React, { useState } from "react";
-import Nav from 'react-bootstrap/Nav';
+import React, { useEffect, useState } from "react";
+import Nav from "react-bootstrap/Nav";
 import ListCard from "../../components/cards/ListCard";
+import AnalyticsAPI from "../../api/AnalyticsAPI";
 
 function Analytics({ username }) {
-  const [tab, setTab] = useState('friends');
+  const [tab, setTab] = useState("friends");
 
-  const list = [{ name: 'Item 1' }, { name: 'Item 2' }, { name: 'Item 2' }];
+  const list = [{ name: "Item 1" }, { name: "Item 2" }, { name: "Item 2" }];
+
+  const [awardsGenre, setAwardsGenre] = useState([]);
+
+  useEffect(() => {
+    const api = new AnalyticsAPI();
+
+    api.getGenreAwards(
+      5,
+      (json) => {
+        setAwardsGenre(json.map((item) => item.genre));
+      },
+      (error) => {
+        setAwardsGenre([]);
+        console.log(error);
+      }
+    );
+  }, []);
 
   const getFriendsTab = () => {
-    return <>
-      <h5 className="text-center">Friends that fully watched a common film series</h5>
-      <div className="my-4 d-flex justify-content-center">
-        <ListCard list={list} />
-      </div>
-    </>;
-  }
+    return (
+      <>
+        <h5 className="text-center">
+          Friends that fully watched a common film series
+        </h5>
+        <div className="my-4 d-flex justify-content-center">
+          <ListCard list={list} />
+        </div>
+      </>
+    );
+  };
 
   const getCastTab = () => {
-    return <>
-      <h5 className="text-center">Cast that worked in their home country</h5>
-    </>;
-  }
+    return (
+      <>
+        <h5 className="text-center">Cast that worked in their home country</h5>
+      </>
+    );
+  };
 
   const getAwardsTab = () => {
-    return <>
-      <h5 className="text-center">TOP 5 most awarded genres</h5>
-      <div className="my-4 d-flex justify-content-center">
-        <ListCard list={list} />
-      </div>
-      <h5 className="text-center">TOP 5 most awarded workers</h5>
-      <div className="my-4 d-flex justify-content-center">
-        <ListCard list={list} />
-      </div>
-      <h5 className="text-center">TOP 5 countries with the most awarded workers</h5>
-      <div className="my-4 d-flex justify-content-center">
-        <ListCard list={list} />
-      </div>
-    </>;
-  }
+    return (
+      <>
+        <h5 className="text-center">TOP 5 most awarded genres</h5>
+        <div className="my-4 d-flex justify-content-center">
+          <ListCard list={awardsGenre} />
+        </div>
+        <h5 className="text-center">TOP 5 most awarded workers</h5>
+        <div className="my-4 d-flex justify-content-center">
+          <ListCard list={list} />
+        </div>
+        <h5 className="text-center">
+          TOP 5 countries with the most awarded workers
+        </h5>
+        <div className="my-4 d-flex justify-content-center">
+          <ListCard list={list} />
+        </div>
+      </>
+    );
+  };
 
   const displayTab = () => {
     switch (tab) {
-      case 'friends':
+      case "friends":
         return getFriendsTab();
-      case 'cast':
+      case "cast":
         return getCastTab();
-      case 'awards':
+      case "awards":
         return getAwardsTab();
       default:
         return <></>;
     }
-  }
+  };
 
   return (
     <div>
       <h1 className="text-center m-5">Analytics</h1>
 
-      <Nav justify variant="tabs" className="mb-3" activeKey={tab} onSelect={(k) => setTab(k)} >
+      <Nav
+        justify
+        variant="tabs"
+        className="mb-3"
+        activeKey={tab}
+        onSelect={(k) => setTab(k)}
+      >
         <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="friends">Friends</Nav.Link>
+          <Nav.Link className="fs-4" eventKey="friends">
+            Friends
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="cast">Cast</Nav.Link>
+          <Nav.Link className="fs-4" eventKey="cast">
+            Cast
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="awards">Awards</Nav.Link>
+          <Nav.Link className="fs-4" eventKey="awards">
+            Awards
+          </Nav.Link>
         </Nav.Item>
       </Nav>
 
