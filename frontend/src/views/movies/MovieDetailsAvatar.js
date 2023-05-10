@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -11,14 +11,8 @@ import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
 import HorizontalRule from "../../components/layout/HorizontalRule";
-import MoviesAPI from "../../api/MoviesAPI";
 
-function MovieDetails({ username, id }) {
-  const [filmDetails, setFilmDetails] = useState([]);
-  const [filmAwards, setFilmAwards] = useState([]);
-  const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
-  const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
-
+function MovieDetails({ username }) {
   const details = [
     { field: "Name", value: "Avatar" },
     { field: "Director", value: "James Cameron" },
@@ -45,78 +39,30 @@ function MovieDetails({ username, id }) {
     { username: "John Doe" },
   ];
 
-  const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
-
   useEffect(() => {
-    //id = "tt0079477"
-    const api = new MoviesAPI();
-
-    // Details
-    api.getFilm(id,
-      (json) => {
-        setFilmAwards(json.title.awards.awards);
-
-        let details = json.title;
-        for (let key of notDetailsProperties) {
-          delete details[key];
-        }
-
-        setFilmDetails(details);
-
-        document.title = details.name;
-
-      },
-      (error) => {
-        setFilmDetails([]);
-        console.log(error);
-      }
-    );
+    document.title = details.find((d) => d.field === "Name").value;
   }, []);
-
-  const getDetailsTable = () => {
-    let table = [];
-
-    let i = 0;
-    for (const [key, value] of Object.entries(filmDetails)) {
-      if (value === null || value.length === 0) continue;
-
-      console.log(value);
-
-      if (value instanceof Array) {
-        table.push(
-          <tr key={i}>
-            <td>{key}</td>
-            <td>{value.map((e) => e.name)}</td>
-          </tr>);
-      } else {
-        table.push(
-          <tr key={i}>
-            <td>{key}</td>
-            <td>{value}</td>
-          </tr>);
-      }
-      i++;
-
-    }
-    return table;
-  }
 
   return (
     <div>
-      <h1 className="text-center m-5">{filmDetails.name}</h1>
+      <h1 className="text-center m-5">Avatar</h1>
 
       <Container>
         <Row className="mt-5 pb-2">
           <Col className="align-self-center text-center">
-            <Image src="/movie.svg" fluid className="w-50" />
+            <Image src="/logo192.png" fluid />
           </Col>
           <Col>
             <div>
               <h5 className="text-center">Details</h5>
               <Table striped bordered hover size="sm">
                 <tbody>
-                  {getDetailsTable()}
-
+                  {details.map((d, index) => (
+                    <tr key={index}>
+                      <td>{d.field}</td>
+                      <td>{d.value}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
             </div>
@@ -131,10 +77,10 @@ function MovieDetails({ username, id }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {filmAwards.map((a, index) => (
+                  {awards.map((a, index) => (
                     <tr key={index}>
-                      <td>{a.awardName}</td>
-                      <td>{a.receivedOn}</td>
+                      <td>{a.name}</td>
+                      <td>{a.year}</td>
                     </tr>
                   ))}
                 </tbody>
