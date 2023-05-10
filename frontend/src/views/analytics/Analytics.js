@@ -29,7 +29,7 @@ function Analytics({ username }) {
     // Cast
     api.getWorkersCountry(
       (json) => {
-        setWorkersCountry(json.map((item) => { return { "name": item.worker.name, "nid": item.worker.nid, "info": "Country: " + JSON.stringify(item.country.name) + ". Work: " + JSON.stringify(item.titles.map((t) => t.name)) } }));
+        setWorkersCountry(json.map((item) => { return { "name": item.worker.name, "nid": item.worker.nid, "info": "Country: " + JSON.stringify(item.country.name) + ".\n Work: " + JSON.stringify(item.titles.map((t) => t.name)) } }));
       },
       (error) => {
         setWorkersCountry([]);

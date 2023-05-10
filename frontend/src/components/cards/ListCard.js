@@ -4,6 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { FaInfo } from 'react-icons/fa';
 
 export default function ListCard({ list }) {
 
@@ -18,7 +19,7 @@ export default function ListCard({ list }) {
 
   const getInfoButton = (name, info) => {
     return (info ? <OverlayTrigger trigger="click" placement="right" overlay={popover(name, info)} rootClose>
-      <Button>i</Button>
+      <Button className="rounded-circle mx-2" size="sm"><FaInfo /></Button>
     </OverlayTrigger> : null);
   };
 
