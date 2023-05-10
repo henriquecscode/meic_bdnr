@@ -39,7 +39,7 @@ export default function ListCard({ list }) {
 
           {getInfoButton(e.name, e.info)}
 
-          <Badge bg="primary" pill>
+          <Badge bg="primary" className="mx-2" pill>
             {e.awards}
           </Badge>
         </ListGroup.Item>)}
