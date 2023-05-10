@@ -3,16 +3,19 @@ import API from "./API";
 export default class AnalyticsAPI {
   BASE_URL = "/analytics";
 
+  // Friends
   getFriendsWatchedSeries(user, successCallback, errorCallback) {
     let endpoint = this.BASE_URL + `/friends/${user}/movies/series/complete`;
     API.request("GET", endpoint, successCallback, errorCallback);
   }
 
+  // Cast
   getWorkersCountry(successCallback, errorCallback) {
     let endpoint = this.BASE_URL + `/workers/country`;
     API.request("GET", endpoint, successCallback, errorCallback);
   }
 
+  // Awards
   getGenreAwards(limit, successCallback, errorCallback) {
     let endpoint = this.BASE_URL + `/awards/genre/${limit}`;
     API.request("GET", endpoint, successCallback, errorCallback);

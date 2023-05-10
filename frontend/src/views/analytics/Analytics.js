@@ -6,8 +6,8 @@ import AnalyticsAPI from "../../api/AnalyticsAPI";
 function Analytics({ username }) {
   const [tab, setTab] = useState("friends");
 
-  const list = [{ name: "Item 1" }, { name: "Item 2" }, { name: "Item 2" }];
-
+  const [friendsWatchedSeries, setFriendsWatchedSeries] = useState([]);
+  const [workersCountry, setWorkersCountry] = useState([]);
   const [awardsGenre, setAwardsGenre] = useState([]);
   const [awardsWorkers, setAwardsWorkers] = useState([]);
   const [awardsCountries, setAwardsCountries] = useState([]);
@@ -15,6 +15,29 @@ function Analytics({ username }) {
   useEffect(() => {
     const api = new AnalyticsAPI();
 
+    // Friends
+    api.getFriendsWatchedSeries(username,
+      (json) => {
+        setFriendsWatchedSeries(json.map((item) => { return { "name": item.genre.name, "awards": item.awards, "info": item  } }));
+      },
+      (error) => {
+        setFriendsWatchedSeries([]);
+        console.log(error);
+      }
+    );
+
+    // Cast
+    api.getWorkersCountry(
+      (json) => {
+        setWorkersCountry(json.map((item) => { return { "name": item.worker.name, "nid": item.worker.nid, "info": "Country: " + JSON.stringify(item.country.name) + ". Work: " + JSON.stringify(item.titles.map((t) => t.name)) } }));
+      },
+      (error) => {
+        setWorkersCountry([]);
+        console.log(error);
+      }
+    );
+
+    // Awards
     api.getGenreAwards(
       5,
       (json) => {
@@ -26,7 +49,6 @@ function Analytics({ username }) {
       }
     );
 
-
     api.getWorkersAwards(
       5,
       (json) => {
@@ -37,7 +59,6 @@ function Analytics({ username }) {
         console.log(error);
       }
     );
-
 
     api.getCountryAwards(
       3,
@@ -58,7 +79,7 @@ function Analytics({ username }) {
           Friends that fully watched a common film series
         </h5>
         <div className="my-4 d-flex justify-content-center">
-          <ListCard list={list} />
+          <ListCard list={friendsWatchedSeries} />
         </div>
       </>
     );
@@ -68,6 +89,9 @@ function Analytics({ username }) {
     return (
       <>
         <h5 className="text-center">Cast that worked in their home country</h5>
+        <div className="my-4 d-flex justify-content-center">
+          <ListCard list={workersCountry} />
+        </div>
       </>
     );
   };
