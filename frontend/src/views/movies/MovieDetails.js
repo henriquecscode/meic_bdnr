@@ -19,17 +19,6 @@ function MovieDetails({ username, id }) {
   const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
   const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
 
-  const details = [
-    { field: "Name", value: "Avatar" },
-    { field: "Director", value: "James Cameron" },
-  ];
-  const awards = [
-    { name: "Academy Award for Best Cinematography", year: "2010" },
-    {
-      name: "Golden Globe Award for Best Motion Picture – Drama",
-      year: "2010",
-    },
-  ];
   const series = [
     { id: 1, name: "Avatar", nr: 1 },
     { id: 2, name: "Avatar: Way of Water", nr: 2 },
@@ -48,8 +37,9 @@ function MovieDetails({ username, id }) {
   const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
 
   useEffect(() => {
-    //id = "tt0079477"
     const api = new MoviesAPI();
+
+    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
 
     // Details
     api.getFilm(id,
@@ -79,8 +69,6 @@ function MovieDetails({ username, id }) {
     let i = 0;
     for (const [key, value] of Object.entries(filmDetails)) {
       if (value === null || value.length === 0) continue;
-
-      console.log(value);
 
       if (value instanceof Array) {
         table.push(
@@ -123,22 +111,23 @@ function MovieDetails({ username, id }) {
 
             <div>
               <h5 className="text-center">Awards</h5>
-              <Table striped bordered hover size="sm">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Year</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filmAwards.map((a, index) => (
-                    <tr key={index}>
-                      <td>{a.awardName}</td>
-                      <td>{a.receivedOn}</td>
+              {filmAwards && Array.isArray(filmAwards) && filmAwards.length == 0 ? (<p className="text-center"><i>No awards</i></p>) : (
+                <Table striped bordered hover size="sm">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Year</th>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                  </thead>
+                  <tbody>
+                    {filmAwards.map((a, index) => (
+                      <tr key={index}>
+                        <td>{a.awardName}</td>
+                        <td>{a.receivedOn}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>)}
             </div>
           </Col>
         </Row>
