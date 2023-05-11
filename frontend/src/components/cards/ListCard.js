@@ -32,7 +32,10 @@ export default function ListCard({ list }) {
   const getNid = (element) => {
     if (element.nid)
       return (
-        <Card.Link href={`https://www.imdb.com/name/${element.nid}`}>
+        <Card.Link
+          href={`https://www.imdb.com/name/${element.nid}`}
+          target="_blank"
+        >
           {element.name}
         </Card.Link>
       );

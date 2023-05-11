@@ -1,7 +1,14 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner";
 import MovieCard from "../../cards/MovieCard";
 
-function MoviesList({ username, movies }) {
+function MoviesList({ username, movies, loading }) {
+  if (loading) {
+    return (
+      <Spinner animation="border" variant="darkblue" className="text-center" />
+    );
+  }
+
   return (
     <div>
       {movies && Array.isArray(movies) && movies.length > 0 ? (
