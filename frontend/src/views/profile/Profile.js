@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,44 +8,46 @@ import WatchList from "../../components/layout/lists/WatchList";
 import InteractionsList from "../../components/layout/lists/InteractionsList";
 import SeriesList from "../../components/layout/lists/SeriesList";
 
+import UsersAPI from "../../api/UsersAPI";
+
 function Profile({ username }) {
-  const user = {
-    username: username,
-    email: "johndoe@gmail.com",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    nationality: "American",
-    picture: "user.png",
-  };
+  // const user = {
+  //   username: username,
+  //   email: "johndoe@gmail.com",
+  //   bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+  //   nationality: "American",
+  //   picture: "user.png",
+  // };
 
-  const friends = [
-    {
-      id: 1,
-      username: "John Doe",
-      picture: "user.png",
-      level: 1,
-    },
-    {
-      id: 2,
-      username: "John Doe",
-      picture: "user.png",
-      level: 1,
-    },
-  ];
+  // const friends = [
+  //   {
+  //     id: 1,
+  //     username: "John Doe",
+  //     picture: "user.png",
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     username: "John Doe",
+  //     picture: "user.png",
+  //     level: 1,
+  //   },
+  // ];
 
-  const movies = [
-    {
-      id: 1,
-      image: "movie1.jpg",
-      title: "Movie 1",
-      genre: "Action",
-    },
-    {
-      id: 2,
-      image: "movie2.jpg",
-      title: "Movie 2",
-      genre: "Action",
-    },
-  ];
+  // const movies = [
+  //   {
+  //     id: 1,
+  //     image: "movie1.jpg",
+  //     title: "Movie 1",
+  //     genre: "Action",
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "movie2.jpg",
+  //     title: "Movie 2",
+  //     genre: "Action",
+  //   },
+  // ];
 
   const interactions = [
     {
@@ -85,8 +87,29 @@ function Profile({ username }) {
     },
   ];
 
+  const [user, setUser] = useState({});
+  const [friends, setFriends] = useState([]);
+  const [movies, setMovies] = useState([]);
+  // const [interactions, setInteractions] = useState([]);
+  // const [series, setSeries] = useState([]);
+
   useEffect(() => {
-    document.title = username;
+    document.title = `FilmFriend - ${username}'s Profile`;
+
+    const api = new UsersAPI("user2");
+    api.getProfile(
+      (data) => {
+        setUser(data.user);
+        setFriends(data.friends);
+        setMovies(data.toWatch);
+      },
+      (error) => {
+        setUser({});
+        setFriends([]);
+        setMovies([]);
+        console.log(error);
+      }
+    );
   }, [username]);
 
   return (
@@ -100,7 +123,11 @@ function Profile({ username }) {
         <Container className="py-5">
           <Row>
             <Col sm={3} className="pe-3 border-end">
-              <FriendsList name={"Friends List"} friends={friends} />
+              <FriendsList
+                username={username}
+                name={"Friends List"}
+                friends={friends}
+              />
             </Col>
             <Col sm={9} className="ps-4">
               <WatchList name={"WatchList"} movies={movies} />

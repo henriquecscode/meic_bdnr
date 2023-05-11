@@ -42,7 +42,8 @@ function MovieDetails({ username, id }) {
     if (id === undefined) id = window.location.pathname.replace("/movies/", "");
 
     // Details
-    api.getFilm(id,
+    api.getFilm(
+      id,
       (json) => {
         setFilmAwards(json.title.awards.awards);
 
@@ -54,7 +55,6 @@ function MovieDetails({ username, id }) {
         setFilmDetails(details);
 
         document.title = details.name;
-
       },
       (error) => {
         setFilmDetails([]);
@@ -75,19 +75,20 @@ function MovieDetails({ username, id }) {
           <tr key={i}>
             <td>{key}</td>
             <td>{value.map((e) => e.name)}</td>
-          </tr>);
+          </tr>
+        );
       } else {
         table.push(
           <tr key={i}>
             <td>{key}</td>
             <td>{value}</td>
-          </tr>);
+          </tr>
+        );
       }
       i++;
-
     }
     return table;
-  }
+  };
 
   return (
     <div>
@@ -102,16 +103,19 @@ function MovieDetails({ username, id }) {
             <div>
               <h5 className="text-center">Details</h5>
               <Table striped bordered hover size="sm">
-                <tbody>
-                  {getDetailsTable()}
-
-                </tbody>
+                <tbody>{getDetailsTable()}</tbody>
               </Table>
             </div>
 
             <div>
               <h5 className="text-center">Awards</h5>
-              {filmAwards && Array.isArray(filmAwards) && filmAwards.length == 0 ? (<p className="text-center"><i>No awards</i></p>) : (
+              {filmAwards &&
+              Array.isArray(filmAwards) &&
+              filmAwards.length === 0 ? (
+                <p className="text-center">
+                  <i>No awards</i>
+                </p>
+              ) : (
                 <Table striped bordered hover size="sm">
                   <thead>
                     <tr>
@@ -127,7 +131,8 @@ function MovieDetails({ username, id }) {
                       </tr>
                     ))}
                   </tbody>
-                </Table>)}
+                </Table>
+              )}
             </div>
           </Col>
         </Row>

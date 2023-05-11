@@ -4,7 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FriendCard from "../../cards/FriendCard";
 
-function FriendsList({ name, friends }) {
+import UsersAPI from "../../../api/UsersAPI";
+
+function FriendsList({ username, name, friends }) {
   const [list, setList] = useState(friends);
   const [level, setLevel] = useState(1);
 
@@ -23,15 +25,54 @@ function FriendsList({ name, friends }) {
     // TODO: change to request next level friends from API
   };
 
+  const [friendName, setFriendName] = useState("");
+
+  const handleAddFriend = (event, friend) => {
+    event.preventDefault();
+
+    const api = new UsersAPI(username);
+    api.addFriend(
+      friend,
+      (response) => {
+        console.log(response);
+        // TODO: get friends list again
+        // OR add to list and make this order by level when rendering
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
+  const handleRemoveFriend = (event, friend) => {
+    event.preventDefault();
+
+    const api = new UsersAPI(username);
+    api.removeFriend(
+      friend,
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   return (
     <div>
       <h4 className="mb-3">{name}</h4>
 
-      <Form className="mb-4">
+      <Form
+        className="mb-4"
+        onSubmit={(event) => handleAddFriend(event, friendName)}
+      >
         <InputGroup className="mb-3">
           <Form.Control
             aria-label="Add new Friend by Username"
             placeholder="Username"
+            value={friendName}
+            onChange={(event) => setFriendName(event.target.value)}
           />
           <Button type="submit" variant="darkblue">
             Add Friend
@@ -42,24 +83,31 @@ function FriendsList({ name, friends }) {
       {list && Array.isArray(list) && list.length > 0 ? (
         <div>
           {list.map((friend, index) => (
-            <FriendCard friend={friend} key={index} showLevel={true} withIcon={true}/>
+            <FriendCard
+              friend={friend}
+              key={index}
+              showLevel={true}
+              withIcon={true}
+              handleAddFriend={handleAddFriend}
+              handleRemoveFriend={handleRemoveFriend}
+            />
           ))}
+
+          <p className="text-start">
+            <button
+              type="button"
+              className="btn btn-link"
+              onClick={(event) => showMore(event)}
+            >
+              Show More...
+            </button>
+          </p>
         </div>
       ) : (
         <p>
           <i>No friends to list</i>
         </p>
       )}
-
-      <p className="text-start">
-        <button
-          type="button"
-          className="btn btn-link"
-          onClick={(event) => showMore(event)}
-        >
-          Show More...
-        </button>
-      </p>
     </div>
   );
 }

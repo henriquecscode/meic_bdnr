@@ -5,6 +5,9 @@ import Row from "react-bootstrap/Row";
 import getImageSrc from "../../utils/utils";
 
 function UserInfo({ user }) {
+  if (!user) {
+    return null;
+  }
 
   return (
     <Row>
