@@ -23,11 +23,19 @@ function Analytics({ username }) {
     api.getFriendsWatchedSeries(
       username,
       (json) => {
-        setFriendsWatchedSeries(
-          json.map((item) => {
-            return { name: item.genre.name, awards: item.awards, info: item };
-          })
-        );
+        if (json && Array.isArray(json) && json.length > 0) {
+          setFriendsWatchedSeries(
+            json.map((item) => {
+              return {
+                name: item.genre.name,
+                awards: item.awards,
+                info: item,
+              };
+            })
+          );
+        } else {
+          setFriendsWatchedSeries([]);
+        }
       },
       (error) => {
         setFriendsWatchedSeries([]);
@@ -38,19 +46,23 @@ function Analytics({ username }) {
     // Cast
     api.getWorkersCountry(
       (json) => {
-        setWorkersCountry(
-          json.map((item) => {
-            return {
-              name: item.worker.name,
-              nid: item.worker.nid,
-              info:
-                "Country: " +
-                JSON.stringify(item.country.name) +
-                ".\n Work: " +
-                JSON.stringify(item.titles.map((t) => t.name)),
-            };
-          })
-        );
+        if (json && Array.isArray(json) && json.length > 0) {
+          setWorkersCountry(
+            json.map((item) => {
+              return {
+                name: item.worker.name,
+                nid: item.worker.nid,
+                info:
+                  "Country: " +
+                  JSON.stringify(item.country.name) +
+                  ".\n Work: " +
+                  JSON.stringify(item.titles.map((t) => t.name)),
+              };
+            })
+          );
+        } else {
+          setFriendsWatchedSeries([]);
+        }
       },
       (error) => {
         setWorkersCountry([]);
@@ -62,11 +74,15 @@ function Analytics({ username }) {
     api.getGenreAwards(
       5,
       (json) => {
-        setAwardsGenre(
-          json.map((item) => {
-            return { name: item.genre.name, awards: item.awards };
-          })
-        );
+        if (json && Array.isArray(json) && json.length > 0) {
+          setAwardsGenre(
+            json.map((item) => {
+              return { name: item.genre.name, awards: item.awards };
+            })
+          );
+        } else {
+          setFriendsWatchedSeries([]);
+        }
       },
       (error) => {
         setAwardsGenre([]);
@@ -77,15 +93,19 @@ function Analytics({ username }) {
     api.getWorkersAwards(
       5,
       (json) => {
-        setAwardsWorkers(
-          json.map((item) => {
-            return {
-              name: item.worker.name,
-              awards: item.awards,
-              nid: item.worker.nid,
-            };
-          })
-        );
+        if (json && Array.isArray(json) && json.length > 0) {
+          setAwardsWorkers(
+            json.map((item) => {
+              return {
+                name: item.worker.name,
+                awards: item.awards,
+                nid: item.worker.nid,
+              };
+            })
+          );
+        } else {
+          setFriendsWatchedSeries([]);
+        }
       },
       (error) => {
         setAwardsWorkers([]);
@@ -96,11 +116,15 @@ function Analytics({ username }) {
     api.getCountryAwards(
       3,
       (json) => {
-        setAwardsCountries(
-          json.map((item) => {
-            return { name: item.country.name, awards: item.awards };
-          })
-        );
+        if (json && Array.isArray(json) && json.length > 0) {
+          setAwardsCountries(
+            json.map((item) => {
+              return { name: item.country.name, awards: item.awards };
+            })
+          );
+        } else {
+          setFriendsWatchedSeries([]);
+        }
       },
       (error) => {
         setAwardsCountries([]);
