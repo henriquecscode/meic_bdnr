@@ -32,7 +32,7 @@ public class TitleResource {
         return movieInfo;
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public List<Title> findBy(@RequestBody Search body) {
         List<Title> titles = new ArrayList<>();
 

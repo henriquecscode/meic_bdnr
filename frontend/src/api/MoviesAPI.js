@@ -8,4 +8,11 @@ export default class MoviesAPI {
     let endpoint = this.BASE_URL + `/${id}`;
     API.request("GET", endpoint, successCallback, errorCallback);
   }
+
+  // Search
+  getSearch(successCallback, errorCallback, body) {
+    let endpoint = this.BASE_URL + `/search`;
+    API.request("POST", endpoint, successCallback, errorCallback, body);
+  }
+
 }
