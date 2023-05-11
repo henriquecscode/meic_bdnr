@@ -20,28 +20,28 @@ function Analytics({ username }) {
     const api = new AnalyticsAPI();
 
     // Friends
-    api.getFriendsWatchedSeries(
-      username,
-      (json) => {
-        if (json && Array.isArray(json) && json.length > 0) {
-          setFriendsWatchedSeries(
-            json.map((item) => {
-              return {
-                name: item.genre.name,
-                awards: item.awards,
-                info: item,
-              };
-            })
-          );
-        } else {
-          setFriendsWatchedSeries([]);
-        }
-      },
-      (error) => {
-        setFriendsWatchedSeries([]);
-        console.log(error);
-      }
-    );
+    // api.getFriendsWatchedSeries(
+    //   username,
+    //   (json) => {
+    //     if (json && Array.isArray(json) && json.length > 0) {
+    //       setFriendsWatchedSeries(
+    //         json.map((item) => {
+    //           return {
+    //             name: item.genre.name,
+    //             awards: item.awards,
+    //             info: item,
+    //           };
+    //         })
+    //       );
+    //     } else {
+    //       setFriendsWatchedSeries([]);
+    //     }
+    //   },
+    //   (error) => {
+    //     setFriendsWatchedSeries([]);
+    //     console.log(error);
+    //   }
+    // );
 
     // Cast
     api.getWorkersCountry(
@@ -61,7 +61,7 @@ function Analytics({ username }) {
             })
           );
         } else {
-          setFriendsWatchedSeries([]);
+          setWorkersCountry([]);
         }
       },
       (error) => {
@@ -81,7 +81,7 @@ function Analytics({ username }) {
             })
           );
         } else {
-          setFriendsWatchedSeries([]);
+          setAwardsGenre([]);
         }
       },
       (error) => {
@@ -104,7 +104,7 @@ function Analytics({ username }) {
             })
           );
         } else {
-          setFriendsWatchedSeries([]);
+          setAwardsWorkers([]);
         }
       },
       (error) => {
@@ -123,7 +123,7 @@ function Analytics({ username }) {
             })
           );
         } else {
-          setFriendsWatchedSeries([]);
+          setAwardsCountries([]);
         }
       },
       (error) => {
