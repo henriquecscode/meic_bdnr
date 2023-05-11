@@ -13,7 +13,6 @@ function Movies({ username }) {
 
     api.getSearch(
       (json) => {
-        console.log(json);
 
         if (json && Array.isArray(json) && json.length > 0) {
           setMovies(json);
