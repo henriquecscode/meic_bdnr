@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 import ListCard from "../../components/cards/ListCard";
 import AnalyticsAPI from "../../api/AnalyticsAPI";
 
 function Analytics({ username }) {
-  const [tab, setTab] = useState("friends");
-
   const [friendsWatchedSeries, setFriendsWatchedSeries] = useState([]);
   const [workersCountry, setWorkersCountry] = useState([]);
   const [awardsGenre, setAwardsGenre] = useState([]);
@@ -13,12 +15,19 @@ function Analytics({ username }) {
   const [awardsCountries, setAwardsCountries] = useState([]);
 
   useEffect(() => {
+    document.title = "FilmFriends - Analytics";
+
     const api = new AnalyticsAPI();
 
     // Friends
-    api.getFriendsWatchedSeries(username,
+    api.getFriendsWatchedSeries(
+      username,
       (json) => {
-        setFriendsWatchedSeries(json.map((item) => { return { "name": item.genre.name, "awards": item.awards, "info": item  } }));
+        setFriendsWatchedSeries(
+          json.map((item) => {
+            return { name: item.genre.name, awards: item.awards, info: item };
+          })
+        );
       },
       (error) => {
         setFriendsWatchedSeries([]);
@@ -29,7 +38,19 @@ function Analytics({ username }) {
     // Cast
     api.getWorkersCountry(
       (json) => {
-        setWorkersCountry(json.map((item) => { return { "name": item.worker.name, "nid": item.worker.nid, "info": "Country: " + JSON.stringify(item.country.name) + ".\n Work: " + JSON.stringify(item.titles.map((t) => t.name)) } }));
+        setWorkersCountry(
+          json.map((item) => {
+            return {
+              name: item.worker.name,
+              nid: item.worker.nid,
+              info:
+                "Country: " +
+                JSON.stringify(item.country.name) +
+                ".\n Work: " +
+                JSON.stringify(item.titles.map((t) => t.name)),
+            };
+          })
+        );
       },
       (error) => {
         setWorkersCountry([]);
@@ -41,7 +62,11 @@ function Analytics({ username }) {
     api.getGenreAwards(
       5,
       (json) => {
-        setAwardsGenre(json.map((item) => { return { "name": item.genre.name, "awards": item.awards } }));
+        setAwardsGenre(
+          json.map((item) => {
+            return { name: item.genre.name, awards: item.awards };
+          })
+        );
       },
       (error) => {
         setAwardsGenre([]);
@@ -52,7 +77,15 @@ function Analytics({ username }) {
     api.getWorkersAwards(
       5,
       (json) => {
-        setAwardsWorkers(json.map((item) => { return { "name": item.worker.name, "awards": item.awards, "nid": item.worker.nid } }));
+        setAwardsWorkers(
+          json.map((item) => {
+            return {
+              name: item.worker.name,
+              awards: item.awards,
+              nid: item.worker.nid,
+            };
+          })
+        );
       },
       (error) => {
         setAwardsWorkers([]);
@@ -63,24 +96,26 @@ function Analytics({ username }) {
     api.getCountryAwards(
       3,
       (json) => {
-        setAwardsCountries(json.map((item) => { return { "name": item.country.name, "awards": item.awards } }));
+        setAwardsCountries(
+          json.map((item) => {
+            return { name: item.country.name, awards: item.awards };
+          })
+        );
       },
       (error) => {
         setAwardsCountries([]);
         console.log(error);
       }
     );
-  }, []);
+  }, [username]);
 
   const getFriendsTab = () => {
     return (
       <>
-        <h5 className="text-center">
+        <p className="fw-bold">
           Friends that fully watched a common film series
-        </h5>
-        <div className="my-4 d-flex justify-content-center">
-          <ListCard list={friendsWatchedSeries} />
-        </div>
+        </p>
+        <ListCard list={friendsWatchedSeries} />
       </>
     );
   };
@@ -88,78 +123,47 @@ function Analytics({ username }) {
   const getCastTab = () => {
     return (
       <>
-        <h5 className="text-center">Cast that worked in their home country</h5>
-        <div className="my-4 d-flex justify-content-center">
-          <ListCard list={workersCountry} />
-        </div>
+        <p className="fw-bold">Cast that worked in their home country</p>
+        <ListCard list={workersCountry} />
       </>
     );
   };
 
   const getAwardsTab = () => {
     return (
-      <>
-        <h5 className="text-center">TOP 5 most awarded genres</h5>
-        <div className="my-4 d-flex justify-content-center">
+      <Row>
+        <Col sm={6} md={4}>
+          <p className="fw-bold">TOP 5 most awarded genres</p>
           <ListCard list={awardsGenre} />
-        </div>
-        <h5 className="text-center">TOP 5 most awarded workers</h5>
-        <div className="my-4 d-flex justify-content-center">
+        </Col>
+        <Col sm={6} md={4}>
+          <p className="fw-bold">TOP 5 most awarded workers</p>
           <ListCard list={awardsWorkers} />
-        </div>
-        <h5 className="text-center">
-          TOP 3 countries with the most awarded workers
-        </h5>
-        <div className="my-4 d-flex justify-content-center">
+        </Col>
+        <Col sm={6} md={4}>
+          <p className="fw-bold">
+            TOP 3 countries with the most awarded workers
+          </p>
           <ListCard list={awardsCountries} />
-        </div>
-      </>
+        </Col>
+      </Row>
     );
   };
 
-  const displayTab = () => {
-    switch (tab) {
-      case "friends":
-        return getFriendsTab();
-      case "cast":
-        return getCastTab();
-      case "awards":
-        return getAwardsTab();
-      default:
-        return <></>;
-    }
-  };
-
   return (
-    <div>
-      <h1 className="text-center m-5">Analytics</h1>
-
-      <Nav
-        justify
-        variant="tabs"
-        className="mb-3"
-        activeKey={tab}
-        onSelect={(k) => setTab(k)}
-      >
-        <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="friends">
-            Friends
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="cast">
-            Cast
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link className="fs-4" eventKey="awards">
-            Awards
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
-      {displayTab()}
-    </div>
+    <Container className="py-5">
+      <Tabs id="analytics-tab" className="mb-3" defaultActiveKey="friends">
+        <Tab eventKey="friends" title="Friends">
+          {getFriendsTab()}
+        </Tab>
+        <Tab eventKey="cast" title="Cast">
+          {getCastTab()}
+        </Tab>
+        <Tab eventKey="awards" title="Awards">
+          {getAwardsTab()}
+        </Tab>
+      </Tabs>
+    </Container>
   );
 }
 
