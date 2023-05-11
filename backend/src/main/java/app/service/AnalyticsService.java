@@ -67,6 +67,9 @@ public class AnalyticsService extends GeneralService {
         List<GenreAwards> genreAwards = new ArrayList<>();
         for (Vertex genreVertex : graph.getVerticesOfClass("Genre")) {
             Genre genre = Genre.fromVertex(genreVertex);
+            if(genre.getName().equals("")){
+                continue;
+            }
             Integer numberAwards = 0;
             Iterable<Vertex> foundTitles = genreVertex.getVertices(Direction.IN, "HasGenre");
 
