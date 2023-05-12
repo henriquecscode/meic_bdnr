@@ -19,21 +19,6 @@ function Profile({ username }) {
   //   picture: "user.png",
   // };
 
-  const friends = [
-    {
-      id: 1,
-      username: "John Doe",
-      picture: "user.png",
-      level: 1,
-    },
-    {
-      id: 2,
-      username: "John Doe",
-      picture: "user.png",
-      level: 1,
-    },
-  ];
-
   const series = [
     {
       id: 1,
@@ -50,10 +35,12 @@ function Profile({ username }) {
   ];
 
   const [user, setUser] = useState({});
-  // const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState([]);
   const [movies, setMovies] = useState([]);
   const [interactions, setInteractions] = useState([]);
   // const [series, setSeries] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.title = `FilmFriend - ${username}'s Profile`;
@@ -71,8 +58,22 @@ function Profile({ username }) {
             ? data.countries.map((c) => c.name).join(", ")
             : "Unknown",
         });
-        // setFriends(data.friends);
+
+        setFriends(
+          data.friends
+            ? data.friends.map((f, i) => {
+                return {
+                  id: i,
+                  username: f.username,
+                  picture: "user.png", // TODO: change to f.picture when available
+                  level: 1,
+                };
+              })
+            : []
+        );
+
         setMovies(data.toWatch);
+
         setInteractions(
           data.films.map((film, index) => {
             return {
@@ -82,12 +83,15 @@ function Profile({ username }) {
             };
           })
         );
+
+        setLoading(false);
       },
       (error) => {
         setUser({});
-        // setFriends([]);
+        setFriends([]);
         setMovies([]);
         setInteractions([]);
+        setLoading(false);
         console.log(error);
       }
     );
@@ -104,11 +108,17 @@ function Profile({ username }) {
         <Container className="py-5">
           <Row>
             <Col sm={3} className="pe-3 border-end">
-              <FriendsList
-                username={username}
-                name={"Friends List"}
-                friends={friends}
-              />
+              {loading ? (
+                <p>
+                  <i>Loading FriendsList...</i>
+                </p>
+              ) : (
+                <FriendsList
+                  username={username}
+                  name={"Friends List"}
+                  friends={friends}
+                />
+              )}
             </Col>
             <Col sm={9} className="ps-4">
               <WatchList
