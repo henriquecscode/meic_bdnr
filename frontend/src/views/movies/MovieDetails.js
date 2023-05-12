@@ -180,7 +180,7 @@ function MovieDetails({ username, id }) {
                 style={{ display: "grid", gridGap: "0.5rem" }}
               >
                 {usersWatched.map((user, index) => (
-                  <FriendCard friend={user.user} key={index} />
+                  <FriendCard friend={user.user} voteInfo={user.watched.vote} key={index} />
                 ))}
               </div>
             ) : (

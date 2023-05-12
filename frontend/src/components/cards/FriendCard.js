@@ -1,4 +1,8 @@
 import { BsPlus, BsX } from "react-icons/bs";
+import { FcRating } from "react-icons/fc";
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 import getImageSrc from "../../utils/utils";
 import Image from "react-bootstrap/Image";
 
@@ -7,9 +11,33 @@ export default function FriendCard({
   index,
   withIcon = false,
   showLevel = false,
-  handleAddFriend = () => {},
-  handleRemoveFriend = () => {},
+  voteInfo = null,
+  handleAddFriend = () => { },
+  handleRemoveFriend = () => { },
 }) {
+
+  const votePopover = (info) => (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">{"Vote"}</Popover.Header>
+      <Popover.Body>{info}</Popover.Body>
+    </Popover>
+  );
+
+  const getVoteButton = (info) => {
+    return info ? (
+      <OverlayTrigger
+        trigger="click"
+        placement="right"
+        overlay={votePopover(info)}
+        rootClose
+      >
+        <Button className="rounded-circle mx-2" variant="link" size="sm">
+          <FcRating size={20} />
+        </Button>
+      </OverlayTrigger>
+    ) : null;
+  };
+
   return (
     <div key={index} className="d-flex justify-content-between">
       <div className="d-flex">
@@ -39,6 +67,10 @@ export default function FriendCard({
             onClick={(event) => handleRemoveFriend(event, friend.username)}
           />
         )
+      ) : null}
+
+      {voteInfo ? (
+        getVoteButton(voteInfo)
       ) : null}
     </div>
   );
