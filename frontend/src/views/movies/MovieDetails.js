@@ -24,16 +24,6 @@ function MovieDetails({ username, id }) {
     { id: 1, name: "Avatar", nr: 1 },
     { id: 2, name: "Avatar: Way of Water", nr: 2 },
   ];
-  const comments = [
-    { text: "Amazing", author: "Catarina" },
-    { text: "BEST MOVIE EVER!", author: "John Doe" },
-  ];
-  const users = [
-    { username: "Catarina" },
-    { username: "Henrique" },
-    { username: "Patricia" },
-    { username: "John Doe" },
-  ];
 
   const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
 
@@ -119,6 +109,17 @@ function MovieDetails({ username, id }) {
     return list;
   };
 
+  const getComments = () => {
+    let list = [];
+
+    usersWatched.forEach((user) => { if (user.watched.comment) list.push({ "text": user.watched.comment, "author": user.user.name, "vote": user.watched.vote, "date": user.watched.date }) });
+
+    list.sort((a, b) => { return a.date < b.date ? -1 : 1; });
+
+    return list;
+  };
+
+  let comments = getComments();
 
   return (
     <div>
