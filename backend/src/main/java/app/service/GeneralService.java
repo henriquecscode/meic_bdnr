@@ -15,5 +15,6 @@ public class GeneralService {
 
     protected void setGraph() {
         graph = factory.getTx();
+        graph.setStandardElementConstraints(false);
     }
 }

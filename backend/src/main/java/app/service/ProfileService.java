@@ -137,16 +137,28 @@ public class ProfileService extends GeneralService {
         return false;
     }
 
-    private void updateWatchedEdge(Edge edge, Watched watched) {
-        if (watched.getVote() != null) {
-            edge.setProperty("vote", watched.getVote());
+    private void updateWatchedEdge(Edge edge, Watched watched, Vertex titleVertex) {
+        Watched oldWatched = Watched.fromEdge(edge);
+        Title title = Title.fromVertex(titleVertex);
+        Integer nVotes = title.getnVotes();
+        Integer nComments = title.getnComments();
+        if (watched.getVote() == null && oldWatched.getVote() != null) {
+            titleVertex.setProperty("n_votes", nVotes - 1);
+        } else if (watched.getVote() != null && oldWatched.getVote() == null) {
+            titleVertex.setProperty("n_votes", nVotes + 1);
         }
+        edge.setProperty("vote", watched.getVote());
+
         if (watched.getDate() != null) {
             edge.setProperty("date", watched.getDate());
         }
-        if (watched.getComment() != null) {
-            edge.setProperty("comment", watched.getComment());
+        if (watched.getComment() == null && oldWatched.getComment() != null) {
+            titleVertex.setProperty("n_comments", nComments - 1);
+        } else if (watched.getComment() != null && oldWatched.getComment() == null) {
+            titleVertex.setProperty("n_comments", nComments + 1);
         }
+        edge.setProperty("comment", watched.getComment());
+
         graph.commit();
     }
 
@@ -169,14 +181,14 @@ public class ProfileService extends GeneralService {
             if (watchedTitle.equals(titleVertex)) {
 
                 //There is already one watched. We are going to change this
-                updateWatchedEdge(watchedEdge, watched);
+                updateWatchedEdge(watchedEdge, watched, titleVertex);
                 return true;
             }
         }
 
         //There is no watched. We are going to create one
         Edge watchedEdge = userVertex.addEdge("Watched", titleVertex);
-        updateWatchedEdge(watchedEdge, watched);
+        updateWatchedEdge(watchedEdge, watched, titleVertex);
         return true;
 
     }
@@ -198,6 +210,18 @@ public class ProfileService extends GeneralService {
         for (Edge watchedEdge : foundWatched) {
             Vertex watchedTitle = watchedEdge.getVertex(Direction.IN);
             if (watchedTitle.equals(titleVertex)) {
+                Watched watched = Watched.fromEdge(watchedEdge);
+                Title titleObj = Title.fromVertex(watchedTitle);
+                Integer noVotes = titleObj.getnVotes();
+                Integer noComments = titleObj.getnComments();
+                if (watched.getVote() != null) {
+                    noVotes--;
+                }
+                if (watched.getComment() != null) {
+                    noComments--;
+                }
+                watchedTitle.setProperty("n_votes", noVotes);
+                watchedTitle.setProperty("n_comments", noComments);
                 watchedEdge.remove();
                 graph.commit();
                 return true;
