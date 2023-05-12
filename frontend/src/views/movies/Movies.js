@@ -13,7 +13,6 @@ function Movies({ username }) {
 
     api.getSearch(
       (json) => {
-
         if (json && Array.isArray(json) && json.length > 0) {
           setMovies(json);
         } else {
@@ -23,7 +22,8 @@ function Movies({ username }) {
       (error) => {
         setMovies([]);
         console.log(error);
-      }, { "title": "" }
+      },
+      { title: "" }
     );
   }, []);
 
@@ -32,7 +32,6 @@ function Movies({ username }) {
 
     api.getSearch(
       (json) => {
-
         if (json && Array.isArray(json) && json.length > 0) {
           setMovies(json);
         } else {
@@ -42,16 +41,25 @@ function Movies({ username }) {
       (error) => {
         setMovies([]);
         console.log(error);
-      }, { "title": title }
+      },
+      { title: title }
     );
-  }
+  };
 
   const searchForm = () => {
     return (
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="Enter title" value={title} onChange={(e) => { setTitle(e.target.value); submitForm() }} />
+          <Form.Control
+            type="text"
+            placeholder="Enter title"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              submitForm();
+            }}
+          />
         </Form.Group>
 
         {/* <Form.Group className="mb-3">
@@ -64,19 +72,18 @@ function Movies({ username }) {
         </Form.Group> */}
       </Form>
     );
-  }
+  };
 
   // TODO: Add text search
   return (
     <div>
-      <h1 className="text-center m-5">Movies</h1>
-      <Container>
+      <Container className="py-5">
         <div className="d-flex bd-highlight">
-          <div className="p-2 flex-shrink-1 bd-highlight">
+          <div className="pe-3 flex-shrink-1 bd-highlight">
             <h5>Search</h5>
             {searchForm()}
           </div>
-          <div className="p-2 w-100 bd-highlight">
+          <div className="ps-4 w-100 bd-highlight border-start">
             <h5>Results</h5>
             <div className="d-flex flex-column bd-highlight mb-3">
               {movies.map((m) => (
