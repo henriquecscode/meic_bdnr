@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import FriendCard from "../../cards/FriendCard";
 
 import UsersAPI from "../../../api/UsersAPI";
+import RecommendationsAPI from "../../../api/RecommendationsAPI";
 
 function FriendsList({ username, name, friends }) {
   const [list, setList] = useState(friends);
@@ -12,17 +13,32 @@ function FriendsList({ username, name, friends }) {
 
   const showMore = (event) => {
     event.preventDefault();
-    setLevel(level + 1);
-    setList(
-      list.concat(
-        list.map((l) => {
-          const f = { ...l };
-          f.level = level + 1;
-          return f;
-        })
-      )
+
+    // TODO: using a shortcut, not the best way
+    const api = new RecommendationsAPI(username);
+    api.getFriendsFilms(
+      level + 1,
+      (data) => {
+        if (data && Array.isArray(data) && data.length > 0) {
+          const more = data.map((element, index) => {
+            return {
+              id: index,
+              username: element.user.username,
+              picture: "user.png", // TODO: change to f.picture when available
+              level: level + 1,
+            };
+          });
+
+          setList(list.concat(more));
+          setLevel(level + 1);
+        } else {
+          setLevel(-1);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
     );
-    // TODO: change to request next level friends from API
   };
 
   const [friendName, setFriendName] = useState("");
@@ -103,13 +119,17 @@ function FriendsList({ username, name, friends }) {
           ))}
 
           <p className="text-start">
-            <button
-              type="button"
-              className="btn btn-link"
-              onClick={(event) => showMore(event)}
-            >
-              Show More...
-            </button>
+            {level > 0 ? (
+              <button
+                type="button"
+                className="btn btn-link"
+                onClick={(event) => showMore(event)}
+              >
+                Show More...
+              </button>
+            ) : (
+              <i>No more friends to show</i>
+            )}
           </p>
         </div>
       ) : (
