@@ -67,7 +67,7 @@ public class TitleService extends GeneralService {
         }
         movieInfo.setRoles(roles);
 
-        Iterable<Edge> foundWatches = titleVertex.getEdges(Direction.IN, "Watch");
+        Iterable<Edge> foundWatches = titleVertex.getEdges(Direction.IN, "Watched");
         List<WatchInfo> watches = new ArrayList<>();
         for (Edge watch : foundWatches) {
             Watched watched = Watched.fromEdge(watch);
