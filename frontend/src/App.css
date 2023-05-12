@@ -3,6 +3,10 @@
   background-color: #0c1d36;
 }
 
+.text-darkblue {
+  color: #0c1d36;
+}
+
 .btn-darkblue {
   color: #f9f9f9;
 }
@@ -32,6 +36,11 @@
   aspect-ratio: 1/1;
 }
 
+.film-img {
+  max-height: 15rem;
+  width: auto;
+}
+
 .cards-container {
   display: flex;
   overflow-x: auto;
@@ -39,13 +48,19 @@
 }
 
 .card-item {
-  width: 12rem;
-  min-width: 12rem;
+  width: 13rem;
+  min-width: 13rem;
 }
 
 .card-item > .card-img-top {
   max-height: 12rem;
   object-fit: cover;
+}
+
+.line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*MOVIES CARD*/
@@ -54,4 +69,14 @@
   width: 9rem;
   height: 12rem;
   padding: 1rem;
+}
+
+.details-link {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.m-details {
+  margin-right: 4.8rem;
 }

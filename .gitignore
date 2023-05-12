@@ -3,3 +3,4 @@ data/processed!
 data/comments!
 frontend/node_modules
 **__pycache__
+.env

@@ -1,22 +1,30 @@
 import Card from "react-bootstrap/Card";
 
-export default function FilmCard({ film, username, index }) {
+export default function FilmCard({
+  film,
+  username,
+  index,
+  detailsTopRight = true,
+}) {
   return (
-    <div className="p-2 bd-highlight" key={index}>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{film.name}</Card.Title>
-          {film.nr ? (
-            <Card.Subtitle className="mb-2 text-muted">
-              Series number: {film.nr}
-            </Card.Subtitle>
-          ) : null}
-          <Card.Text></Card.Text>
-          <Card.Link href={`/movies/${film.id}?username=${username}`}>
-            See details
-          </Card.Link>
-        </Card.Body>
-      </Card>
-    </div>
+    <Card className="my-2 h-100" key={index}>
+      <Card.Body>
+        <Card.Title className="m-details">{film.name}</Card.Title>
+        <Card.Subtitle
+          className={"text-muted" + (detailsTopRight ? "" : " mb-2")}
+        >
+          {film.startYear ? "Year: " + film.startYear : null}
+          {film.startYear && film.nr ? " | " : null}
+          {film.nr ? "Series number: " + film.nr : null}
+        </Card.Subtitle>
+
+        <Card.Link
+          href={`/movies/${film.tid}?username=${username}`}
+          className={detailsTopRight ? "details-link" : ""}
+        >
+          See details
+        </Card.Link>
+      </Card.Body>
+    </Card>
   );
 }

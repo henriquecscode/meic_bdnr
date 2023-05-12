@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -6,24 +6,18 @@ import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import Table from "react-bootstrap/Table";
 import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
 import HorizontalRule from "../../components/layout/HorizontalRule";
+import MoviesAPI from "../../api/MoviesAPI";
 
-function MovieDetails({ username }) {
-  const details = [
-    { field: "Name", value: "Avatar" },
-    { field: "Director", value: "James Cameron" },
-  ];
-  const awards = [
-    { name: "Academy Award for Best Cinematography", year: "2010" },
-    {
-      name: "Golden Globe Award for Best Motion Picture – Drama",
-      year: "2010",
-    },
-  ];
+function MovieDetails({ username, id }) {
+  const [filmDetails, setFilmDetails] = useState([]);
+  const [filmAwards, setFilmAwards] = useState([]);
+  // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
+  // const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
+
   const series = [
     { id: 1, name: "Avatar", nr: 1 },
     { id: 2, name: "Avatar: Way of Water", nr: 2 },
@@ -39,112 +33,161 @@ function MovieDetails({ username }) {
     { username: "John Doe" },
   ];
 
+  const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
+
   useEffect(() => {
-    document.title = details.find((d) => d.field === "Name").value;
+    const api = new MoviesAPI();
+
+    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
+
+    // Details
+    api.getFilm(
+      id,
+      (json) => {
+        setFilmAwards(json.title.awards.awards);
+
+        let details = json.title;
+        for (let key of notDetailsProperties) {
+          delete details[key];
+        }
+
+        setFilmDetails(details);
+
+        document.title = "FilmFriend - " + details.name;
+      },
+      (error) => {
+        setFilmDetails([]);
+        console.log(error);
+      }
+    );
   }, []);
+
+  const getDetailsList = () => {
+    let list = [];
+
+    let i = 0;
+    for (const [key, value] of Object.entries(filmDetails)) {
+      if (value === null || value.length === 0) continue;
+
+      if (value instanceof Array) {
+        list.push(
+          <p key={i} className="mb-0">
+            <b>{key}</b>: {value.map((e) => e.name)}
+          </p>
+        );
+      } else {
+        list.push(
+          <p key={i} className="mb-0">
+            <b>{key}</b>: {value}
+          </p>
+        );
+      }
+      i++;
+    }
+
+    return list;
+  };
 
   return (
     <div>
-      <h1 className="text-center m-5">Avatar</h1>
-
-      <Container>
-        <Row className="mt-5 pb-2">
-          <Col className="align-self-center text-center">
-            <Image src="/logo192.png" fluid />
+      <div className="profile-info">
+        <Container className="py-5">
+          <h2 className="text-center">{filmDetails.name}</h2>
+        </Container>
+      </div>
+      <Container className="py-5">
+        <Row>
+          <Col sm={4} className="text-center">
+            <Image src="/movie.svg" fluid className="film-img" />
           </Col>
-          <Col>
-            <div>
-              <h5 className="text-center">Details</h5>
-              <Table striped bordered hover size="sm">
-                <tbody>
-                  {details.map((d, index) => (
-                    <tr key={index}>
-                      <td>{d.field}</td>
-                      <td>{d.value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
 
-            <div>
-              <h5 className="text-center">Awards</h5>
-              <Table striped bordered hover size="sm">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Year</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {awards.map((a, index) => (
-                    <tr key={index}>
-                      <td>{a.name}</td>
-                      <td>{a.year}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
+          <Col sm={8}>
+            <h5>Details</h5>
+            <div className="mb-4">{getDetailsList()}</div>
+
+            <h5>Awards</h5>
+            {filmAwards &&
+            Array.isArray(filmAwards) &&
+            filmAwards.length > 0 ? (
+              <div>
+                {filmAwards.map((a, index) => (
+                  <p key={index} className="mb-0">
+                    {a.awardName} <i>({a.receivedOn})</i>
+                  </p>
+                ))}
+              </div>
+            ) : (
+              <p>
+                <i>No awards</i>
+              </p>
+            )}
           </Col>
         </Row>
 
         <HorizontalRule text={"Social"} />
 
-        <Row className="mt-5 pb-2 pt-4 pb-4">
-          <Col
-            className="d-flex flex-column align-items-center bg-light rounded-2"
-            style={{ marginRight: "10px" }}
-          >
-            <h4 className="text-center">People that watched</h4>
+        <Row className="my-2">
+          <Col sm={3} className="py-2 bg-light">
+            <h5>People that watched</h5>
             {users && Array.isArray(users) && users.length > 0 ? (
-              users.map((friend, index) => (
-                <FriendCard friend={friend} key={index} />
-              ))
+              <div
+                className="pt-2"
+                style={{ display: "grid", gridGap: "0.5rem" }}
+              >
+                {users.map((friend, index) => (
+                  <FriendCard friend={friend} key={index} />
+                ))}
+              </div>
             ) : (
               <p>
                 <i>No users have watched</i>
               </p>
             )}
           </Col>
-          <Col className="bg-light rounded-2">
-            <h4 className="text-center">Comments</h4>
-            <div className="d-flex flex-column bd-highlight mb-3">
-              {comments && Array.isArray(comments) && comments.length > 0 ? (
-                comments.map((c, index) => (
-                  <CommentCard comment={c} key={index} />
-                ))
-              ) : (
-                <p>
-                  <i>No comments</i>
-                </p>
-              )}
 
-              <Form className="p-2 bd-highlight">
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    aria-label="Comment"
-                    placeholder="Comment something..."
-                  />
-                  <Button type="submit" variant="darkblue">
-                    Comment
-                  </Button>
-                </InputGroup>
-              </Form>
-            </div>
+          <Col sm={9} className="py-2 bg-light border-start">
+            <h5>Comments</h5>
+            {comments && Array.isArray(comments) && comments.length > 0 ? (
+              <div>
+                {comments.map((c, index) => (
+                  <CommentCard comment={c} key={index} />
+                ))}
+              </div>
+            ) : (
+              <p>
+                <i>No comments</i>
+              </p>
+            )}
+
+            <Form className="pt-3 bd-highlight">
+              <InputGroup className="mb-3">
+                <Form.Control
+                  aria-label="Comment"
+                  placeholder="Comment something..."
+                />
+                <Button type="submit" variant="darkblue">
+                  Comment
+                </Button>
+              </InputGroup>
+            </Form>
           </Col>
         </Row>
 
         <HorizontalRule text={"Series"} />
 
-        <Row className="mt-5 pb-2">
-          <Col>
-            <div className="d-flex flex-row bd-highlight mb-3">
-              {series.map((s, index) => (
-                <FilmCard key={index} film={s} username={username} />
-              ))}
-            </div>
-          </Col>
+        <Row className="py-2">
+          <div className="d-flex flex-wrap">
+            {series.map((s, index) => (
+              <div className="px-1 w-25">
+                <FilmCard
+                  key={index}
+                  film={s}
+                  username={username}
+                  detailsTopRight={false}
+                />
+              </div>
+            ))}
+          </div>
         </Row>
       </Container>
     </div>

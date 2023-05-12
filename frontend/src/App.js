@@ -13,7 +13,7 @@ function App() {
   const queryParams = new URLSearchParams(window.location.search);
   const username = queryParams.has("username")
     ? queryParams.get("username")
-    : "user1";
+    : "username1";
 
   // TODO: page title personalizado
 
