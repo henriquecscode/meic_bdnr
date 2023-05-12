@@ -17,8 +17,8 @@ function MovieDetails({ username, id }) {
   const [filmDetails, setFilmDetails] = useState([]);
   const [filmAwards, setFilmAwards] = useState([]);
   const [filmWorkers, setFilmWorkers] = useState([]);
+  const [usersWatched, setUsersWatched] = useState([]);
   // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
-  // const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
 
   const series = [
     { id: 1, name: "Avatar", nr: 1 },
@@ -54,8 +54,8 @@ function MovieDetails({ username, id }) {
         }
 
         setFilmDetails(details);
-
         setFilmWorkers(json.roles);
+        setUsersWatched(json.watched);
 
         document.title = "FilmFriend - " + details.name;
       },
@@ -63,6 +63,7 @@ function MovieDetails({ username, id }) {
         setFilmDetails([]);
         setFilmWorkers([]);
         setFilmAwards([]);
+        setUsersWatched([]);
         console.log(error);
       }
     );
@@ -99,6 +100,7 @@ function MovieDetails({ username, id }) {
   };
 
   const getWorkersList = () => {
+    // TODO: show entityAwards in tooltip if we have this info in endpoint
     let list = [];
 
     filmWorkers.forEach((worker) => {
@@ -145,7 +147,7 @@ function MovieDetails({ username, id }) {
               <div>
                 {filmAwards.map((a, index) => (
                   <p key={index} className="mb-0">
-                    {a.awardName} <i>({a.receivedOn})</i>
+                    {a.awardName} <i>({a.receivedOn === "" ? "??" : a.receivedOn} )</i>
                   </p>
                 ))}
               </div>
@@ -162,13 +164,13 @@ function MovieDetails({ username, id }) {
         <Row className="my-2">
           <Col sm={3} className="py-2 bg-light">
             <h5>People that watched</h5>
-            {users && Array.isArray(users) && users.length > 0 ? (
+            {usersWatched && Array.isArray(usersWatched) && usersWatched.length > 0 ? (
               <div
                 className="pt-2"
                 style={{ display: "grid", gridGap: "0.5rem" }}
               >
-                {users.map((friend, index) => (
-                  <FriendCard friend={friend} key={index} />
+                {usersWatched.map((user, index) => (
+                  <FriendCard friend={user.user} key={index} />
                 ))}
               </div>
             ) : (
