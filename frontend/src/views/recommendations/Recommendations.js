@@ -46,10 +46,12 @@ function Recommendations({ username }) {
   const friendsLevel = 3;
 
   const getFriendsFilms = (api, level) => {
+    setLoadingFriends(true);
+
     api.getFriendsFilms(
       level,
       (data) => {
-        console.log(data);
+        console.log("friends", data);
         setMoviesFriends(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -74,7 +76,7 @@ function Recommendations({ username }) {
     // Country
     api.getCountryFilms(
       (data) => {
-        console.log(data);
+        console.log("country", data);
         setMoviesCountry(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -90,7 +92,7 @@ function Recommendations({ username }) {
     // Advice
     api.getAdviceFilms(
       (data) => {
-        console.log(data);
+        console.log("advise", data);
         setMoviesAdvice(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -119,6 +121,7 @@ function Recommendations({ username }) {
         <Tab eventKey="friends" title="Friends Liked">
           <p className="fw-bold">
             List of Movies that your Friends Liked that you haven't watched
+            (1-3)
           </p>
 
           <InputGroup className="mb-4">
@@ -128,7 +131,7 @@ function Recommendations({ username }) {
               defaultValue={friendsLevel}
               type="number"
               min={1}
-              max={5}
+              max={3}
               ref={formControl}
             />
             <Button variant="darkblue" onClick={handleFriendshipClick}>
