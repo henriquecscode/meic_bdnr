@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import Card from "react-bootstrap/Card";
 import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
@@ -78,7 +79,11 @@ function MovieDetails({ username, id }) {
       } else {
         list.push(
           <p key={i} className="mb-0">
-            <b>{key}</b>: {value}
+            <b>{key}</b>:&nbsp;
+            {key == "tid" ?
+              <Card.Link href={`https://www.imdb.com/title/${value}`} target="_blank" >{value}</Card.Link>
+              : value
+            }
           </p>
         );
       }
@@ -107,8 +112,8 @@ function MovieDetails({ username, id }) {
 
             <h5>Awards</h5>
             {filmAwards &&
-            Array.isArray(filmAwards) &&
-            filmAwards.length > 0 ? (
+              Array.isArray(filmAwards) &&
+              filmAwards.length > 0 ? (
               <div>
                 {filmAwards.map((a, index) => (
                   <p key={index} className="mb-0">
