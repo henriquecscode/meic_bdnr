@@ -18,6 +18,8 @@ function MovieDetails({ username, id }) {
   const [filmAwards, setFilmAwards] = useState([]);
   const [filmWorkers, setFilmWorkers] = useState([]);
   const [usersWatched, setUsersWatched] = useState([]);
+  const [genres, setGenres] = useState([]);
+
   // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
 
   const series = [
@@ -46,6 +48,7 @@ function MovieDetails({ username, id }) {
         setFilmDetails(details);
         setFilmWorkers(json.roles);
         setUsersWatched(json.watched);
+        setGenres(json.genres);
 
         document.title = "FilmFriend - " + details.name;
       },
@@ -54,6 +57,7 @@ function MovieDetails({ username, id }) {
         setFilmWorkers([]);
         setFilmAwards([]);
         setUsersWatched([]);
+        setGenres([]);
         console.log(error);
       }
     );
@@ -85,6 +89,11 @@ function MovieDetails({ username, id }) {
       }
       i++;
     }
+
+    // Genres
+    list.push(<p key={"genres"} className="mb-0">
+      <b>{"genres"}</b>: {genres.map((e) => <>{e.name != "" ? e.name + ", " : ""}</>)}
+    </p>)
 
     return list;
   };
