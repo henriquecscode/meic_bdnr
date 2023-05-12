@@ -16,6 +16,7 @@ import MoviesAPI from "../../api/MoviesAPI";
 function MovieDetails({ username, id }) {
   const [filmDetails, setFilmDetails] = useState([]);
   const [filmAwards, setFilmAwards] = useState([]);
+  const [filmWorkers, setFilmWorkers] = useState([]);
   // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
   // const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
 
@@ -54,10 +55,14 @@ function MovieDetails({ username, id }) {
 
         setFilmDetails(details);
 
+        setFilmWorkers(json.roles);
+
         document.title = "FilmFriend - " + details.name;
       },
       (error) => {
         setFilmDetails([]);
+        setFilmWorkers([]);
+        setFilmAwards([]);
         console.log(error);
       }
     );
@@ -80,7 +85,7 @@ function MovieDetails({ username, id }) {
         list.push(
           <p key={i} className="mb-0">
             <b>{key}</b>:&nbsp;
-            {key == "tid" ?
+            {key === "tid" ?
               <Card.Link href={`https://www.imdb.com/title/${value}`} target="_blank" >{value}</Card.Link>
               : value
             }
@@ -92,6 +97,26 @@ function MovieDetails({ username, id }) {
 
     return list;
   };
+
+  const getWorkersList = () => {
+    let list = [];
+
+    filmWorkers.forEach((worker) => {
+      list.push(
+        <p key={`workers-list${worker.worker.nid}`} className="mb-0">
+          <b><Card.Link
+            href={`https://www.imdb.com/name/${worker.worker.nid}`}
+            target="_blank"
+          >
+            {worker.worker.name}
+          </Card.Link></b>: {worker.role.type ?? "Unknown role"}
+        </p>
+      );
+    })
+
+    return list;
+  };
+
 
   return (
     <div>
@@ -109,6 +134,9 @@ function MovieDetails({ username, id }) {
           <Col sm={8}>
             <h5>Details</h5>
             <div className="mb-4">{getDetailsList()}</div>
+
+            <h5>Workers</h5>
+            <div className="mb-4">{getWorkersList()}</div>
 
             <h5>Awards</h5>
             {filmAwards &&
