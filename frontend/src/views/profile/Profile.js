@@ -48,7 +48,7 @@ function Profile({ username }) {
     const api = new UsersAPI(username);
     api.getProfile(
       (data) => {
-        console.log(data);
+        // console.log(data);
 
         setUser({
           ...data.user,

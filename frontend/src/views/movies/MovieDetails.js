@@ -6,7 +6,6 @@ import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import Table from "react-bootstrap/Table";
 import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
@@ -16,8 +15,8 @@ import MoviesAPI from "../../api/MoviesAPI";
 function MovieDetails({ username, id }) {
   const [filmDetails, setFilmDetails] = useState([]);
   const [filmAwards, setFilmAwards] = useState([]);
-  const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
-  const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
+  // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
+  // const [usersWatched, setUsersWatched] = useState([]); // TODO: outside title, called "watched"
 
   const series = [
     { id: 1, name: "Avatar", nr: 1 },

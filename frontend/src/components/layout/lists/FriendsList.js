@@ -7,12 +7,8 @@ import FriendCard from "../../cards/FriendCard";
 import UsersAPI from "../../../api/UsersAPI";
 
 function FriendsList({ username, name, friends }) {
-  console.log(friends);
-
   const [list, setList] = useState(friends);
   const [level, setLevel] = useState(1);
-
-  console.log(list);
 
   const showMore = (event) => {
     event.preventDefault();
