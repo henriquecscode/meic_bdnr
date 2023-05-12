@@ -1,5 +1,6 @@
 package app.domain.derivatives;
 
+import app.domain.Genre;
 import app.domain.Title;
 
 import java.util.List;
@@ -9,6 +10,8 @@ public class MovieInfo {
     Title title;
     List<RoleInfo> roles;
     List<WatchInfo> watched;
+
+    List<Genre> genres;
 
     SeriesInfo series;
 
@@ -44,12 +47,21 @@ public class MovieInfo {
         this.series = series;
     }
 
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
     @Override
     public String toString() {
         return "MovieInfo{" +
                 "title=" + title +
                 ", roles=" + roles +
                 ", watched=" + watched +
+                ", genres=" + genres +
                 ", series=" + series +
                 '}';
     }

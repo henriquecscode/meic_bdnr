@@ -121,9 +121,11 @@ public class Load {
                 title.setProperty("awards", new EntityAwards().toString());
 
                 // Get genres
-                ArrayList<String> genresArray = new ArrayList<>(Arrays.asList(genres.split(";")));
-                ArrayList<String> wikiGenresArray = new ArrayList<>(Arrays.asList(wikiGenres.split(";")));
+                ArrayList<String> genresArray = new ArrayList<>(Arrays.asList(genres.split(";", -1)));
+                ArrayList<String> wikiGenresArray = new ArrayList<>(Arrays.asList(wikiGenres.split(";", -1)));
                 List<String> filmGenres = new ArrayList<>();
+                genresArray.removeIf(String::isEmpty);
+                wikiGenresArray.removeIf(String::isEmpty);
                 filmGenres.addAll(genresArray);
                 filmGenres.addAll(wikiGenresArray);
 
@@ -277,7 +279,7 @@ public class Load {
 
                 if (category.equals("actor")) {
                     Edge role = graph.addEdge(null, title, worker, "Character");
-                    role.setProperty("character", characters[0]);
+                    role.setProperty("name", characters[0]);
                 } else {
                     Edge role = graph.addEdge(null, title, worker, "Crew");
                     role.setProperty("type", category);
@@ -425,7 +427,7 @@ public class Load {
 
                 OrientVertex orientWorker = (OrientVertex) worker;
                 OrientVertex orientTitle = (OrientVertex) title;
-                Iterable<Edge> edges = orientWorker.getEdges(orientTitle, Direction.OUT);
+                Iterable<Edge> edges = orientWorker.getEdges(orientTitle, Direction.IN);
                 Edge edge;
                 EntityAwards awards;
                 if (edges.iterator().hasNext()) {

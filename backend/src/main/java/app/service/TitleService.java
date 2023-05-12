@@ -98,7 +98,17 @@ public class TitleService extends GeneralService {
             SeriesInfo seriesInfo = new SeriesInfo();
             seriesInfo.setSeries(series);
             seriesInfo.setTitles(seriesTitles);
+            movieInfo.setSeries(seriesInfo);
         }
+
+        // genres
+        Iterable<Vertex> foundGenres = titleVertex.getVertices(Direction.OUT, "HasGenre");
+        List<Genre> genres = new ArrayList<>();
+        for (Vertex genreVertex : foundGenres) {
+            Genre genre = Genre.fromVertex(genreVertex);
+            genres.add(genre);
+        }
+        movieInfo.setGenres(genres);
 
         return movieInfo;
     }
