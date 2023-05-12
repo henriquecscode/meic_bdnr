@@ -136,4 +136,125 @@ public class ProfileService extends GeneralService {
         }
         return false;
     }
+
+    private void updateWatchedEdge(Edge edge, Watched watched) {
+        if (watched.getVote() != null) {
+            edge.setProperty("vote", watched.getVote());
+        }
+        if (watched.getDate() != null) {
+            edge.setProperty("date", watched.getDate());
+        }
+        if (watched.getComment() != null) {
+            edge.setProperty("comment", watched.getComment());
+        }
+        graph.commit();
+    }
+
+    public boolean addWatched(String username, String title, Watched watched) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", title);
+
+        if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex titleVertex = foundTitles.iterator().next();
+
+        Iterable<Edge> foundWatched = userVertex.getEdges(Direction.OUT, "Watched");
+        for (Edge watchedEdge : foundWatched) {
+            Vertex watchedTitle = watchedEdge.getVertex(Direction.IN);
+            if (watchedTitle.equals(titleVertex)) {
+
+                //There is already one watched. We are going to change this
+                updateWatchedEdge(watchedEdge, watched);
+                return true;
+            }
+        }
+
+        //There is no watched. We are going to create one
+        Edge watchedEdge = userVertex.addEdge("Watched", titleVertex);
+        updateWatchedEdge(watchedEdge, watched);
+        return true;
+
+    }
+
+    public boolean removeWatched(String username, String title) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", title);
+
+        if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex titleVertex = foundTitles.iterator().next();
+
+        Iterable<Edge> foundWatched = userVertex.getEdges(Direction.OUT, "Watched");
+        for (Edge watchedEdge : foundWatched) {
+            Vertex watchedTitle = watchedEdge.getVertex(Direction.IN);
+            if (watchedTitle.equals(titleVertex)) {
+                watchedEdge.remove();
+                graph.commit();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addWatchlist(String username, String title) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", title);
+
+        if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex titleVertex = foundTitles.iterator().next();
+
+        Iterable<Edge> foundWatchlist = userVertex.getEdges(Direction.OUT, "ToWatch");
+        for (Edge watchlistEdge : foundWatchlist) {
+            Vertex watchlistTitle = watchlistEdge.getVertex(Direction.IN);
+            if (watchlistTitle.equals(titleVertex)) {
+                return false;
+            }
+        }
+
+        //There is no watchlist. We are going to create one
+        Edge watchlistEdge = userVertex.addEdge("ToWatch", titleVertex);
+        graph.commit();
+        return true;
+    }
+
+    public boolean removeWatchlist(String username, String title) {
+        setGraph();
+
+        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", title);
+
+        if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            return false;
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+        Vertex titleVertex = foundTitles.iterator().next();
+
+        Iterable<Edge> foundWatchlist = userVertex.getEdges(Direction.OUT, "ToWatch");
+        for (Edge watchlistEdge : foundWatchlist) {
+            Vertex watchlistTitle = watchlistEdge.getVertex(Direction.IN);
+            if (watchlistTitle.equals(titleVertex)) {
+                watchlistEdge.remove();
+                graph.commit();
+                return true;
+            }
+        }
+        return false;
+    }
 }

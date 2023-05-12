@@ -12,6 +12,12 @@ public class Watched {
     public Watched() {
     }
 
+    public Watched(Integer vote, String comment, Date date) {
+        this.vote = vote;
+        this.comment = comment;
+        this.date = date;
+    }
+
     public static Watched fromEdge(Edge edge) {
         Watched watched = new Watched();
         watched.vote = edge.getProperty("vote");
