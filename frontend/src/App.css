@@ -36,6 +36,11 @@
   aspect-ratio: 1/1;
 }
 
+.film-img {
+  max-height: 15rem;
+  width: auto;
+}
+
 .cards-container {
   display: flex;
   overflow-x: auto;
