@@ -103,14 +103,14 @@ function MovieDetails({ username, id }) {
 
     filmWorkers.forEach((worker) => {
       list.push(
-        <p key={`workers-list${worker.worker.nid}`} className="mb-0">
+        <>
           <b><Card.Link
             href={`https://www.imdb.com/name/${worker.worker.nid}`}
             target="_blank"
           >
             {worker.worker.name}
-          </Card.Link></b>: {worker.role.type ?? "Unknown role"}
-        </p>
+          </Card.Link></b>{"("} {worker.role.type ?? "Unknown role"} {"), "}
+        </>
       );
     })
 
