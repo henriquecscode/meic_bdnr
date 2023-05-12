@@ -19,20 +19,20 @@ function Profile({ username }) {
   //   picture: "user.png",
   // };
 
-  // const friends = [
-  //   {
-  //     id: 1,
-  //     username: "John Doe",
-  //     picture: "user.png",
-  //     level: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     username: "John Doe",
-  //     picture: "user.png",
-  //     level: 1,
-  //   },
-  // ];
+  const friends = [
+    {
+      id: 1,
+      username: "John Doe",
+      picture: "user.png",
+      level: 1,
+    },
+    {
+      id: 2,
+      username: "John Doe",
+      picture: "user.png",
+      level: 1,
+    },
+  ];
 
   // const movies = [
   //   {
@@ -88,7 +88,7 @@ function Profile({ username }) {
   ];
 
   const [user, setUser] = useState({});
-  const [friends, setFriends] = useState([]);
+  // const [friends, setFriends] = useState([]);
   const [movies, setMovies] = useState([]);
   // const [interactions, setInteractions] = useState([]);
   // const [series, setSeries] = useState([]);
@@ -100,12 +100,12 @@ function Profile({ username }) {
     api.getProfile(
       (data) => {
         setUser(data.user);
-        setFriends(data.friends);
+        // setFriends(data.friends);
         setMovies(data.toWatch);
       },
       (error) => {
         setUser({});
-        setFriends([]);
+        // setFriends([]);
         setMovies([]);
         console.log(error);
       }

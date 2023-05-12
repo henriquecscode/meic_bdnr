@@ -4,7 +4,10 @@ import Button from "react-bootstrap/Button";
 import { BsEye, BsEyeSlash, BsChatLeft, BsChatLeftText } from "react-icons/bs";
 
 export default function MovieCard({ username, movie, cardClassName }) {
-  // TODO: open modal to add interaction (vote, comment) to movie
+  // TODO: add and remove movie from watchlist functions
+
+  // TODO: open modal to add interaction (vote, comment) to movie if not already added
+  // otherwise show the interaction
 
   return (
     <Card className={"flex-row " + cardClassName} style={{ width: "18rem" }}>

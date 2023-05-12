@@ -13,7 +13,7 @@ function UserInfo({ user }) {
     <Row>
       <Col sm={3}>
         <Image
-          src={getImageSrc(user.picture)}
+          src={getImageSrc(user.picture ?? "user.png")}
           height={200}
           width={200}
           className="thumbnail-image profile-img"

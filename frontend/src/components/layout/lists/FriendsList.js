@@ -34,9 +34,13 @@ function FriendsList({ username, name, friends }) {
     api.addFriend(
       friend,
       (response) => {
-        console.log(response);
-        // TODO: get friends list again
-        // OR add to list and make this order by level when rendering
+        if (response) {
+          console.log("Friend added successfully");
+          // TODO: get friends list again
+          // OR add to list and make this order by level when rendering
+        } else {
+          console.log("Friend not exists or already added");
+        }
       },
       (error) => {
         console.log(error);
@@ -51,7 +55,11 @@ function FriendsList({ username, name, friends }) {
     api.removeFriend(
       friend,
       (response) => {
-        console.log(response);
+        if (response) {
+          console.log("Friend removed successfully");
+        } else {
+          console.log("Friend not of the user");
+        }
       },
       (error) => {
         console.log(error);
