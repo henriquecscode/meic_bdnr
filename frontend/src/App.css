@@ -48,13 +48,19 @@
 }
 
 .card-item {
-  width: 12rem;
-  min-width: 12rem;
+  width: 13rem;
+  min-width: 13rem;
 }
 
 .card-item > .card-img-top {
   max-height: 12rem;
   object-fit: cover;
+}
+
+.line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*MOVIES CARD*/

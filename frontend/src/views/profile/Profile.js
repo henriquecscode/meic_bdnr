@@ -96,10 +96,11 @@ function Profile({ username }) {
   useEffect(() => {
     document.title = `FilmFriend - ${username}'s Profile`;
 
-    const api = new UsersAPI("user2");
+    const api = new UsersAPI(username);
     api.getProfile(
       (data) => {
         setUser(data.user);
+        console.log(data);
         // setFriends(data.friends);
         setMovies(data.toWatch);
       },
@@ -130,7 +131,11 @@ function Profile({ username }) {
               />
             </Col>
             <Col sm={9} className="ps-4">
-              <WatchList name={"WatchList"} movies={movies} />
+              <WatchList
+                username={username}
+                name={"WatchList"}
+                movies={movies}
+              />
               <br />
               <InteractionsList
                 name={"Interactions"}

@@ -54,7 +54,7 @@ function MovieDetails({ username, id }) {
 
         setFilmDetails(details);
 
-        document.title = details.name;
+        document.title = "FilmFriend - " + details.name;
       },
       (error) => {
         setFilmDetails([]);
