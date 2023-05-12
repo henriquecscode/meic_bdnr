@@ -34,29 +34,6 @@ function Profile({ username }) {
     },
   ];
 
-  // const interactions = [
-  //   {
-  //     id: 1,
-  //     movie: {
-  //       id: 1,
-  //       title: "Movie 1",
-  //     },
-  //     vote: 1,
-  //     comment:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //   },
-  //   {
-  //     id: 2,
-  //     movie: {
-  //       id: 2,
-  //       title: "Movie 2",
-  //     },
-  //     vote: 1,
-  //     comment:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //   },
-  // ];
-
   const series = [
     {
       id: 1,
@@ -84,8 +61,16 @@ function Profile({ username }) {
     const api = new UsersAPI(username);
     api.getProfile(
       (data) => {
-        setUser(data.user);
         console.log(data);
+
+        setUser({
+          ...data.user,
+          email: data.user.username + "@gmail.com",
+          bio: "Hi! I'm " + data.user.name + " and I love movies!",
+          nationality: data.countries
+            ? data.countries.map((c) => c.name).join(", ")
+            : "Unknown",
+        });
         // setFriends(data.friends);
         setMovies(data.toWatch);
         setInteractions(

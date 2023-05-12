@@ -2,7 +2,6 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 
 function InteractionsList({ username, name, interactions }) {
-  console.log(interactions);
   return (
     <div>
       <h4 className="mb-3">{name}</h4>
