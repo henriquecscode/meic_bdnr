@@ -2,7 +2,14 @@ import React from "react";
 import Spinner from "react-bootstrap/Spinner";
 import MovieCard from "../../cards/MovieCard";
 
-function MoviesList({ username, movies, loading }) {
+function MoviesList({
+  username,
+  movies,
+  watchlist,
+  onAddWatchlistClick = () => {},
+  onRemoveWatchlistClick = () => {},
+  loading,
+}) {
   if (loading) {
     return (
       <Spinner animation="border" variant="darkblue" className="text-center" />
@@ -30,6 +37,9 @@ function MoviesList({ username, movies, loading }) {
                       username={username}
                       movie={movie}
                       user={object.user}
+                      inWatchlist={watchlist.includes(movie.tid)}
+                      onAddWatchlistClick={onAddWatchlistClick}
+                      onRemoveWatchlistClick={onRemoveWatchlistClick}
                       cardClassName={"card-item w-100"}
                     />
                   ))

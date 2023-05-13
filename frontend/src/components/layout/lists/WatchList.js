@@ -32,10 +32,21 @@ function WatchList({ username, name, movies }) {
                     {movie.name}
                   </Card.Title>
                 </OverlayTrigger>
-                <Card.Subtitle className="mb-2 text-muted">{`Duration: ${movie.duration ?? "??"
-                  } | Votes: ${movie.nVotes}`}</Card.Subtitle>
-                <Card.Text>[{<Card.Link href={`https://www.imdb.com/title/${movie.tid}`}
-                  target="_blank" >{movie.tid}</Card.Link>}]</Card.Text>
+                <Card.Subtitle className="mb-2 text-muted">{`Duration: ${
+                  movie.duration ?? "??"
+                } | Votes: ${movie.nVotes}`}</Card.Subtitle>
+                <Card.Text>
+                  [
+                  {
+                    <Card.Link
+                      href={`https://www.imdb.com/title/${movie.tid}`}
+                      target="_blank"
+                    >
+                      {movie.tid}
+                    </Card.Link>
+                  }
+                  ]
+                </Card.Text>
 
                 <Card.Link
                   href={`/movies/${movie.tid}?username=${username}`}

@@ -8,39 +8,18 @@ import Button from "react-bootstrap/Button";
 import MoviesList from "../../components/layout/lists/MoviesList";
 
 import RecommendationsAPI from "../../api/RecommendationsAPI";
+import UsersAPI from "../../api/UsersAPI";
 
 function Recommendations({ username }) {
-  // TODO: check with expected data format
-  // const moviesFriendsss = [
-  //   {
-  //     id: 1,
-  //     image: "movie1.jpg",
-  //     title: "Movie 1",
-  //     genre: "Action",
-  //     description:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //     watchlist: true,
-  //     watched: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "movie2.jpg",
-  //     title: "Movie 2",
-  //     genre: "Action",
-  //     description:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //     watchlist: false,
-  //     watched: true,
-  //   },
-  // ];
-
   const [moviesFriends, setMoviesFriends] = useState([]);
   const [moviesCountry, setMoviesCountry] = useState([]);
   const [moviesAdvice, setMoviesAdvice] = useState([]);
+  const [userWatchlist, setUserWatchlist] = useState([]);
 
   const [loadingFriends, setLoadingFriends] = useState(true);
   const [loadingCountry, setLoadingCountry] = useState(true);
   const [loadingAdvice, setLoadingAdvice] = useState(true);
+  const [loadingWatchlist, setLoadingWatchlist] = useState(true);
 
   const formControl = useRef();
   const friendsLevel = 3;
@@ -51,7 +30,6 @@ function Recommendations({ username }) {
     api.getFriendsFilms(
       level,
       (data) => {
-        console.log("friends", data);
         setMoviesFriends(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -76,7 +54,6 @@ function Recommendations({ username }) {
     // Country
     api.getCountryFilms(
       (data) => {
-        console.log("country", data);
         setMoviesCountry(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -92,7 +69,6 @@ function Recommendations({ username }) {
     // Advice
     api.getAdviceFilms(
       (data) => {
-        console.log("advise", data);
         setMoviesAdvice(
           data && Array.isArray(data) && data.length > 0 ? data : []
         );
@@ -104,11 +80,74 @@ function Recommendations({ username }) {
         console.log(error);
       }
     );
+
+    // Watchlist
+    const usersAPI = new UsersAPI(username);
+    usersAPI.getProfile(
+      (data) => {
+        setUserWatchlist(
+          data.toWatch && Array.isArray(data.toWatch) && data.toWatch.length > 0
+            ? data.toWatch.map((movie) => movie.tid)
+            : []
+        );
+        setLoadingWatchlist(false);
+      },
+      (error) => {
+        setUserWatchlist([]);
+        setLoadingWatchlist(false);
+        console.log(error);
+      }
+    );
   }, [friendsLevel, username]);
 
   const handleFriendshipClick = () => {
     const api = new RecommendationsAPI(username);
     getFriendsFilms(api, formControl.current.value);
+  };
+
+  const handleAddWatchlistClick = (movie) => {
+    const usersAPI = new UsersAPI(username);
+    usersAPI.addWatchlist(
+      movie.tid,
+      (data) => {
+        if (data) {
+          console.log("Added to watchlist successfully!");
+          setUserWatchlist([...userWatchlist, movie.tid]);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
+  const handleRemoveWatchlistClick = (movie) => {
+    const usersAPI = new UsersAPI(username);
+    usersAPI.removeWatchlist(
+      movie.tid,
+      (data) => {
+        if (data) {
+          console.log("Removed from watchlist successfully!");
+          setUserWatchlist(userWatchlist.filter((tid) => tid !== movie.tid));
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
+  const getMoviesList = (movies, loading) => {
+    return (
+      <MoviesList
+        username={username}
+        movies={movies}
+        watchlist={userWatchlist}
+        loading={loading || loadingWatchlist}
+        onAddWatchlistClick={handleAddWatchlistClick}
+        onRemoveWatchlistClick={handleRemoveWatchlistClick}
+      />
+    );
   };
 
   return (
@@ -139,31 +178,21 @@ function Recommendations({ username }) {
             </Button>
           </InputGroup>
 
-          <MoviesList
-            username={username}
-            movies={moviesFriends}
-            loading={loadingFriends}
-          />
+          {getMoviesList(moviesFriends, loadingFriends)}
         </Tab>
         <Tab eventKey="country" title="Friends Same Country">
           <p className="fw-bold">
             List of Movies that the Friends of your Country Watched
           </p>
-          <MoviesList
-            username={username}
-            movies={moviesCountry}
-            loading={loadingCountry}
-          />
+
+          {getMoviesList(moviesCountry, loadingCountry)}
         </Tab>
         <Tab eventKey="advice" title="Friends WatchList">
           <p className="fw-bold">
             List of Movies that your Friends want to Watch that you didn't like
           </p>
-          <MoviesList
-            username={username}
-            movies={moviesAdvice}
-            loading={loadingAdvice}
-          />
+
+          {getMoviesList(moviesAdvice, loadingAdvice)}
         </Tab>
       </Tabs>
     </Container>

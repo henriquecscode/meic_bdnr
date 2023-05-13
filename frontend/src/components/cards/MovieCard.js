@@ -1,16 +1,19 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { BsEye, BsEyeSlash, BsChatLeft, BsChatLeftText } from "react-icons/bs";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 import movieImgHolder from "../../assets/movie-holder-img.jpg";
 
-export default function MovieCard({ username, movie, user, cardClassName }) {
-  // TODO: add and remove movie from watchlist functions
-
-  // TODO: open modal to add interaction (vote, comment) to movie if not already added
-  // otherwise show the interaction
-
+export default function MovieCard({
+  username,
+  movie,
+  user,
+  inWatchlist,
+  onAddWatchlistClick = () => {},
+  onRemoveWatchlistClick = () => {},
+  cardClassName,
+}) {
   return (
     <Card className={"flex-row " + cardClassName} style={{ width: "18rem" }}>
       <Card.Img
@@ -23,23 +26,16 @@ export default function MovieCard({ username, movie, user, cardClassName }) {
           {movie.name}
           <div>
             <Button
-              variant={movie.watchlist ? "darkblue" : "light"}
+              variant={inWatchlist ? "darkblue" : "light"}
               size="sm"
               className="me-2"
+              onClick={() => {
+                inWatchlist
+                  ? onRemoveWatchlistClick(movie)
+                  : onAddWatchlistClick(movie);
+              }}
             >
-              {movie.watchlist ? <BsEye size={20} /> : <BsEyeSlash size={20} />}
-            </Button>
-
-            <Button
-              variant={movie.watched ? "darkblue" : "light"}
-              size="sm"
-              className="me-2"
-            >
-              {movie.watched ? (
-                <BsChatLeftText size={20} />
-              ) : (
-                <BsChatLeft size={20} />
-              )}
+              {inWatchlist ? <BsEye size={20} /> : <BsEyeSlash size={20} />}
             </Button>
           </div>
         </Card.Title>

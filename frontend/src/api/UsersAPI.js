@@ -25,4 +25,14 @@ export default class UsersAPI {
     let endpoint = this.PROFILE_BASE_URL + `/friends/${friend}/remove`;
     API.request("POST", endpoint, successCallback, errorCallback);
   }
+
+  addWatchlist(tid, successCallback, errorCallback) {
+    let endpoint = this.PROFILE_BASE_URL + `/watchlist/${tid}/add`;
+    API.request("POST", endpoint, successCallback, errorCallback);
+  }
+
+  removeWatchlist(tid, successCallback, errorCallback) {
+    let endpoint = this.PROFILE_BASE_URL + `/watchlist/${tid}/remove`;
+    API.request("POST", endpoint, successCallback, errorCallback);
+  }
 }
