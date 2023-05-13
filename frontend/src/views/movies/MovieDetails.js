@@ -311,7 +311,7 @@ function MovieDetails({ username, id }) {
                   />
                   <Form.Text className="text-muted">
                     To only mark as watched, just submit with empty fields.
-                    To update a comment, just write a new one.
+                    To update a review, just write a new one.
                   </Form.Text>
                 </div>
 
