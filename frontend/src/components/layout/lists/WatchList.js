@@ -19,6 +19,7 @@ function WatchList({ username, name, movies, setMovies }) {
       },
       (error) => {
         console.log(error);
+        alert("Error removing from watchlist!");
       }
     );
   };
