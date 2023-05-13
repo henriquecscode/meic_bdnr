@@ -279,25 +279,33 @@ function MovieDetails({ username, id }) {
 
             <Form ref={formRef} className="pt-3 bd-highlight" onSubmit={submitWatchForm}>
               <InputGroup className="mb-3">
-                <Form.Control
-                  style={{ flexGrow: 5 }}
-                  name="comment"
-                  aria-label="Comment"
-                  placeholder="Comment something..."
-                />
+                <div style={{ flexGrow: 5 }}>
+                  <Form.Control
+                    name="comment"
+                    aria-label="Comment"
+                    placeholder="Comment something..."
+                  />
+                  <Form.Text className="text-muted">
+                    To update a comment, just write a new one.
+                  </Form.Text>
+                </div>
 
-                <Form.Control
-                  name="vote"
-                  aria-label="Vote"
-                  placeholder="Vote"
-                  type="number"
-                  min={0}
-                  max={10}
-                />
+                <div>
+                  <Form.Control
+                    name="vote"
+                    aria-label="Vote"
+                    placeholder="Vote"
+                    type="number"
+                    min={0}
+                    max={10}
+                  />
+                </div>
 
-                <Button type="submit" variant="darkblue">
-                  Submit
-                </Button>
+                <div>
+                  <Button type="submit" variant="darkblue">
+                    Submit
+                  </Button>
+                </div>
               </InputGroup>
             </Form>
           </Col>
