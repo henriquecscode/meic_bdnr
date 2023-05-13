@@ -48,8 +48,7 @@
 }
 
 .card-item {
-  width: 13rem;
-  min-width: 13rem;
+  min-width: 15rem;
 }
 
 .card-item > .card-img-top {
