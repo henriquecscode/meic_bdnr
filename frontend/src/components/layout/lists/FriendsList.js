@@ -11,6 +11,8 @@ function FriendsList({ username, name, friends }) {
   const [list, setList] = useState(friends);
   const [level, setLevel] = useState(1);
 
+  const [friendName, setFriendName] = useState("");
+
   const showMore = (event) => {
     event.preventDefault();
 
@@ -41,8 +43,6 @@ function FriendsList({ username, name, friends }) {
     );
   };
 
-  const [friendName, setFriendName] = useState("");
-
   const handleAddFriend = (event, friend) => {
     event.preventDefault();
 
@@ -52,8 +52,19 @@ function FriendsList({ username, name, friends }) {
       (response) => {
         if (response) {
           console.log("Friend added successfully");
-          // TODO: get friends list again
-          // OR add to list and make this order by level when rendering
+
+          if (list.find((f) => f.username === friend) !== undefined) {
+            list.find((f) => f.username === friend).level = 1;
+          } else {
+            list.unshift({
+              id: list.length,
+              username: friend,
+              picture: "user.png", // TODO: change to f.picture when available
+              level: 1,
+            });
+          }
+          setFriendName("");
+          setList([...list]);
         } else {
           console.log("Friend not exists or already added");
         }
@@ -73,7 +84,8 @@ function FriendsList({ username, name, friends }) {
       (response) => {
         if (response) {
           console.log("Friend removed successfully");
-          // TODO: remove from list
+          list.find((f) => f.username === friend).level = -1;
+          setList([...list]);
         } else {
           console.log("Friend not of the user");
         }

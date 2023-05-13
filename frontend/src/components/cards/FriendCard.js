@@ -12,10 +12,9 @@ export default function FriendCard({
   withIcon = false,
   showLevel = false,
   voteInfo = null,
-  handleAddFriend = () => { },
-  handleRemoveFriend = () => { },
+  handleAddFriend = () => {},
+  handleRemoveFriend = () => {},
 }) {
-
   const votePopover = (info) => (
     <Popover id="popover-basic">
       <Popover.Header as="h3">{"Vote"}</Popover.Header>
@@ -51,12 +50,14 @@ export default function FriendCard({
         <div>
           <p className="mb-1">{friend.username}</p>
           {showLevel ? (
-            <p className="text-muted">{`Friend ${friend.level}º level`}</p>
+            <p className="text-muted">{`Friend ${
+              friend.level !== -1 ? friend.level + "º" : "--"
+            } level`}</p>
           ) : null}
         </div>
       </div>
       {withIcon ? (
-        friend.level > 1 ? (
+        friend.level !== 1 ? (
           <BsPlus
             size={20}
             onClick={(event) => handleAddFriend(event, friend.username)}
@@ -69,9 +70,7 @@ export default function FriendCard({
         )
       ) : null}
 
-      {voteInfo ? (
-        getVoteButton(voteInfo)
-      ) : null}
+      {voteInfo ? getVoteButton(voteInfo) : null}
     </div>
   );
 }

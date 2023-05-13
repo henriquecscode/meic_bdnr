@@ -11,14 +11,6 @@ import SeriesList from "../../components/layout/lists/SeriesList";
 import UsersAPI from "../../api/UsersAPI";
 
 function Profile({ username }) {
-  // const user = {
-  //   username: username,
-  //   email: "johndoe@gmail.com",
-  //   bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //   nationality: "American",
-  //   picture: "user.png",
-  // };
-
   const series = [
     {
       id: 1,
@@ -48,8 +40,6 @@ function Profile({ username }) {
     const api = new UsersAPI(username);
     api.getProfile(
       (data) => {
-        // console.log(data);
-
         setUser({
           ...data.user,
           email: data.user.username + "@gmail.com",
