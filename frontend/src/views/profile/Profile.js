@@ -113,14 +113,14 @@ function Profile({ username }) {
             <Col md={9} className="ps-4">
               <WatchList
                 username={username}
-                name={"WatchList"}
+                name={"Films to Watch - WatchList"}
                 movies={movies}
                 setMovies={setMovies}
               />
               <br />
               <InteractionsList
                 username={username}
-                name={"Interactions"}
+                name={"Films Watched (and reviews)"}
                 interactions={interactions}
               />
               <br />

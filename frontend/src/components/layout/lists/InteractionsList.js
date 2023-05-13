@@ -22,13 +22,16 @@ function InteractionsList({ username, name, interactions }) {
                     {interaction.movie.name}
                   </Card.Link>
                 </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{`Vote: ${
-                  interaction.vote ?? "--"
-                }`}</Card.Subtitle>
 
-                <Card.Text className="line-ellipsis">
-                  {interaction.comment ?? <i>No Comment...</i>}
-                </Card.Text>
+                {interaction.vote && interaction.vote !== "" && (
+                  <Card.Subtitle className="mb-2 text-muted">{`Vote: ${interaction.vote}`}</Card.Subtitle>
+                )}
+
+                {interaction.comment && interaction.comment !== "" && (
+                  <Card.Text className="line-ellipsis">
+                    {interaction.comment}
+                  </Card.Text>
+                )}
 
                 <span className="blockquote-footer ps-2">
                   <cite title="date">{interaction.date.split("T")[0]}</cite>
