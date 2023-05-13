@@ -42,9 +42,9 @@ export default function MovieCard({
 
         <Card.Subtitle className="mb-2 text-muted">{`TID: ${movie.tid}`}</Card.Subtitle>
 
-        <Card.Text>{`Duration: ${movie.duration ?? "??"} | Votes: ${
+        <Card.Text>{`Duration: ${movie.duration ?? "??"} | Nº Votes: ${
           movie.nVotes ?? "--"
-        } | Comments: ${movie.nComments ?? "--"}`}</Card.Text>
+        } | Nº Comments: ${movie.nComments ?? "--"}`}</Card.Text>
 
         <Card.Text>
           <Card.Link

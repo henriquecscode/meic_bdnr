@@ -46,7 +46,7 @@ function WatchList({ username, name, movies, setMovies }) {
                 </OverlayTrigger>
                 <Card.Subtitle className="mb-2 text-muted">{`Duration: ${
                   movie.duration ?? "??"
-                } | Votes: ${movie.nVotes}`}</Card.Subtitle>
+                } | Nº Votes: ${movie.nVotes}`}</Card.Subtitle>
                 <Card.Text>
                   [
                   {
