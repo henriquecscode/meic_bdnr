@@ -100,8 +100,8 @@ function MovieDetails({ username, id }) {
     list.push(
       <p key={"genres"} className="mb-0">
         <b>{"genres"}</b>:{" "}
-        {genres.map((e) => (
-          <>{e.name !== "" ? e.name + ", " : ""}</>
+        {genres.map((e, index) => (
+          <span key={index}>{e.name !== "" ? e.name + ", " : ""}</span>
         ))}
       </p>
     );
@@ -113,9 +113,9 @@ function MovieDetails({ username, id }) {
     // TODO: show entityAwards in tooltip if we have this info in endpoint
     let list = [];
 
-    filmWorkers.forEach((worker) => {
+    filmWorkers.forEach((worker, index) => {
       list.push(
-        <>
+        <span key={index}>
           <b>
             <Card.Link
               href={`https://www.imdb.com/name/${worker.worker.nid}`}
@@ -124,8 +124,10 @@ function MovieDetails({ username, id }) {
               {worker.worker.name}
             </Card.Link>
           </b>
-          {"("} {worker.role.type ?? "Unknown role"} {"), "}
-        </>
+          {" ("}
+          {worker.role.type ?? "Unknown role"}
+          {"), "}
+        </span>
       );
     });
 
@@ -254,7 +256,7 @@ function MovieDetails({ username, id }) {
         <Row className="py-2">
           <div className="d-flex flex-wrap">
             {series.map((s, index) => (
-              <div className="px-1 w-25">
+              <div className="px-1 w-25" key={index}>
                 <FilmCard
                   key={index}
                   film={s}
