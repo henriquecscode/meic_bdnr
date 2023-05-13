@@ -102,6 +102,30 @@ function MovieDetails({ username, id }) {
     formRef.current.reset();
   };
 
+  const removeWatch = () => {
+    const api = new UsersAPI(username);
+    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
+
+    api.removeWatched(id,
+      (json) => {
+        console.log(json);
+
+        const api = new MoviesAPI();
+
+        // Update watched users
+        api.getFilm(
+          id,
+          (json) => {
+            setUsersWatched(json.watched);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      },
+      (error) => { console.log(error); });
+  };
+
   const getDetailsList = () => {
     let list = [];
 
@@ -180,7 +204,7 @@ function MovieDetails({ username, id }) {
       if (user.watched.comment)
         list.push({
           text: user.watched.comment,
-          author: user.user.name,
+          author: user.user,
           vote: user.watched.vote,
           date: user.watched.date,
         });
@@ -268,7 +292,7 @@ function MovieDetails({ username, id }) {
             {comments && Array.isArray(comments) && comments.length > 0 ? (
               <div>
                 {comments.map((c, index) => (
-                  <CommentCard comment={c} key={index} />
+                  <CommentCard comment={c} key={index} withDelete={c.author.username == username} onDelete={() => c.author.username == username ? removeWatch() : null} />
                 ))}
               </div>
             ) : (
@@ -286,6 +310,7 @@ function MovieDetails({ username, id }) {
                     placeholder="Comment something..."
                   />
                   <Form.Text className="text-muted">
+                    To only mark as watched, just submit with empty fields.
                     To update a comment, just write a new one.
                   </Form.Text>
                 </div>
