@@ -80,10 +80,16 @@ function MovieDetails({ username, id }) {
         list.push(
           <p key={i} className="mb-0">
             <b>{key}</b>:&nbsp;
-            {key === "tid" ?
-              <Card.Link href={`https://www.imdb.com/title/${value}`} target="_blank" >{value}</Card.Link>
-              : value
-            }
+            {key === "tid" ? (
+              <Card.Link
+                href={`https://www.imdb.com/title/${value}`}
+                target="_blank"
+              >
+                {value}
+              </Card.Link>
+            ) : (
+              value
+            )}
           </p>
         );
       }
@@ -91,9 +97,14 @@ function MovieDetails({ username, id }) {
     }
 
     // Genres
-    list.push(<p key={"genres"} className="mb-0">
-      <b>{"genres"}</b>: {genres.map((e) => <>{e.name != "" ? e.name + ", " : ""}</>)}
-    </p>)
+    list.push(
+      <p key={"genres"} className="mb-0">
+        <b>{"genres"}</b>:{" "}
+        {genres.map((e) => (
+          <>{e.name !== "" ? e.name + ", " : ""}</>
+        ))}
+      </p>
+    );
 
     return list;
   };
@@ -105,15 +116,18 @@ function MovieDetails({ username, id }) {
     filmWorkers.forEach((worker) => {
       list.push(
         <>
-          <b><Card.Link
-            href={`https://www.imdb.com/name/${worker.worker.nid}`}
-            target="_blank"
-          >
-            {worker.worker.name}
-          </Card.Link></b>{"("} {worker.role.type ?? "Unknown role"} {"), "}
+          <b>
+            <Card.Link
+              href={`https://www.imdb.com/name/${worker.worker.nid}`}
+              target="_blank"
+            >
+              {worker.worker.name}
+            </Card.Link>
+          </b>
+          {"("} {worker.role.type ?? "Unknown role"} {"), "}
         </>
       );
-    })
+    });
 
     return list;
   };
@@ -121,9 +135,19 @@ function MovieDetails({ username, id }) {
   const getComments = () => {
     let list = [];
 
-    usersWatched.forEach((user) => { if (user.watched.comment) list.push({ "text": user.watched.comment, "author": user.user.name, "vote": user.watched.vote, "date": user.watched.date }) });
+    usersWatched.forEach((user) => {
+      if (user.watched.comment)
+        list.push({
+          text: user.watched.comment,
+          author: user.user.name,
+          vote: user.watched.vote,
+          date: user.watched.date,
+        });
+    });
 
-    list.sort((a, b) => { return a.date < b.date ? -1 : 1; });
+    list.sort((a, b) => {
+      return a.date < b.date ? -1 : 1;
+    });
 
     return list;
   };
@@ -152,12 +176,13 @@ function MovieDetails({ username, id }) {
 
             <h5>Awards</h5>
             {filmAwards &&
-              Array.isArray(filmAwards) &&
-              filmAwards.length > 0 ? (
+            Array.isArray(filmAwards) &&
+            filmAwards.length > 0 ? (
               <div>
                 {filmAwards.map((a, index) => (
                   <p key={index} className="mb-0">
-                    {a.awardName} <i>({a.receivedOn === "" ? "??" : a.receivedOn} )</i>
+                    {a.awardName}{" "}
+                    <i>({a.receivedOn === "" ? "??" : a.receivedOn} )</i>
                   </p>
                 ))}
               </div>
@@ -174,13 +199,19 @@ function MovieDetails({ username, id }) {
         <Row className="my-2">
           <Col sm={3} className="py-2 bg-light">
             <h5>People that watched</h5>
-            {usersWatched && Array.isArray(usersWatched) && usersWatched.length > 0 ? (
+            {usersWatched &&
+            Array.isArray(usersWatched) &&
+            usersWatched.length > 0 ? (
               <div
                 className="pt-2"
                 style={{ display: "grid", gridGap: "0.5rem" }}
               >
                 {usersWatched.map((user, index) => (
-                  <FriendCard friend={user.user} voteInfo={user.watched.vote} key={index} />
+                  <FriendCard
+                    friend={user.user}
+                    voteInfo={user.watched.vote}
+                    key={index}
+                  />
                 ))}
               </div>
             ) : (

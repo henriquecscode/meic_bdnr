@@ -39,6 +39,7 @@ function NavBar({ username }) {
               <Nav.Link href={`/login?username=${username}`}>login</Nav.Link>
               <Nav.Link href={`/signin?username=${username}`}>signin</Nav.Link>
             */}
+            <Nav.Link href={`/users?username=${username}`}>(Users)</Nav.Link>
             <Nav.Link href={`/analytics?username=${username}`}>
               Analytics
             </Nav.Link>

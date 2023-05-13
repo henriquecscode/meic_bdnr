@@ -7,6 +7,10 @@ export default class UsersAPI {
     this.PROFILE_BASE_URL = this.PROFILE_BASE_URL + `/${username}`;
   }
 
+  getAll(successCallback, errorCallback) {
+    API.request("GET", "/users", successCallback, errorCallback);
+  }
+
   getProfile(successCallback, errorCallback) {
     let endpoint = this.PROFILE_BASE_URL;
     API.request("GET", endpoint, successCallback, errorCallback);

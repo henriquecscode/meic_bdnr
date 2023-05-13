@@ -8,6 +8,7 @@ import Movies from "./views/movies/Movies.js";
 import MovieDetails from "./views/movies/MovieDetails.js";
 import Recommendations from "./views/recommendations/Recommendations.js";
 import Analytics from "./views/analytics/Analytics.js";
+import Users from "./views/profile/Users.js";
 
 function App() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -37,6 +38,7 @@ function App() {
             path="/analytics"
             element={<Analytics username={username} />}
           />
+          <Route path="/users" element={<Users username={username} />} />
           <Route path="*" element={<Movies username={username} />} />
         </Routes>
       </Router>
