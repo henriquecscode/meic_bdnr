@@ -31,7 +31,12 @@ function FriendsList({ username, name, friends }) {
             };
           });
 
-          setList(list.concat(more));
+          // remove from list all friends that are already in the new list
+          const cleanList = list.filter(
+            (f) => more.find((m) => m.username === f.username) === undefined
+          );
+
+          setList(cleanList.concat(more));
           setLevel(level + 1);
         } else {
           setLevel(-1);

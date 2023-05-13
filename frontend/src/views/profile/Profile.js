@@ -97,7 +97,7 @@ function Profile({ username }) {
       <div>
         <Container className="py-5">
           <Row>
-            <Col sm={3} className="pe-3 border-end">
+            <Col md={3} className="pe-3 border-end">
               {loading ? (
                 <p>
                   <i>Loading FriendsList...</i>
@@ -110,7 +110,7 @@ function Profile({ username }) {
                 />
               )}
             </Col>
-            <Col sm={9} className="ps-4">
+            <Col md={9} className="ps-4">
               <WatchList
                 username={username}
                 name={"WatchList"}
