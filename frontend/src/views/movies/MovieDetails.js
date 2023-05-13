@@ -306,9 +306,9 @@ function MovieDetails({ username, id }) {
                   <CommentCard
                     comment={c}
                     key={index}
-                    withDelete={c.author.username == username}
+                    withDelete={c.author.username === username}
                     onDelete={() =>
-                      c.author.username == username ? removeWatch() : null
+                      c.author.username === username ? removeWatch() : null
                     }
                   />
                 ))}
@@ -333,7 +333,7 @@ function MovieDetails({ username, id }) {
                   />
                   <Form.Text className="text-muted">
                     To only mark as watched, just submit with empty fields. To
-                    update a comment, just write a new one.
+                    update a review, just write a new one.
                   </Form.Text>
                 </div>
 
