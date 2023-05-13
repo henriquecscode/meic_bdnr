@@ -1,16 +1,27 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import { BsTrash } from "react-icons/bs";
 
-function WatchList({ username, name, movies }) {
-  // TODO: change remove button - to options to remove but also to add to watched list (add interaction)
+import UsersAPI from "../../../api/UsersAPI";
 
-  // const handleRemove = (id) => {
-  //   // TODO: remove movie from watchlist
-  //   console.log(id);
-  // };
+function WatchList({ username, name, movies, setMovies }) {
+  const handleRemove = (tid) => {
+    const api = new UsersAPI(username);
+    api.removeWatchlist(
+      tid,
+      (data) => {
+        if (data) {
+          console.log("Removed from watchlist successfully!");
+          setMovies(movies.filter((movie) => movie.tid !== tid));
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
 
   return (
     <div>
@@ -55,13 +66,11 @@ function WatchList({ username, name, movies }) {
                   See Details
                 </Card.Link>
 
-                {/* <Button
-                  variant="danger"
-                  size="sm"
+                <BsTrash
+                  size={20}
+                  className="watchlist-remove"
                   onClick={() => handleRemove(movie.tid)}
-                >
-                  Remove
-                </Button> */}
+                />
               </Card.Body>
             </Card>
           ))}

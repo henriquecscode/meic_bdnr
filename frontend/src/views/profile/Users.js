@@ -16,8 +16,6 @@ function Users({ username }) {
     const api = new UsersAPI(username);
     api.getAll(
       (data) => {
-        console.log(data);
-
         setUsers(
           data.map((item) => {
             return { name: item.username };

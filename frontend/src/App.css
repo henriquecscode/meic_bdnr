@@ -63,6 +63,12 @@
   text-overflow: ellipsis;
 }
 
+.watchlist-remove {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
 /*MOVIES CARD*/
 
 .card-movie-img {

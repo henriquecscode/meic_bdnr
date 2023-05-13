@@ -115,6 +115,7 @@ function Profile({ username }) {
                 username={username}
                 name={"WatchList"}
                 movies={movies}
+                setMovies={setMovies}
               />
               <br />
               <InteractionsList
