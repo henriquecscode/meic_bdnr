@@ -78,7 +78,8 @@ function MovieDetails({ username, id }) {
     console.log(watched);
     if (id === undefined) id = window.location.pathname.replace("/movies/", "");
 
-    api.addWatched(id,
+    api.addWatched(
+      id,
       (json) => {
         console.log(json);
 
@@ -95,8 +96,11 @@ function MovieDetails({ username, id }) {
           }
         );
       },
-      (error) => { console.log(error); },
-      watched);
+      (error) => {
+        console.log(error);
+      },
+      watched
+    );
 
     // Clear form
     formRef.current.reset();
@@ -106,7 +110,8 @@ function MovieDetails({ username, id }) {
     const api = new UsersAPI(username);
     if (id === undefined) id = window.location.pathname.replace("/movies/", "");
 
-    api.removeWatched(id,
+    api.removeWatched(
+      id,
       (json) => {
         console.log(json);
 
@@ -123,7 +128,10 @@ function MovieDetails({ username, id }) {
           }
         );
       },
-      (error) => { console.log(error); });
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   const getDetailsList = () => {
@@ -242,13 +250,16 @@ function MovieDetails({ username, id }) {
 
             <h5>Awards</h5>
             {filmAwards &&
-              Array.isArray(filmAwards) &&
-              filmAwards.length > 0 ? (
+            Array.isArray(filmAwards) &&
+            filmAwards.length > 0 ? (
               <div>
                 {filmAwards.map((a, index) => (
                   <p key={index} className="mb-0">
                     {a.awardName}{" "}
-                    <i>({a.receivedOn === "" ? "??" : a.receivedOn} )</i>
+                    <i>
+                      ({a.receivedOn === "" ? "??" : a.receivedOn.split("T")[0]}
+                      )
+                    </i>
                   </p>
                 ))}
               </div>
@@ -266,8 +277,8 @@ function MovieDetails({ username, id }) {
           <Col md={3} className="py-2 bg-light">
             <h5>People that watched</h5>
             {usersWatched &&
-              Array.isArray(usersWatched) &&
-              usersWatched.length > 0 ? (
+            Array.isArray(usersWatched) &&
+            usersWatched.length > 0 ? (
               <div
                 className="pt-2"
                 style={{ display: "grid", gridGap: "0.5rem" }}
@@ -292,7 +303,14 @@ function MovieDetails({ username, id }) {
             {comments && Array.isArray(comments) && comments.length > 0 ? (
               <div>
                 {comments.map((c, index) => (
-                  <CommentCard comment={c} key={index} withDelete={c.author.username == username} onDelete={() => c.author.username == username ? removeWatch() : null} />
+                  <CommentCard
+                    comment={c}
+                    key={index}
+                    withDelete={c.author.username == username}
+                    onDelete={() =>
+                      c.author.username == username ? removeWatch() : null
+                    }
+                  />
                 ))}
               </div>
             ) : (
@@ -301,7 +319,11 @@ function MovieDetails({ username, id }) {
               </p>
             )}
 
-            <Form ref={formRef} className="pt-3 bd-highlight" onSubmit={submitWatchForm}>
+            <Form
+              ref={formRef}
+              className="pt-3 bd-highlight"
+              onSubmit={submitWatchForm}
+            >
               <InputGroup className="mb-3">
                 <div style={{ flexGrow: 5 }}>
                   <Form.Control
@@ -310,8 +332,8 @@ function MovieDetails({ username, id }) {
                     placeholder="Comment something..."
                   />
                   <Form.Text className="text-muted">
-                    To only mark as watched, just submit with empty fields.
-                    To update a comment, just write a new one.
+                    To only mark as watched, just submit with empty fields. To
+                    update a comment, just write a new one.
                   </Form.Text>
                 </div>
 
