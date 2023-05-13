@@ -17,8 +17,10 @@ export default function FriendCard({
 }) {
   const votePopover = (info) => (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">{"Vote"}</Popover.Header>
-      <Popover.Body>{info}</Popover.Body>
+      <Popover.Header
+        as="h3"
+        className="bg-white"
+      >{`Vote: ${info}`}</Popover.Header>
     </Popover>
   );
 
@@ -26,11 +28,11 @@ export default function FriendCard({
     return info ? (
       <OverlayTrigger
         trigger="click"
-        placement="right"
+        placement="left"
         overlay={votePopover(info)}
         rootClose
       >
-        <Button className="rounded-circle mx-2" variant="link" size="sm">
+        <Button className="rounded-circle" variant="link" size="sm">
           <FcRating size={20} />
         </Button>
       </OverlayTrigger>
@@ -47,7 +49,8 @@ export default function FriendCard({
           height={40}
           width={40}
         />
-        <div>
+
+        <div className="d-flex flex-column justify-content-center">
           <p className="mb-1">{friend.username}</p>
           {showLevel ? (
             <p className="text-muted">{`Friend ${
@@ -56,6 +59,7 @@ export default function FriendCard({
           ) : null}
         </div>
       </div>
+
       {withIcon ? (
         friend.level !== 1 ? (
           <BsPlus

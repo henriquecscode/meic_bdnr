@@ -28,21 +28,20 @@ function MovieDetails({ username, id }) {
     { id: 2, name: "Avatar: Way of Water", nr: 2 },
   ];
 
-  const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
-
   useEffect(() => {
     const api = new MoviesAPI();
 
-    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
+    const urlId =
+      id === undefined ? window.location.pathname.replace("/movies/", "") : id;
 
     // Details
     api.getFilm(
-      id,
+      urlId,
       (json) => {
         setFilmAwards(json.title.awards.awards);
 
         let details = json.title;
-        for (let key of notDetailsProperties) {
+        for (let key of ["nComments", "nVotes", "awards"]) {
           delete details[key];
         }
 
@@ -62,7 +61,7 @@ function MovieDetails({ username, id }) {
         console.log(error);
       }
     );
-  }, []);
+  }, [id]);
 
   const submitWatchForm = (e) => {
     e.preventDefault();
@@ -192,6 +191,7 @@ function MovieDetails({ username, id }) {
 
   let comments = getComments();
 
+  console.log(comments);
   return (
     <div>
       <div className="profile-info">
@@ -235,7 +235,7 @@ function MovieDetails({ username, id }) {
         <HorizontalRule text={"Social"} />
 
         <Row className="my-2">
-          <Col sm={3} className="py-2 bg-light">
+          <Col md={3} className="py-2 bg-light">
             <h5>People that watched</h5>
             {usersWatched &&
               Array.isArray(usersWatched) &&
@@ -259,7 +259,7 @@ function MovieDetails({ username, id }) {
             )}
           </Col>
 
-          <Col sm={9} className="py-2 bg-light border-start">
+          <Col md={9} className="py-2 bg-light border-start">
             <h5>Comments</h5>
             {comments && Array.isArray(comments) && comments.length > 0 ? (
               <div>
@@ -302,18 +302,16 @@ function MovieDetails({ username, id }) {
         <HorizontalRule text={"Series"} />
 
         <Row className="py-2">
-          <div className="d-flex flex-wrap">
-            {series.map((s, index) => (
-              <div className="px-1 w-25" key={index}>
-                <FilmCard
-                  key={index}
-                  film={s}
-                  username={username}
-                  detailsTopRight={false}
-                />
-              </div>
-            ))}
-          </div>
+          {series.map((s, index) => (
+            <Col sm={6} md={4} lg={3} className="px-1" key={index}>
+              <FilmCard
+                key={index}
+                film={s}
+                username={username}
+                detailsTopRight={false}
+              />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>

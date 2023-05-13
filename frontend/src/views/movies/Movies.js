@@ -9,6 +9,8 @@ function Movies({ username }) {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
+    document.title = "FilmFriend - Movies Search";
+
     const api = new MoviesAPI();
 
     api.getSearch(

@@ -6,12 +6,10 @@ export default function SeriesCard({ comment, index }) {
       <Card>
         <Card.Body className="p-2">
           <Card.Text className="d-inline">
-            <p className="mb-0">
-              {comment.text}{" "}
-              <span className="blockquote-footer">
-                <cite title="Source Title">{comment.author}</cite>
-              </span>
-            </p>
+            {comment.text}{" "}
+            <span className="blockquote-footer">
+              <cite title="Source Title">{comment.author}</cite>
+            </span>
           </Card.Text>
         </Card.Body>
       </Card>

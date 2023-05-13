@@ -117,6 +117,7 @@ function Recommendations({ username }) {
       },
       (error) => {
         console.log(error);
+        alert("Error adding to watchlist!");
       }
     );
   };
@@ -133,6 +134,7 @@ function Recommendations({ username }) {
       },
       (error) => {
         console.log(error);
+        alert("Error removing from watchlist!");
       }
     );
   };

@@ -71,6 +71,7 @@ function FriendsList({ username, name, friends }) {
       },
       (error) => {
         console.log(error);
+        alert("Friend not exists or already added");
       }
     );
   };
@@ -92,6 +93,7 @@ function FriendsList({ username, name, friends }) {
       },
       (error) => {
         console.log(error);
+        alert("Friend not of the user");
       }
     );
   };
