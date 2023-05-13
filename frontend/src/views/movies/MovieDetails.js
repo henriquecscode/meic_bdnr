@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -20,6 +20,7 @@ function MovieDetails({ username, id }) {
   const [filmWorkers, setFilmWorkers] = useState([]);
   const [usersWatched, setUsersWatched] = useState([]);
   const [genres, setGenres] = useState([]);
+  const formRef = useRef(null);
 
   // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
 
@@ -96,6 +97,9 @@ function MovieDetails({ username, id }) {
       },
       (error) => { console.log(error); },
       watched);
+
+    // Clear form
+    formRef.current.reset();
   };
 
   const getDetailsList = () => {
@@ -273,7 +277,7 @@ function MovieDetails({ username, id }) {
               </p>
             )}
 
-            <Form className="pt-3 bd-highlight" onSubmit={submitWatchForm}>
+            <Form ref={formRef} className="pt-3 bd-highlight" onSubmit={submitWatchForm}>
               <InputGroup className="mb-3">
                 <Form.Control
                   style={{ flexGrow: 5 }}
