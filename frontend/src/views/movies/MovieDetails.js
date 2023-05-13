@@ -155,6 +155,7 @@ function MovieDetails({ username, id }) {
 
   let comments = getComments();
 
+  console.log(comments);
   return (
     <div>
       <div className="profile-info">
@@ -198,7 +199,7 @@ function MovieDetails({ username, id }) {
         <HorizontalRule text={"Social"} />
 
         <Row className="my-2">
-          <Col sm={3} className="py-2 bg-light">
+          <Col md={3} className="py-2 bg-light">
             <h5>People that watched</h5>
             {usersWatched &&
             Array.isArray(usersWatched) &&
@@ -222,7 +223,7 @@ function MovieDetails({ username, id }) {
             )}
           </Col>
 
-          <Col sm={9} className="py-2 bg-light border-start">
+          <Col md={9} className="py-2 bg-light border-start">
             <h5>Comments</h5>
             {comments && Array.isArray(comments) && comments.length > 0 ? (
               <div>
@@ -253,18 +254,16 @@ function MovieDetails({ username, id }) {
         <HorizontalRule text={"Series"} />
 
         <Row className="py-2">
-          <div className="d-flex flex-wrap">
-            {series.map((s, index) => (
-              <div className="px-1 w-25" key={index}>
-                <FilmCard
-                  key={index}
-                  film={s}
-                  username={username}
-                  detailsTopRight={false}
-                />
-              </div>
-            ))}
-          </div>
+          {series.map((s, index) => (
+            <Col sm={6} md={4} lg={3} className="px-1" key={index}>
+              <FilmCard
+                key={index}
+                film={s}
+                username={username}
+                detailsTopRight={false}
+              />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>
