@@ -75,14 +75,11 @@ function MovieDetails({ username, id }) {
       date: new Date().toISOString(),
     };
 
-    console.log(watched);
     if (id === undefined) id = window.location.pathname.replace("/movies/", "");
 
     api.addWatched(
       id,
-      (json) => {
-        console.log(json);
-
+      (_) => {
         const api = new MoviesAPI();
 
         // Update watched users
@@ -227,7 +224,6 @@ function MovieDetails({ username, id }) {
 
   let comments = getComments();
 
-  console.log(comments);
   return (
     <div>
       <div className="profile-info">
