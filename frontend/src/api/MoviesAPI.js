@@ -15,4 +15,9 @@ export default class MoviesAPI {
     API.request("POST", endpoint, successCallback, errorCallback, body);
   }
 
+  getGenres(successCallback, errorCallback) {
+    let endpoint = `/genre`;
+    API.request("GET", endpoint, successCallback, errorCallback);
+  }
+
 }

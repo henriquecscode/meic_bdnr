@@ -7,11 +7,19 @@ import MoviesAPI from "../../api/MoviesAPI";
 function Movies({ username }) {
   const [movies, setMovies] = useState([]);
   const [title, setTitle] = useState("");
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     document.title = "FilmFriend - Movies Search";
 
     const api = new MoviesAPI();
+
+    api.getGenres((json) => {
+      setGenres(json.filter((genre) => genre.name !== "" && genre.name.toLowerCase() !== "\\n").map((genre) => genre.name));
+    }, (error) => {
+      setMovies([]);
+      console.log(error);
+    },);
 
     api.getSearch(
       (json) => {
@@ -49,10 +57,16 @@ function Movies({ username }) {
   };
 
   const searchForm = () => {
+    let genreOptions = [];
+
+    genres.forEach((genre, index) => {
+      genreOptions.push(<option key={index} value={genre}>{genre}</option>);
+    });
+
     return (
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Title</Form.Label>
+          <Form.Label className="mt-3">Title</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter title"
@@ -62,16 +76,20 @@ function Movies({ username }) {
               submitForm();
             }}
           />
+
+          {/* // TODO ? */}
+          {/* <Form.Label className="mt-3">Genres</Form.Label>
+          <Form.Select aria-label="Genre">
+            <option>Genre</option>
+            {genreOptions}
+          </Form.Select>
+
+          <Form.Label className="mt-3">Year</Form.Label>
+          <Form.Control type="number" min={1900} max={2025} placeholder="Enter Year" />
+
+          <Form.Check className="mt-3" type="checkbox" label="With Awards?" /> */}
         </Form.Group>
 
-        {/* <Form.Group className="mb-3">
-          <Form.Label>Year</Form.Label>
-          <Form.Control type="text" placeholder="Enter Year" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group> */}
       </Form>
     );
   };
