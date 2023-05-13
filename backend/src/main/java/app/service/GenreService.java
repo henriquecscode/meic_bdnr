@@ -17,9 +17,11 @@ public class GenreService extends GeneralService {
 
     public List<Genre> findAll() {
         setGraph();
+        setGraphStandardConstraints();
+
         List<Genre> genres = new ArrayList<>();
 
-        for (Vertex vertex : graph.getVerticesOfClass("Genre")) {
+        for (Vertex vertex : getGraph().getVerticesOfClass("Genre")) {
             Genre genre = Genre.fromVertex(vertex);
             genres.add(genre);
         }

@@ -24,7 +24,8 @@ public class TitleService extends GeneralService {
 
     public Title findById(String id) {
         setGraph();
-        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", id);
+        setGraphStandardConstraints();
+        Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", id);
         if (!foundTitles.iterator().hasNext()) {
             return null;
         }
@@ -34,8 +35,9 @@ public class TitleService extends GeneralService {
 
     public MovieInfo getInfoById(String id) {
         setGraph();
+        setGraphStandardConstraints();
         MovieInfo movieInfo = new MovieInfo();
-        Iterable<Vertex> foundTitles = graph.getVertices("Title.tid", id);
+        Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", id);
         if (!foundTitles.iterator().hasNext()) {
             return null;
         }
@@ -115,8 +117,9 @@ public class TitleService extends GeneralService {
 
     public List<Title> findAll() {
         setGraph();
+        setGraphStandardConstraints();
         List<Title> titles = new ArrayList<>();
-        for (Vertex vertex : graph.getVerticesOfClass("Title")) {
+        for (Vertex vertex : getGraph().getVerticesOfClass("Title")) {
             Title title = Title.fromVertex(vertex);
             titles.add(title);
         }
@@ -125,6 +128,7 @@ public class TitleService extends GeneralService {
 
     public List<Title> findByTitle(String title) {
         setGraph();
+        setGraphStandardConstraints();
 
         String titleQueryWords[] = title.split(" ");
         for (int i = 0; i < titleQueryWords.length; i++) {
@@ -135,7 +139,7 @@ public class TitleService extends GeneralService {
         String query = "SELECT FROM Title WHERE SEARCH_CLASS(\"name:" + title + "\") = true";
         OCommandSQL queryCommand = new OCommandSQL(query);
         List<Title> titles = new ArrayList<>();
-        for (Vertex vertex : graph.getVertices("Title.title", title)) {
+        for (Vertex vertex : getGraph().getVertices("Title.title", title)) {
             Title foundTitle = Title.fromVertex(vertex);
             titles.add(foundTitle);
         }

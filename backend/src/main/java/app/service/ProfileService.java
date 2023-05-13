@@ -24,7 +24,7 @@ public class ProfileService extends GeneralService {
 
     public UserInfo getInfoByUsername(String username) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         UserInfo userInfo = new UserInfo();
 
@@ -81,7 +81,7 @@ public class ProfileService extends GeneralService {
 
     public boolean addFriend(String username, String friend) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundFriends = getGraph().getVertices("User.username", friend);
@@ -114,7 +114,7 @@ public class ProfileService extends GeneralService {
 
     public boolean removeFriend(String username, String friend) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundFriends = getGraph().getVertices("User.username", friend);
@@ -168,7 +168,7 @@ public class ProfileService extends GeneralService {
 
     public boolean addWatched(String username, String title, Watched watched) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
@@ -200,7 +200,7 @@ public class ProfileService extends GeneralService {
 
     public boolean removeWatched(String username, String title) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
@@ -238,7 +238,7 @@ public class ProfileService extends GeneralService {
 
     public boolean addWatchlist(String username, String title) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
@@ -266,7 +266,7 @@ public class ProfileService extends GeneralService {
 
     public boolean removeWatchlist(String username, String title) {
         setGraph();
-        setGraphStandardConstraints(false);
+        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);

@@ -18,10 +18,11 @@ public class CountryService extends GeneralService {
 
     public List<Country> findAll() {
         setGraph();
+        setGraphStandardConstraints();
 
         List<Country> countries = new ArrayList<>();
 
-        for (Vertex vertex : graph.getVerticesOfClass("Country")) {
+        for (Vertex vertex : getGraph().getVerticesOfClass("Country")) {
             Country country = Country.fromVertex(vertex);
             countries.add(country);
         }
