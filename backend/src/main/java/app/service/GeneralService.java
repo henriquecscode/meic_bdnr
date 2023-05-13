@@ -17,4 +17,16 @@ public class GeneralService {
         graph = factory.getTx();
         graph.setStandardElementConstraints(false);
     }
+
+    protected OrientGraph getGraph() {
+        return factory.getTx();
+    }
+
+    protected void setGraphStandardConstraints(boolean allowNull) {
+        factory.getTx().setStandardElementConstraints(allowNull);
+    }
+
+    protected void commitGraph() {
+        factory.getTx().commit();
+    }
 }
