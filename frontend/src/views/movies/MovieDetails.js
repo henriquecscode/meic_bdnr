@@ -333,7 +333,7 @@ function MovieDetails({ username, id }) {
                   </Form.Text>
                 </div>
 
-                <div>
+                <div className="px-2">
                   <Form.Control
                     name="vote"
                     aria-label="Vote"
