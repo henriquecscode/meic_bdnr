@@ -22,13 +22,14 @@ public class AnalyticsService extends GeneralService {
 
     public List<WorkerCountryInfo> getSameCountry() {
         setGraph();
+        setGraphStandardConstraints();
 
         // go to every worker
         // get the country
         // get the movies and check for the country
         // if the country is the same, return the worker with the films
         List<WorkerCountryInfo> workerCountryInfos = new ArrayList<>();
-        for (Vertex workerVertex : graph.getVerticesOfClass("Worker")) {
+        for (Vertex workerVertex : getGraph().getVerticesOfClass("Worker")) {
             Iterable<Vertex> foundCountries = workerVertex.getVertices(Direction.OUT, "Nationality");
 
             if (!foundCountries.iterator().hasNext()) {
@@ -64,8 +65,10 @@ public class AnalyticsService extends GeneralService {
 
     public List<GenreAwards> getGenreWithMostAwards(int limit) {
         setGraph();
+        setGraphStandardConstraints();
+
         List<GenreAwards> genreAwards = new ArrayList<>();
-        for (Vertex genreVertex : graph.getVerticesOfClass("Genre")) {
+        for (Vertex genreVertex : getGraph().getVerticesOfClass("Genre")) {
             Genre genre = Genre.fromVertex(genreVertex);
             if(genre.getName().equals("")){
                 continue;
@@ -91,9 +94,10 @@ public class AnalyticsService extends GeneralService {
 
     public List<WorkerAwards> getWorkerWithMostAwards(int limit) {
         setGraph();
+        setGraphStandardConstraints();
 
         List<WorkerAwards> workerAwards = new ArrayList<>();
-        for (Vertex workerVertex : graph.getVerticesOfClass("Worker")) {
+        for (Vertex workerVertex : getGraph().getVerticesOfClass("Worker")) {
             Worker worker = Worker.fromVertex(workerVertex);
             Integer numberAwards = 0;
             Iterable<Edge> foundRoles = workerVertex.getEdges(Direction.OUT, "Role");
@@ -116,10 +120,11 @@ public class AnalyticsService extends GeneralService {
 
     public List<CountryAwards> getCountryWithMostAwards(int limit) {
         setGraph();
+        setGraphStandardConstraints();
 
         List<CountryAwards> countryAwards = new ArrayList<>();
 
-        for (Vertex countryVertex : graph.getVerticesOfClass("Country")) {
+        for (Vertex countryVertex : getGraph().getVerticesOfClass("Country")) {
             Country country = Country.fromVertex(countryVertex);
             Integer numberAwards = 0;
             for (Vertex workerVertex : countryVertex.getVertices(Direction.IN, "Nationality")) {

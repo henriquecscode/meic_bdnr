@@ -22,8 +22,8 @@ public class GeneralService {
         return factory.getTx();
     }
 
-    protected void setGraphStandardConstraints(boolean allowNull) {
-        factory.getTx().setStandardElementConstraints(allowNull);
+    protected void setGraphStandardConstraints() {
+        factory.getTx().setStandardElementConstraints(false);
     }
 
     protected void commitGraph() {

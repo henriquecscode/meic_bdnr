@@ -23,13 +23,14 @@ public class RecommendationService extends GeneralService {
 
     public List<WatchInfoByUser> getFriendsFilms(String username, int level) {
         setGraph();
+        setGraphStandardConstraints();
 
         List<WatchInfoByUser> watchInfoByUsers = new ArrayList<>();
         HashSet<Vertex> prevLevelUsers = new HashSet<>();
         HashSet<Vertex> allLevelUsers = new HashSet<>();
         HashSet<Vertex> levelUsers = new HashSet<>();
 
-        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
             return null;
         }
@@ -91,8 +92,9 @@ public class RecommendationService extends GeneralService {
 
     public List<WatchInfoByUser> getCountryFilms(String username) {
         setGraph();
+        setGraphStandardConstraints();
 
-        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
             return null;
         }
@@ -114,8 +116,9 @@ public class RecommendationService extends GeneralService {
 
     public List<WatchInfoByUser> getAdviseFilms(String username) {
         setGraph();
+        setGraphStandardConstraints();
 
-        Iterable<Vertex> foundUsers = graph.getVertices("User.username", username);
+        Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
             return null;
         }
