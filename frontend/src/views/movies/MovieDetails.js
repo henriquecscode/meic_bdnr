@@ -27,21 +27,20 @@ function MovieDetails({ username, id }) {
     { id: 2, name: "Avatar: Way of Water", nr: 2 },
   ];
 
-  const notDetailsProperties = ["nComments", "nVotes", "awards"]; // inside title
-
   useEffect(() => {
     const api = new MoviesAPI();
 
-    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
+    const urlId =
+      id === undefined ? window.location.pathname.replace("/movies/", "") : id;
 
     // Details
     api.getFilm(
-      id,
+      urlId,
       (json) => {
         setFilmAwards(json.title.awards.awards);
 
         let details = json.title;
-        for (let key of notDetailsProperties) {
+        for (let key of ["nComments", "nVotes", "awards"]) {
           delete details[key];
         }
 
@@ -61,7 +60,7 @@ function MovieDetails({ username, id }) {
         console.log(error);
       }
     );
-  }, []);
+  }, [id]);
 
   const getDetailsList = () => {
     let list = [];

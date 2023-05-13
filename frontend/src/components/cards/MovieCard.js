@@ -40,7 +40,7 @@ export default function MovieCard({
           </div>
         </Card.Title>
 
-        <Card.Subtitle className="mb-2 text-muted">{`Genre: ${movie.genre}`}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">{`TID: ${movie.tid}`}</Card.Subtitle>
 
         <Card.Text>{`Duration: ${movie.duration ?? "??"} | Votes: ${
           movie.nVotes ?? "--"
