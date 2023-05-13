@@ -12,6 +12,7 @@ import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
 import HorizontalRule from "../../components/layout/HorizontalRule";
 import MoviesAPI from "../../api/MoviesAPI";
+import UsersAPI from "../../api/UsersAPI";
 
 function MovieDetails({ username, id }) {
   const [filmDetails, setFilmDetails] = useState([]);
@@ -62,6 +63,41 @@ function MovieDetails({ username, id }) {
       }
     );
   }, []);
+
+  const submitWatchForm = (e) => {
+    e.preventDefault();
+
+    const api = new UsersAPI(username);
+
+    let watched = {
+      comment: e.target.comment.value,
+      vote: e.target.vote.value,
+      date: new Date().toISOString(),
+    };
+
+    console.log(watched);
+    if (id === undefined) id = window.location.pathname.replace("/movies/", "");
+
+    api.addWatched(id,
+      (json) => {
+        console.log(json);
+
+        const api = new MoviesAPI();
+
+        // Update watched users
+        api.getFilm(
+          id,
+          (json) => {
+            setUsersWatched(json.watched);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      },
+      (error) => { console.log(error); },
+      watched);
+  };
 
   const getDetailsList = () => {
     let list = [];
@@ -178,8 +214,8 @@ function MovieDetails({ username, id }) {
 
             <h5>Awards</h5>
             {filmAwards &&
-            Array.isArray(filmAwards) &&
-            filmAwards.length > 0 ? (
+              Array.isArray(filmAwards) &&
+              filmAwards.length > 0 ? (
               <div>
                 {filmAwards.map((a, index) => (
                   <p key={index} className="mb-0">
@@ -202,8 +238,8 @@ function MovieDetails({ username, id }) {
           <Col sm={3} className="py-2 bg-light">
             <h5>People that watched</h5>
             {usersWatched &&
-            Array.isArray(usersWatched) &&
-            usersWatched.length > 0 ? (
+              Array.isArray(usersWatched) &&
+              usersWatched.length > 0 ? (
               <div
                 className="pt-2"
                 style={{ display: "grid", gridGap: "0.5rem" }}
@@ -237,14 +273,26 @@ function MovieDetails({ username, id }) {
               </p>
             )}
 
-            <Form className="pt-3 bd-highlight">
+            <Form className="pt-3 bd-highlight" onSubmit={submitWatchForm}>
               <InputGroup className="mb-3">
                 <Form.Control
+                  style={{ flexGrow: 5 }}
+                  name="comment"
                   aria-label="Comment"
                   placeholder="Comment something..."
                 />
+
+                <Form.Control
+                  name="vote"
+                  aria-label="Vote"
+                  placeholder="Vote"
+                  type="number"
+                  min={0}
+                  max={10}
+                />
+
                 <Button type="submit" variant="darkblue">
-                  Comment
+                  Submit
                 </Button>
               </InputGroup>
             </Form>
