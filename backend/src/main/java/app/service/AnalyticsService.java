@@ -36,7 +36,7 @@ public class AnalyticsService extends GeneralService {
             Country country = Country.fromVertex(countryVertex);
             List<Title> titles = new ArrayList<>();
 
-            for (Vertex titleVertex : workerVertex.getVertices(Direction.OUT, "Role")) {
+            for (Vertex titleVertex : workerVertex.getVertices(Direction.IN, "Role")) {
                 Iterable<Vertex> foundCountries2 = titleVertex.getVertices(Direction.OUT, "Role");
                 if (!foundCountries2.iterator().hasNext()) {
                     continue;
