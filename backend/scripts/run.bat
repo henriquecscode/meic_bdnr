@@ -1,0 +1,1 @@
+call java -jar target/orientdb-filmfriend-0.0.1-SNAPSHOT.jar

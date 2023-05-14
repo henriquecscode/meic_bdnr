@@ -5,32 +5,32 @@ services:
     container_name: filmfriend-database
     image: orientdb:3.2.16
     environment:
-      - ORIENTDB_ROOT_PASSWORD=rootpwd
+      - ORIENTDB_ROOT_PASSWORD=root
       - ORIENTDB_NODE_NAME=odb1
     ports:
       - "2424:2424"
       - "2480:2480"
 
-  backend:
-    container_name: filmfriend-backend
-    build: ./backend
-    image: backend
-    restart: on-failure
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./backend/src/:/usr/src/backend/src
-      - ./data/comments:/usr/src/data/comments
-      - ./data/processed:/usr/src/data/processed
-    # tty: true
-    depends_on:
-      - database
-    network_mode: host
+  # backend:
+  #   container_name: filmfriend-backend
+  #   build: ./backend
+  #   image: backend
+  #   restart: on-failure
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./backend/src/:/usr/src/backend/src
+  #     - ./data/comments:/usr/src/data/comments
+  #     - ./data/processed:/usr/src/data/processed
+  #   depends_on:
+  #     - database
+  #   network_mode: host
 
   frontend:
     container_name: filmfriend-react
     build: ./frontend
     image: frontend
+    restart: always
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -40,6 +40,16 @@ services:
     volumes:
       - ./frontend/src/:/usr/src/frontend/src
     depends_on:
-      - database
-      - backend
+      - proxy
     tty: true
+
+  proxy:
+    container_name: filmfriend-proxy
+    image: nginx:latest
+    restart: on-failure
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8081:80"
+    # depends_on:
+    #   - backend

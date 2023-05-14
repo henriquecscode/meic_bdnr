@@ -28,9 +28,9 @@ public class Load {
         // CONTEXT: Graph of people who are friends
         String dbname = "app_sample";
         String user = "root";
-        String password = "rootpwd";
+        String password = "root";
         String dbUser = "root";
-        String dbPassword = "rootpwd";
+        String dbPassword = "root";
         // Established a connection with the server
         factory = new OrientGraphFactory("remote:localhost/" + dbname, user, password).setupPool(1, 10);
         graph = factory.getTx();

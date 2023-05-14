@@ -16,9 +16,9 @@ public class DocumentSchema {
         // CONTEXT: Graph of people who are friends
         String dbname = "app_sample";
         String user = "root";
-        String password = "rootpwd";
+        String password = "root";
         String dbUser = "root";
-        String dbPassword = "rootpwd";
+        String dbPassword = "root";
         // Established a connection with the server
         OrientDB orient = new OrientDB("remote:localhost", user, password, OrientDBConfig.defaultConfig());
         // Established a connection with the database - open a database session

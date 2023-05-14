@@ -18,9 +18,9 @@ public class OrientDBConfiguration {
     private static String orientDBFolder = System.getenv("ORIENTDB_HOME");
     String dbname = "app_sample";
     String user = "root";
-    String password = "rootpwd";
+    String password = "root";
     String dbUser = "root";
-    String dbPassword = "rootpwd";
+    String dbPassword = "root";
 
     /**
      * Connect and build the OrientDB Bean for Document API
