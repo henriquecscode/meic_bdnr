@@ -36,6 +36,7 @@ public class DocumentSchema {
         if (dropDb) {
             if (orient.exists(dbname)) {
                 orient.drop(dbname);
+                System.out.println("Dropped DB");
             }
         }
         if (!orient.exists(dbname)) {

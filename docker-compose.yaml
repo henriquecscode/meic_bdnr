@@ -1,10 +1,9 @@
-version: "1.0"
+version: "3.0"
 
 services:
-  filmfriend-database:
-    container_name: database
+  database:
+    container_name: filmfriend-database
     image: orientdb:3.2.16
-
     environment:
       - ORIENTDB_ROOT_PASSWORD=rootpwd
       - ORIENTDB_NODE_NAME=odb1
@@ -12,11 +11,11 @@ services:
       - "2424:2424"
       - "2480:2480"
 
-  filmfriend-backend:
-    container_name: backend
+  backend:
+    container_name: filmfriend-backend
     build: ./backend
     image: backend
-    restart: always
+    restart: on-failure
     ports:
       - "8080:8080"
     volumes:
@@ -25,13 +24,13 @@ services:
       - ./data/processed:/usr/src/data/processed
     # tty: true
     depends_on:
-      - filmfriend-database
+      - database
+    network_mode: host
 
-  filmfriend-frontend:
-    container_name: react
+  frontend:
+    container_name: filmfriend-react
     build: ./frontend
     image: frontend
-    restart: always
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -41,6 +40,6 @@ services:
     volumes:
       - ./frontend/src/:/usr/src/frontend/src
     depends_on:
-      - filmfriend-database
-      - filmfriend-backend
+      - database
+      - backend
     tty: true
