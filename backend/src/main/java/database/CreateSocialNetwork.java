@@ -60,6 +60,7 @@ public class CreateSocialNetwork {
 
         if (isDeleteData) {
             deleteData();
+            System.out.println("Deleted Data");
         }
 
         if (isLoadData) {
