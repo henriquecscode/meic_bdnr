@@ -25,16 +25,21 @@ function Analytics({ username }) {
       (json) => {
         if (json && Array.isArray(json) && json.length > 0) {
           setFriendsWatchedSeries(
-            json.map((item) => {
-              return {
-                name:
-                  item.series.name +
-                  " (" +
-                  item.users.map((u) => u.username).join(", ") +
-                  ")",
-                awards: item.users.length,
-              };
-            })
+            json
+              .filter((item) => item.users.length !== 1)
+              .map((item) => {
+                return {
+                  name:
+                    item.series.name +
+                    " (" +
+                    item.users
+                      .filter((u) => u.username !== username)
+                      .map((u) => u.username)
+                      .join(", ") +
+                    ")",
+                  awards: item.users.length,
+                };
+              })
           );
         } else {
           setFriendsWatchedSeries([]);

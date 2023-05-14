@@ -9,28 +9,29 @@ import InteractionsList from "../../components/layout/lists/InteractionsList";
 import SeriesList from "../../components/layout/lists/SeriesList";
 
 import UsersAPI from "../../api/UsersAPI";
+import AnalyticsAPI from "../../api/AnalyticsAPI";
 
 function Profile({ username }) {
-  const series = [
-    {
-      id: 1,
-      image: "series1.jpg",
-      title: "Series 1",
-      n_movies: 10,
-    },
-    {
-      id: 2,
-      image: "series2.jpg",
-      title: "Series 2",
-      n_movies: 10,
-    },
-  ];
+  // const series = [
+  //   {
+  //     id: 1,
+  //     image: "series1.jpg",
+  //     title: "Series 1",
+  //     n_movies: 10,
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "series2.jpg",
+  //     title: "Series 2",
+  //     n_movies: 10,
+  //   },
+  // ];
 
   const [user, setUser] = useState({});
   const [friends, setFriends] = useState([]);
   const [movies, setMovies] = useState([]);
   const [interactions, setInteractions] = useState([]);
-  // const [series, setSeries] = useState([]);
+  const [series, setSeries] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -82,6 +83,27 @@ function Profile({ username }) {
         setMovies([]);
         setInteractions([]);
         setLoading(false);
+        console.log(error);
+      }
+    );
+
+    const analyticsAPI = new AnalyticsAPI();
+    analyticsAPI.getFriendsWatchedSeries(
+      username,
+      (data) => {
+        setSeries(
+          data.map((series, index) => {
+            return {
+              id: index,
+              image: null,
+              n_movies: null,
+              ...series.series,
+            };
+          })
+        );
+      },
+      (error) => {
+        setSeries([]);
         console.log(error);
       }
     );
