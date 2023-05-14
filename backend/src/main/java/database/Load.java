@@ -435,7 +435,7 @@ public class Load {
                     edge = edges.iterator().next();
                     awards = new EntityAwards(edge.getProperty("awards"));
                 } else {
-                    edge = graph.addEdge(null, worker, title, "Role");
+                    edge = graph.addEdge(null, title, worker, "Role");
                     awards = new EntityAwards();
                 }
                 awards.addAward(new EntityAward(nameAward, receivedOn));
@@ -447,8 +447,8 @@ public class Load {
 //                        edge.setProperty("awards", awards.toString());
 //                    }
 //                }
-                graph.commit();
             }
+            graph.commit();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
