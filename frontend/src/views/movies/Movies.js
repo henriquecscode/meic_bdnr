@@ -96,7 +96,11 @@ function Movies({ username }) {
           <Form.Select
             aria-label="Genre"
             onChange={(e) => {
-              setGenre(e.target.value);
+              if (e.target.value === "All Genres") {
+                setGenre(null);
+              } else {
+                setGenre(e.target.value);
+              }
               submitForm();
             }}
           >
@@ -111,7 +115,11 @@ function Movies({ username }) {
             max={2025}
             placeholder="Enter Year"
             onChange={(e) => {
-              setYear(e.target.value);
+              if (e.target.value === "") {
+                setYear(null);
+              } else {
+                setYear(e.target.value);
+              }
             }}
             onBlur={() => {
               // TODO: better if in every change?
