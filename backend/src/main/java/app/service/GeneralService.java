@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GeneralService {
     private OrientGraphFactory factory;
-    protected OrientGraph graph;
+    private OrientGraph graph;
 
     public GeneralService(final OrientGraphFactory factory) {
         this.factory = factory;
@@ -19,6 +19,7 @@ public class GeneralService {
     }
 
     protected OrientGraph getGraph() {
+        graph.makeActive();
         return graph;
     }
 
@@ -32,6 +33,7 @@ public class GeneralService {
     }
 
     protected void shutdownGraph() {
-        graph.shutdown();
+//        return;
+//        graph.shutdown();
     }
 }
