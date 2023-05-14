@@ -18,30 +18,30 @@ public class OrientDBConfiguration {
     private static String orientDBFolder = System.getenv("ORIENTDB_HOME");
     String dbname = "app_sample";
     String user = "root";
-    String password = "rootpwd";
+    String password = "root";
     String dbUser = "root";
-    String dbPassword = "rootpwd";
+    String dbPassword = "root";
     /**
      * Connect and build the OrientDB Bean for Document API
      * @return
      */
     @Bean
     public ODatabaseDocumentTx orientDBfactory() {
-        ODatabaseDocumentTx db = new ODatabaseDocumentTx("remote:localhost/app_sample")
-                .open("root", "rootpwd");
+        ODatabaseDocumentTx db = new ODatabaseDocumentTx("remote:172.17.0.1/app_sample")
+                .open(user, password);
         return db;
     }
-//        return new ODatabaseDocumentTx("remote:localhost/app_sample")
-//                .open("root", "rootpwd");
+//        return new ODatabaseDocumentTx("remote:172.17.0.1/app_sample")
+//                .open("root", "root");
 
         // or
 
-//        return new ODatabaseDocumentTx("remote:localhost/alibabacloudblog")
+//        return new ODatabaseDocumentTx("remote:172.17.0.1/alibabacloudblog")
 //                .open("admin", "admin"); // To avoid the concurrent process access with on the same local server as the administrator
 
     @Bean
     public OrientGraphFactory orientDBGraphfactory(){
-        OrientGraphFactory factory = new OrientGraphFactory("remote:localhost/" + dbname, dbUser, dbPassword);
+        OrientGraphFactory factory = new OrientGraphFactory("remote:172.17.0.1" + dbname, dbUser, dbPassword);
         return factory;
     }
 

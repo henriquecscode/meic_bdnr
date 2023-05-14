@@ -1,0 +1,46 @@
+version: "1.0"
+
+services:
+  orientdb:
+    container_name: orientdb
+    image: orientdb:3.2.16
+
+    environment:
+      - ORIENTDB_ROOT_PASSWORD=root
+      - ORIENTDB_NODE_NAME=odb1
+    ports:
+      - "2424:2424"
+      - "2480:2480"
+
+  backend:
+    container_name: backend
+    build: ./backend
+    image: backend
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes: 
+      - ./backend/src/:/usr/src/backend/src
+      - ./data/comments:/usr/src/data/comments
+      - ./data/processed:/usr/src/data/processed
+    # tty: true
+    depends_on:
+      - orientdb
+
+  frontend:
+    container_name: react
+    build: ./frontend
+    image: frontend
+    restart: always
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src/:/usr/src/frontend/src
+    depends_on:
+      - orientdb
+      - backend
+    tty: true
