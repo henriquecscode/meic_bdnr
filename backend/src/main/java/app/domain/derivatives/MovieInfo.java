@@ -14,6 +14,7 @@ public class MovieInfo {
     List<Genre> genres;
 
     SeriesInfo series;
+    Double avgVote;
 
     public Title getTitle() {
         return title;
@@ -55,6 +56,14 @@ public class MovieInfo {
         this.genres = genres;
     }
 
+    public Double getAvgVote() {
+        return avgVote;
+    }
+
+    public void setAvgVote(Double avgVote) {
+        this.avgVote = avgVote;
+    }
+
     @Override
     public String toString() {
         return "MovieInfo{" +
@@ -63,6 +72,7 @@ public class MovieInfo {
                 ", watched=" + watched +
                 ", genres=" + genres +
                 ", series=" + series +
+                ", avgVote=" + avgVote +
                 '}';
     }
 }

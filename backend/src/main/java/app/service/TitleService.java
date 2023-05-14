@@ -69,6 +69,7 @@ public class TitleService extends GeneralService {
         }
         movieInfo.setRoles(roles);
 
+        Integer score = 0;
         Iterable<Edge> foundWatches = titleVertex.getEdges(Direction.IN, "Watched");
         List<WatchInfo> watches = new ArrayList<>();
         for (Edge watch : foundWatches) {
@@ -79,8 +80,16 @@ public class TitleService extends GeneralService {
             watchInfo.setWatched(watched);
             watchInfo.setUser(user);
             watches.add(watchInfo);
+            if (watched.getVote() != null) {
+                score += watched.getVote();
+            }
         }
         movieInfo.setWatched(watches);
+        Double avgVote = 0.0;
+        if (score != null) {
+            avgVote = score.doubleValue() / title.getnVotes();
+            movieInfo.setAvgVote(avgVote);
+        }
 
         Iterable<Edge> foundSeries = titleVertex.getEdges(Direction.OUT, "PartOfSeries");
         if (foundSeries.iterator().hasNext()) {
