@@ -23,7 +23,6 @@ public class RecommendationService extends GeneralService {
 
     public List<WatchInfoByUser> getFriendsFilms(String username, int level) {
         setGraph();
-        setGraphStandardConstraints();
 
         List<WatchInfoByUser> watchInfoByUsers = new ArrayList<>();
         HashSet<Vertex> prevLevelUsers = new HashSet<>();
@@ -32,6 +31,7 @@ public class RecommendationService extends GeneralService {
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
+            shutdownGraph();
             return null;
         }
         Vertex userVertex = foundUsers.iterator().next();
@@ -87,15 +87,16 @@ public class RecommendationService extends GeneralService {
             WatchInfoByUser watchInfoByUser = new WatchInfoByUser(friend, friendsFilms);
             watchInfoByUsers.add(watchInfoByUser);
         }
+        shutdownGraph();
         return watchInfoByUsers;
     }
 
     public List<WatchInfoByUser> getCountryFilms(String username) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
+            shutdownGraph();
             return null;
         }
         Vertex userVertex = foundUsers.iterator().next();
@@ -111,15 +112,16 @@ public class RecommendationService extends GeneralService {
             WatchInfoByUser watchInfoByUser = new WatchInfoByUser(friendUser, friendsFilms);
             watchInfoByUsers.add(watchInfoByUser);
         }
+        shutdownGraph();
         return watchInfoByUsers;
     }
 
     public List<WatchInfoByUser> getAdviseFilms(String username) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
+            shutdownGraph();
             return null;
         }
         Vertex userVertex = foundUsers.iterator().next();
@@ -141,7 +143,7 @@ public class RecommendationService extends GeneralService {
             List<Title> friendsFilms = new ArrayList<>();
             User friendUser = User.fromVertex(friend);
             for (Vertex filmToWatch : friend.getVertices(Direction.OUT, "ToWatch")) {
-                if(!filmsIDidntLike.contains(filmToWatch)){
+                if (!filmsIDidntLike.contains(filmToWatch)) {
                     continue;
                 }
                 Title title = Title.fromVertex(filmToWatch);
@@ -150,6 +152,7 @@ public class RecommendationService extends GeneralService {
             WatchInfoByUser watchInfoByUser = new WatchInfoByUser(friendUser, friendsFilms);
             watchInfoByUsers.add(watchInfoByUser);
         }
+        shutdownGraph();
         return watchInfoByUsers;
     }
 }

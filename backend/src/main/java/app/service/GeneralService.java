@@ -19,14 +19,19 @@ public class GeneralService {
     }
 
     protected OrientGraph getGraph() {
-        return factory.getTx();
+        return graph;
     }
 
-    protected void setGraphStandardConstraints() {
-        factory.getTx().setStandardElementConstraints(false);
-    }
-
+    //
+//    protected void setGraphStandardConstraints() {
+//        factory.getTx().setStandardElementConstraints(false);
+//    }
+//
     protected void commitGraph() {
-        factory.getTx().commit();
+        graph.commit();
+    }
+
+    protected void shutdownGraph() {
+        graph.shutdown();
     }
 }

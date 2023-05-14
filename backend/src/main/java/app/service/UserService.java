@@ -18,7 +18,6 @@ public class UserService extends GeneralService {
 
     public List<User> getUsers() {
         setGraph();
-        setGraphStandardConstraints();
 
         List<User> users = new ArrayList<>();
         for (Vertex v : getGraph().getVerticesOfClass("User")) {
@@ -26,6 +25,7 @@ public class UserService extends GeneralService {
             users.add(user);
         }
 
+        shutdownGraph();
         return users;
     }
 }

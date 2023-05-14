@@ -24,13 +24,13 @@ public class ProfileService extends GeneralService {
 
     public UserInfo getInfoByUsername(String username) {
         setGraph();
-        setGraphStandardConstraints();
 
         UserInfo userInfo = new UserInfo();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
 
         if (!foundUsers.iterator().hasNext()) {
+            shutdownGraph();
             return userInfo;
         }
 
@@ -76,17 +76,18 @@ public class ProfileService extends GeneralService {
         }
         userInfo.setFriends(friends);
 
+        shutdownGraph();
         return userInfo;
     }
 
     public boolean addFriend(String username, String friend) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundFriends = getGraph().getVertices("User.username", friend);
 
         if (!foundUsers.iterator().hasNext() || !foundFriends.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -94,6 +95,7 @@ public class ProfileService extends GeneralService {
         Vertex friendVertex = foundFriends.iterator().next();
 
         if (userVertex.equals(friendVertex)) {
+            shutdownGraph();
             return false;
         }
 
@@ -103,23 +105,25 @@ public class ProfileService extends GeneralService {
             Vertex followed = follows.getVertex(Direction.IN);
             if (followed.equals(friendVertex)) {
                 follows.remove();
+                shutdownGraph();
                 return false;
             }
         }
         userVertex.addEdge("Follows", friendVertex);
 
         commitGraph();
+        shutdownGraph();
         return true;
     }
 
     public boolean removeFriend(String username, String friend) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundFriends = getGraph().getVertices("User.username", friend);
 
         if (!foundUsers.iterator().hasNext() || !foundFriends.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -127,6 +131,7 @@ public class ProfileService extends GeneralService {
         Vertex friendVertex = foundFriends.iterator().next();
 
         if (userVertex.equals(friendVertex)) {
+            shutdownGraph();
             return false;
         }
         Iterable<Edge> foundFollows = userVertex.getEdges(Direction.OUT, "Follows");
@@ -135,9 +140,11 @@ public class ProfileService extends GeneralService {
             if (followed.equals(friendVertex)) {
                 follows.remove();
                 commitGraph();
+                shutdownGraph();
                 return true;
             }
         }
+        shutdownGraph();
         return false;
     }
 
@@ -168,12 +175,12 @@ public class ProfileService extends GeneralService {
 
     public boolean addWatched(String username, String title, Watched watched) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
 
         if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -187,6 +194,7 @@ public class ProfileService extends GeneralService {
 
                 //There is already one watched. We are going to change this
                 updateWatchedEdge(watchedEdge, watched, titleVertex);
+                shutdownGraph();
                 return true;
             }
         }
@@ -194,18 +202,19 @@ public class ProfileService extends GeneralService {
         //There is no watched. We are going to create one
         Edge watchedEdge = userVertex.addEdge("Watched", titleVertex);
         updateWatchedEdge(watchedEdge, watched, titleVertex);
+        shutdownGraph();
         return true;
 
     }
 
     public boolean removeWatched(String username, String title) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
 
         if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -230,20 +239,22 @@ public class ProfileService extends GeneralService {
                 watchedTitle.setProperty("n_comments", noComments);
                 watchedEdge.remove();
                 commitGraph();
+                shutdownGraph();
                 return true;
             }
         }
+        shutdownGraph();
         return false;
     }
 
     public boolean addWatchlist(String username, String title) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
 
         if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -254,6 +265,7 @@ public class ProfileService extends GeneralService {
         for (Edge watchlistEdge : foundWatchlist) {
             Vertex watchlistTitle = watchlistEdge.getVertex(Direction.IN);
             if (watchlistTitle.equals(titleVertex)) {
+                shutdownGraph();
                 return false;
             }
         }
@@ -261,17 +273,18 @@ public class ProfileService extends GeneralService {
         //There is no watchlist. We are going to create one
         Edge watchlistEdge = userVertex.addEdge("ToWatch", titleVertex);
         commitGraph();
+        shutdownGraph();
         return true;
     }
 
     public boolean removeWatchlist(String username, String title) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title);
 
         if (!foundUsers.iterator().hasNext() || !foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return false;
         }
 
@@ -284,9 +297,11 @@ public class ProfileService extends GeneralService {
             if (watchlistTitle.equals(titleVertex)) {
                 watchlistEdge.remove();
                 commitGraph();
+                shutdownGraph();
                 return true;
             }
         }
+        shutdownGraph();
         return false;
     }
 }

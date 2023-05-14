@@ -19,7 +19,6 @@ public class AnalyticsService extends GeneralService {
 
     public List<WorkerCountryInfo> getSameCountry() {
         setGraph();
-        setGraphStandardConstraints();
 
         // go to every worker
         // get the country
@@ -57,12 +56,12 @@ public class AnalyticsService extends GeneralService {
             workerCountryInfos.add(workerCountryInfo);
 
         }
+        shutdownGraph();
         return workerCountryInfos;
     }
 
     public List<GenreAwards> getGenreWithMostAwards(int limit) {
         setGraph();
-        setGraphStandardConstraints();
 
         List<GenreAwards> genreAwards = new ArrayList<>();
         for (Vertex genreVertex : getGraph().getVerticesOfClass("Genre")) {
@@ -85,13 +84,13 @@ public class AnalyticsService extends GeneralService {
             genreAwards.add(genreAwardsObj);
         }
 
+        shutdownGraph();
         genreAwards.sort((o1, o2) -> o2.getAwards().compareTo(o1.getAwards()));
         return genreAwards.subList(0, limit > genreAwards.size() ? genreAwards.size() : limit);
     }
 
     public List<WorkerAwards> getWorkerWithMostAwards(int limit) {
         setGraph();
-        setGraphStandardConstraints();
 
         List<WorkerAwards> workerAwards = new ArrayList<>();
         for (Vertex workerVertex : getGraph().getVerticesOfClass("Worker")) {
@@ -110,14 +109,13 @@ public class AnalyticsService extends GeneralService {
             WorkerAwards workerAwardsObj = new WorkerAwards(worker, numberAwards);
             workerAwards.add(workerAwardsObj);
         }
-
+        shutdownGraph();
         workerAwards.sort((o1, o2) -> o2.getAwards().compareTo(o1.getAwards()));
         return workerAwards.subList(0, limit > workerAwards.size() ? workerAwards.size() : limit);
     }
 
     public List<CountryAwards> getCountryWithMostAwards(int limit) {
         setGraph();
-        setGraphStandardConstraints();
 
         List<CountryAwards> countryAwards = new ArrayList<>();
 
@@ -138,13 +136,14 @@ public class AnalyticsService extends GeneralService {
             CountryAwards countryAwardsObj = new CountryAwards(country, numberAwards);
             countryAwards.add(countryAwardsObj);
         }
+        shutdownGraph();
+
         countryAwards.sort((o1, o2) -> o2.getAwards().compareTo(o1.getAwards()));
         return countryAwards.subList(0, limit > countryAwards.size() ? countryAwards.size() : limit);
     }
 
     public List<WatchedSeriesInfo> getSeriesWatchedByUsers() {
         setGraph();
-        setGraphStandardConstraints();
 
         List<WatchedSeriesInfo> watchedSeriesInfos = new ArrayList<>();
         for (Vertex seriesVertex : getGraph().getVerticesOfClass("Series")) {
@@ -176,15 +175,16 @@ public class AnalyticsService extends GeneralService {
             WatchedSeriesInfo watchedSeriesInfo = new WatchedSeriesInfo(series, seriesUsers);
             watchedSeriesInfos.add(watchedSeriesInfo);
         }
+        shutdownGraph();
         return watchedSeriesInfos;
     }
 
     public List<WatchedSeriesInfo> getSeriesWatchedByFriends(String username) {
         setGraph();
-        setGraphStandardConstraints();
 
         Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
         if (!foundUsers.iterator().hasNext()) {
+            shutdownGraph();
             return new ArrayList<>();
         }
 
@@ -258,6 +258,7 @@ public class AnalyticsService extends GeneralService {
         for (Series series : friendsWatchedSeries.keySet()) {
             friendsWatchedSeriesInfo.add(new WatchedSeriesInfo(series, friendsWatchedSeries.get(series)));
         }
+        shutdownGraph();
         return friendsWatchedSeriesInfo;
     }
 }
