@@ -23,13 +23,17 @@ function Analytics({ username }) {
     api.getFriendsWatchedSeries(
       username,
       (json) => {
+        console.log(json);
         if (json && Array.isArray(json) && json.length > 0) {
           setFriendsWatchedSeries(
             json.map((item) => {
               return {
-                name: item.genre.name,
-                awards: item.awards,
-                info: item,
+                name:
+                  item.series.name +
+                  " (" +
+                  item.users.map((u) => u.username).join(", ") +
+                  ")",
+                awards: item.users.length,
               };
             })
           );
@@ -137,7 +141,7 @@ function Analytics({ username }) {
     return (
       <>
         <p className="fw-bold">
-          Friends that fully watched a common film series
+          Film series fully watched by your Friends that you also completed
         </p>
         <ListCard list={friendsWatchedSeries} />
       </>

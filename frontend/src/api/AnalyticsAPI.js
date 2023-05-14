@@ -5,7 +5,7 @@ export default class AnalyticsAPI {
 
   // Friends
   getFriendsWatchedSeries(user, successCallback, errorCallback) {
-    let endpoint = this.BASE_URL + `/friends/${user}/movies/series/complete`;
+    let endpoint = this.BASE_URL + `/friends/${user}/series/complete`;
     API.request("GET", endpoint, successCallback, errorCallback);
   }
 
