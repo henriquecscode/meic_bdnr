@@ -27,9 +27,9 @@ public class CreateSocialNetwork {
     // Using document API
     static String dbname = "app_sample";
     static String user = "root";
-    static String password = "root";
+    static String password = "rootpwd";
     static String dbUser = "root";
-    static String dbPassword = "root";
+    static String dbPassword = "rootpwd";
     static OrientGraphFactory factory;
     static OrientGraph graph;
     static String rootDir = "../";
