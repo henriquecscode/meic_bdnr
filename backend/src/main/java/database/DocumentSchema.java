@@ -20,7 +20,7 @@ public class DocumentSchema {
         String dbUser = "root";
         String dbPassword = "root";
         // Established a connection with the server
-        OrientDB orient = new OrientDB("remote:172.17.0.1", user, password, OrientDBConfig.defaultConfig());
+        OrientDB orient = new OrientDB("remote:localhost", user, password, OrientDBConfig.defaultConfig());
         // Established a connection with the database - open a database session
     //        System.out.println("Printing orient");
     //        System.out.println(orient);

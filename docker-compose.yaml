@@ -1,8 +1,8 @@
 version: "1.0"
 
 services:
-  orientdb:
-    container_name: orientdb
+  filmfriend-database:
+    container_name: database
     image: orientdb:3.2.16
 
     environment:
@@ -12,22 +12,22 @@ services:
       - "2424:2424"
       - "2480:2480"
 
-  backend:
+  filmfriend-backend:
     container_name: backend
     build: ./backend
     image: backend
     restart: always
     ports:
       - "8080:8080"
-    volumes: 
+    volumes:
       - ./backend/src/:/usr/src/backend/src
       - ./data/comments:/usr/src/data/comments
       - ./data/processed:/usr/src/data/processed
     # tty: true
     depends_on:
-      - orientdb
+      - filmfriend-database
 
-  frontend:
+  filmfriend-frontend:
     container_name: react
     build: ./frontend
     image: frontend
@@ -41,6 +41,6 @@ services:
     volumes:
       - ./frontend/src/:/usr/src/frontend/src
     depends_on:
-      - orientdb
-      - backend
+      - filmfriend-database
+      - filmfriend-backend
     tty: true

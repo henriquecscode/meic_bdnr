@@ -32,7 +32,7 @@ public class Load {
         String dbUser = "root";
         String dbPassword = "root";
         // Established a connection with the server
-        factory = new OrientGraphFactory("remote:172.17.0.1" + dbname, user, password).setupPool(1, 10);
+        factory = new OrientGraphFactory("remote:localhost/" + dbname, user, password).setupPool(1, 10);
         graph = factory.getTx();
         // Established a connection with the database - open a database session
 

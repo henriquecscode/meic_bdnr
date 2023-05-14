@@ -27,21 +27,21 @@ public class OrientDBConfiguration {
      */
     @Bean
     public ODatabaseDocumentTx orientDBfactory() {
-        ODatabaseDocumentTx db = new ODatabaseDocumentTx("remote:172.17.0.1/app_sample")
+        ODatabaseDocumentTx db = new ODatabaseDocumentTx("remote:localhost/app_sample")
                 .open(user, password);
         return db;
     }
-//        return new ODatabaseDocumentTx("remote:172.17.0.1/app_sample")
+//        return new ODatabaseDocumentTx("remote:localhost/app_sample")
 //                .open("root", "root");
 
         // or
 
-//        return new ODatabaseDocumentTx("remote:172.17.0.1/alibabacloudblog")
+//        return new ODatabaseDocumentTx("remote:localhost/alibabacloudblog")
 //                .open("admin", "admin"); // To avoid the concurrent process access with on the same local server as the administrator
 
     @Bean
     public OrientGraphFactory orientDBGraphfactory(){
-        OrientGraphFactory factory = new OrientGraphFactory("remote:172.17.0.1" + dbname, dbUser, dbPassword);
+        OrientGraphFactory factory = new OrientGraphFactory("remote:localhost/" + dbname, dbUser, dbPassword);
         return factory;
     }
 
