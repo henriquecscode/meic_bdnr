@@ -370,7 +370,7 @@ public class DocumentSchema {
 
         role = db.createEdgeClass("Role");
 
-        if (role.getProperty("role") == null) {
+        if (role.getProperty("awards") == null) {
 //            OClass workerAward = db.getClass("WorkerAward");
 //            if (workerAward == null) {
 //                workerAward = db.createClass("WorkerAward");

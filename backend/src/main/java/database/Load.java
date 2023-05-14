@@ -278,7 +278,7 @@ public class Load {
                 Vertex worker = foundWorkers.iterator().next();
 
 
-                if (category.equals("actor")) {
+                if (category.equals("actor") || category.equals("actress")) {
                     Edge role = graph.addEdge(null, title, worker, "Character");
                     role.setProperty("name", characters[0]);
                 } else {

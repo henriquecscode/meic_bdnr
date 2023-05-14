@@ -96,7 +96,7 @@ public class AnalyticsService extends GeneralService {
         for (Vertex workerVertex : getGraph().getVerticesOfClass("Worker")) {
             Worker worker = Worker.fromVertex(workerVertex);
             Integer numberAwards = 0;
-            Iterable<Edge> foundRoles = workerVertex.getEdges(Direction.OUT, "Role");
+            Iterable<Edge> foundRoles = workerVertex.getEdges(Direction.IN, "Role");
 
             for (Edge roleEdge : foundRoles) {
                 Role role = Role.fromEdge(roleEdge);
@@ -123,7 +123,7 @@ public class AnalyticsService extends GeneralService {
             Country country = Country.fromVertex(countryVertex);
             Integer numberAwards = 0;
             for (Vertex workerVertex : countryVertex.getVertices(Direction.IN, "Nationality")) {
-                for (Edge edge : workerVertex.getEdges(Direction.OUT, "Role")) {
+                for (Edge edge : workerVertex.getEdges(Direction.IN, "Role")) {
                     Role role = Role.fromEdge(edge);
                     int roleAwards = role.getEntityAwards().getAwards().size();
                     numberAwards += roleAwards;
