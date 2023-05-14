@@ -138,4 +138,69 @@ public class TitleService extends GeneralService {
         return titles;
     }
 
+    public List<Title> findByGenre(String genreSearch, List<Title> filter) {
+        setGraph();
+        genreSearch = genreSearch.toLowerCase();
+
+        List<Title> filteredTitles = new ArrayList<>();
+        for (Title title : filter) {
+            Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", title.getTid());
+            if (!foundTitles.iterator().hasNext()) {
+                shutdownGraph();
+                return null;
+            }
+            Vertex titleVertex = foundTitles.iterator().next();
+            for (Vertex genreVertex : titleVertex.getVertices(Direction.OUT, "HasGenre")) {
+                String genreName = genreVertex.getProperty("name");
+                genreName = genreName.toLowerCase();
+                if (genreName.contains(genreSearch)) {
+                    filteredTitles.add(title);
+                    break;
+                }
+            }
+        }
+        shutdownGraph();
+        return filteredTitles;
+    }
+
+    public List<Title> findByGenre(String genreSearch) {
+        setGraph();
+        genreSearch = genreSearch.toLowerCase();
+        List<Title> titles = new ArrayList<>();
+
+        for (Vertex genre : getGraph().getVerticesOfClass("Genre")) {
+            String genreName = genre.getProperty("name");
+            genreName = genreName.toLowerCase();
+            if (genreName.contains(genreSearch)) {
+                for (Vertex titleVertex : genre.getVertices(Direction.IN, "HasGenre")) {
+                    Title title = Title.fromVertex(titleVertex);
+                    titles.add(title);
+                }
+            }
+        }
+        shutdownGraph();
+        return titles;
+    }
+
+    public List<Title> findByYear(Integer yearSearch, List<Title> titles) {
+        List<Title> filteredTitles = new ArrayList<>();
+        for (Title title : titles) {
+            if (title.getStartYear().equals(yearSearch)) {
+                filteredTitles.add(title);
+            }
+        }
+
+        return filteredTitles;
+    }
+
+    public List<Title> findByYear(Integer yearSearch) {
+        setGraph();
+        List<Title> titles = new ArrayList<>();
+        for (Vertex title : getGraph().getVertices("Title.startYear", yearSearch)) {
+            titles.add(Title.fromVertex(title));
+        }
+        shutdownGraph();
+        return titles;
+    }
+
 }

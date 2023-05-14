@@ -44,17 +44,17 @@ public class TitleResource {
 
         if (body.getGenre() != null) {
             if (doFilter) {
-                titles = searchService.findByGenre(body.getGenre(), titles);
+                titles = titleService.findByGenre(body.getGenre(), titles);
             } else {
-                titles = searchService.findByGenre(body.getGenre());
+                titles = titleService.findByGenre(body.getGenre());
             }
         }
 
         if (body.getYear() != null) {
             if (doFilter) {
-                titles = searchService.findByYear(body.getYear(), titles);
+                titles = titleService.findByYear(body.getYear(), titles);
             } else {
-                titles = searchService.findByYear(body.getYear());
+                titles = titleService.findByYear(body.getYear());
             }
         }
 
