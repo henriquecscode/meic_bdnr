@@ -3,6 +3,8 @@ package app.domain;
 import com.tinkerpop.blueprints.Vertex;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 
+import java.util.Objects;
+
 public class Series {
     private String name;
 
@@ -49,5 +51,18 @@ public class Series {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Series series = (Series) o;
+        return Objects.equals(getName(), series.getName()) && Objects.equals(getDescription(), series.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getDescription());
     }
 }

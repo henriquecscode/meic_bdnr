@@ -1,9 +1,6 @@
 package app.rest;
 
-import app.domain.derivatives.CountryAwards;
-import app.domain.derivatives.GenreAwards;
-import app.domain.derivatives.WorkerAwards;
-import app.domain.derivatives.WorkerCountryInfo;
+import app.domain.derivatives.*;
 import app.service.AnalyticsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +37,16 @@ public class AnalyticsResource {
     @GetMapping("/awards/country/{limit}")
     public List<CountryAwards> getCountryWithMostAwards(@PathVariable int limit) {
         return analyticsService.getCountryWithMostAwards(limit);
+    }
+
+    @GetMapping("/friends/series/complete")
+    public List<WatchedSeriesInfo> getSeriesWatchedByUsers(){
+        return analyticsService.getSeriesWatchedByUsers();
+    }
+
+    @GetMapping("/friends/{username}/series/complete")
+    public List<WatchedSeriesInfo> getSeriesWatchedByFriends(@PathVariable String username){
+        return analyticsService.getSeriesWatchedByFriends(username);
     }
 
 }

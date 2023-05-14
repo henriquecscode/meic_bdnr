@@ -1,18 +1,15 @@
 package app.service;
 
 import app.domain.*;
-import app.domain.derivatives.CountryAwards;
-import app.domain.derivatives.GenreAwards;
-import app.domain.derivatives.WorkerAwards;
-import app.domain.derivatives.WorkerCountryInfo;
+import app.domain.derivatives.*;
 import com.tinkerpop.blueprints.Direction;
 import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AnalyticsService extends GeneralService {
@@ -70,7 +67,7 @@ public class AnalyticsService extends GeneralService {
         List<GenreAwards> genreAwards = new ArrayList<>();
         for (Vertex genreVertex : getGraph().getVerticesOfClass("Genre")) {
             Genre genre = Genre.fromVertex(genreVertex);
-            if(genre.getName().equals("")){
+            if (genre.getName().equals("")) {
                 continue;
             }
             Integer numberAwards = 0;
@@ -144,4 +141,124 @@ public class AnalyticsService extends GeneralService {
         countryAwards.sort((o1, o2) -> o2.getAwards().compareTo(o1.getAwards()));
         return countryAwards.subList(0, limit > countryAwards.size() ? countryAwards.size() : limit);
     }
+
+    public List<WatchedSeriesInfo> getSeriesWatchedByUsers() {
+        setGraph();
+        setGraphStandardConstraints();
+
+        List<WatchedSeriesInfo> watchedSeriesInfos = new ArrayList<>();
+        for (Vertex seriesVertex : getGraph().getVerticesOfClass("Series")) {
+            // Get every title
+            Iterable<Vertex> foundTitles = seriesVertex.getVertices(Direction.IN, "PartOfSeries");
+            if (!foundTitles.iterator().hasNext()) {
+                continue;
+            }
+            // Get every user that watched the title
+
+            Vertex firstTitle = foundTitles.iterator().next();
+            Iterable<Vertex> foundUsers = firstTitle.getVertices(Direction.IN, "Watched");
+            Set<Vertex> completedSeriesUsers = new HashSet<>();
+            for (Vertex user : foundUsers) {
+                completedSeriesUsers.add(user);
+            }
+
+            for (Vertex title : foundTitles) {
+                Iterable<Vertex> foundUsers2 = title.getVertices(Direction.IN, "Watched");
+                Set<Vertex> completedSeriesUsers2 = new HashSet<>();
+                for (Vertex user : foundUsers2) {
+                    completedSeriesUsers2.add(user);
+                }
+                completedSeriesUsers.retainAll(completedSeriesUsers2);
+            }
+            Series series = Series.fromVertex(seriesVertex);
+            List<User> seriesUsers = completedSeriesUsers.stream().map(User::fromVertex).collect(Collectors.toList());
+
+            WatchedSeriesInfo watchedSeriesInfo = new WatchedSeriesInfo(series, seriesUsers);
+            watchedSeriesInfos.add(watchedSeriesInfo);
+        }
+        return watchedSeriesInfos;
+    }
+
+    public List<WatchedSeriesInfo> getSeriesWatchedByFriends(String username) {
+        setGraph();
+        setGraphStandardConstraints();
+
+        Iterable<Vertex> foundUsers = getGraph().getVertices("User.username", username);
+        if (!foundUsers.iterator().hasNext()) {
+            return new ArrayList<>();
+        }
+
+        Vertex userVertex = foundUsers.iterator().next();
+
+        Iterable<Vertex> watchedTitles = userVertex.getVertices(Direction.OUT, "Watched");
+
+        Map<Vertex, Set<Vertex>> titlesBySeries = new HashMap<>();
+        Map<Vertex, Set<Vertex>> titlesBySeriesAllTitles = new HashMap<>();
+        for (Vertex watchedTitle : watchedTitles) {
+
+            Iterable<Vertex> series = watchedTitle.getVertices(Direction.OUT, "PartOfSeries");
+            if (!series.iterator().hasNext()) {
+                continue;
+            }
+            Vertex seriesVertex = series.iterator().next();
+            //Update series
+            if (!titlesBySeriesAllTitles.containsKey(seriesVertex)) {
+                titlesBySeries.put(seriesVertex, new HashSet<>());
+                titlesBySeriesAllTitles.put(seriesVertex, new HashSet<>());
+                Iterable<Vertex> titles = seriesVertex.getVertices(Direction.IN, "PartOfSeries");
+                for (Vertex title : titles) {
+                    titlesBySeries.get(seriesVertex).add(title);
+                    titlesBySeriesAllTitles.get(seriesVertex).add(title);
+                }
+            }
+
+
+            // Update the ones that we watched
+            titlesBySeries.get(seriesVertex).remove(watchedTitle);
+        }
+
+        Map<Series, List<User>> friendsWatchedSeries = new HashMap<>();
+        for (Vertex series : titlesBySeries.keySet()) {
+            if (titlesBySeries.get(series).isEmpty()) {
+                Series seriesObj = Series.fromVertex(series);
+                friendsWatchedSeries.put(seriesObj, new ArrayList<>());
+                friendsWatchedSeries.get(seriesObj).add(User.fromVertex(userVertex));
+            }
+        }
+
+        Iterable<Vertex> friends = userVertex.getVertices(Direction.OUT, "Follows");
+
+        for (Vertex friend : friends) {
+            Map<Vertex, Set<Vertex>> friendsTitlesBySeries = new HashMap<>();
+            Iterable<Vertex> friendWatchedTitles = friend.getVertices(Direction.OUT, "Watched");
+            for (Vertex friendWatchedTitle : friendWatchedTitles) {
+                Iterable<Vertex> friendSeries = friendWatchedTitle.getVertices(Direction.OUT, "PartOfSeries");
+                if (!friendSeries.iterator().hasNext()) {
+                    continue;
+                }
+                Vertex friendSeriesVertex = friendSeries.iterator().next();
+                Series friendsSeriesObj = Series.fromVertex(friendSeriesVertex);
+                if (!friendsWatchedSeries.containsKey(friendsSeriesObj)) {
+                    continue;
+                }
+                if (!friendsTitlesBySeries.containsKey(friendSeriesVertex)) {
+                    friendsTitlesBySeries.put(friendSeriesVertex, new HashSet<>());
+                }
+                friendsTitlesBySeries.get(friendSeriesVertex).add(friendWatchedTitle);
+            }
+
+            for (Vertex series : friendsTitlesBySeries.keySet()) {
+                Series seriesObj = Series.fromVertex(series);
+                if (friendsTitlesBySeries.get(series).containsAll(titlesBySeriesAllTitles.get(series))) {
+                    friendsWatchedSeries.get(seriesObj).add(User.fromVertex(friend));
+                }
+            }
+        }
+        List<WatchedSeriesInfo> friendsWatchedSeriesInfo = new ArrayList<>();
+        for (Series series : friendsWatchedSeries.keySet()) {
+            friendsWatchedSeriesInfo.add(new WatchedSeriesInfo(series, friendsWatchedSeries.get(series)));
+        }
+        return friendsWatchedSeriesInfo;
+    }
 }
+
