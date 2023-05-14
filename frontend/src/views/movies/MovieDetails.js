@@ -20,14 +20,8 @@ function MovieDetails({ username, id }) {
   const [filmWorkers, setFilmWorkers] = useState([]);
   const [usersWatched, setUsersWatched] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [filmSeries, setFilmSeries] = useState([]);
   const formRef = useRef(null);
-
-  // const [filmSeries, setFilmSeries] = useState([]); // TODO: outside title, called "series"
-
-  const series = [
-    { id: 1, name: "Avatar", nr: 1 },
-    { id: 2, name: "Avatar: Way of Water", nr: 2 },
-  ];
 
   useEffect(() => {
     const api = new MoviesAPI();
@@ -39,6 +33,7 @@ function MovieDetails({ username, id }) {
     api.getFilm(
       urlId,
       (json) => {
+        console.log(json);
         setFilmAwards(json.title.awards.awards);
 
         let details = json.title;
@@ -50,6 +45,7 @@ function MovieDetails({ username, id }) {
         setFilmWorkers(json.roles);
         setUsersWatched(json.watched);
         setGenres(json.genres);
+        setFilmSeries(json.series);
 
         document.title = "FilmFriend - " + details.name;
       },
@@ -59,6 +55,7 @@ function MovieDetails({ username, id }) {
         setFilmAwards([]);
         setUsersWatched([]);
         setGenres([]);
+        setFilmSeries([]);
         console.log(error);
       }
     );
@@ -354,19 +351,32 @@ function MovieDetails({ username, id }) {
           </Col>
         </Row>
 
-        <HorizontalRule text={"Series"} />
+        <HorizontalRule
+          text={`Series: ${
+            filmSeries && filmSeries.series ? filmSeries.series.name : "---"
+          }`}
+        />
 
         <Row className="py-2">
-          {series.map((s, index) => (
-            <Col sm={6} md={4} lg={3} className="px-1" key={index}>
-              <FilmCard
-                key={index}
-                film={s}
-                username={username}
-                detailsTopRight={false}
-              />
-            </Col>
-          ))}
+          {filmSeries &&
+          filmSeries.titles &&
+          Array.isArray(filmSeries.titles) &&
+          filmSeries.titles.length > 0 ? (
+            filmSeries.titles.map((movie, index) => (
+              <Col sm={6} md={4} lg={3} className="px-1" key={index}>
+                <FilmCard
+                  key={index}
+                  film={movie.title}
+                  username={username}
+                  detailsTopRight={false}
+                />
+              </Col>
+            ))
+          ) : (
+            <p>
+              <i>No other films in the same Serie</i>
+            </p>
+          )}
         </Row>
       </Container>
     </div>
