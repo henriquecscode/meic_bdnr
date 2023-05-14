@@ -11,6 +11,8 @@ import CommentCard from "../../components/cards/CommentCard";
 import FriendCard from "../../components/cards/FriendCard";
 import FilmCard from "../../components/cards/FilmCard";
 import HorizontalRule from "../../components/layout/HorizontalRule";
+import { BsFillStarFill } from "react-icons/bs";
+
 import MoviesAPI from "../../api/MoviesAPI";
 import UsersAPI from "../../api/UsersAPI";
 
@@ -33,7 +35,6 @@ function MovieDetails({ username, id }) {
     api.getFilm(
       urlId,
       (json) => {
-        console.log(json);
         setFilmAwards(json.title.awards.awards);
 
         let details = json.title;
@@ -41,7 +42,7 @@ function MovieDetails({ username, id }) {
           delete details[key];
         }
 
-        setFilmDetails(details);
+        setFilmDetails({ ...details, rating: json.avgVote });
         setFilmWorkers(json.roles);
         setUsersWatched(json.watched);
         setGenres(json.genres);
@@ -107,8 +108,6 @@ function MovieDetails({ username, id }) {
     api.removeWatched(
       id,
       (json) => {
-        console.log(json);
-
         const api = new MoviesAPI();
 
         // Update watched users
@@ -125,6 +124,18 @@ function MovieDetails({ username, id }) {
       (error) => {
         console.log(error);
       }
+    );
+  };
+
+  const getRating = () => {
+    return (
+      <p className="d-flex mb-0 fw-bold">
+        {filmDetails.rating && filmDetails.ratting !== "NaN"
+          ? filmDetails.rating
+          : "--"}
+        /10
+        <BsFillStarFill size={25} className="ms-2 color-highlight" />
+      </p>
     );
   };
 
@@ -235,7 +246,10 @@ function MovieDetails({ username, id }) {
           </Col>
 
           <Col sm={8}>
-            <h5>Details</h5>
+            <div className="d-flex justify-content-between">
+              <h5>Details</h5>
+              {getRating()}
+            </div>
             <div className="mb-4">{getDetailsList()}</div>
 
             <h5>Workers</h5>

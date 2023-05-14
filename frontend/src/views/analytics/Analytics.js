@@ -23,7 +23,6 @@ function Analytics({ username }) {
     api.getFriendsWatchedSeries(
       username,
       (json) => {
-        console.log(json);
         if (json && Array.isArray(json) && json.length > 0) {
           setFriendsWatchedSeries(
             json.map((item) => {

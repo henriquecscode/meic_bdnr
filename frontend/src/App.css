@@ -25,6 +25,10 @@
   object-fit: cover;
 }
 
+.color-highlight {
+  color: #f9cc0b;
+}
+
 /*PROFILE SECTION*/
 
 .profile-info {
