@@ -36,9 +36,28 @@ public class TitleResource {
     public List<Title> findBy(@RequestBody Search body) {
         List<Title> titles = new ArrayList<>();
 
+        boolean doFilter = false;
         if (body.getTitle() != null) {
             titles = searchService.findByTitle(body.getTitle());
+            doFilter = true;
         }
+
+        if (body.getGenre() != null) {
+            if (doFilter) {
+                titles = searchService.findByGenre(body.getGenre(), titles);
+            } else {
+                titles = searchService.findByGenre(body.getGenre());
+            }
+        }
+
+        if (body.getYear() != null) {
+            if (doFilter) {
+                titles = searchService.findByYear(body.getYear(), titles);
+            } else {
+                titles = searchService.findByYear(body.getYear());
+            }
+        }
+
 
         return titles;
     }

@@ -24,21 +24,23 @@ public class TitleService extends GeneralService {
 
     public Title findById(String id) {
         setGraph();
-        setGraphStandardConstraints();
+
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", id);
         if (!foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return null;
         }
         Title title = Title.fromVertex(foundTitles.iterator().next());
+        shutdownGraph();
         return title;
     }
 
     public MovieInfo getInfoById(String id) {
         setGraph();
-        setGraphStandardConstraints();
         MovieInfo movieInfo = new MovieInfo();
         Iterable<Vertex> foundTitles = getGraph().getVertices("Title.tid", id);
         if (!foundTitles.iterator().hasNext()) {
+            shutdownGraph();
             return null;
         }
         Vertex titleVertex = foundTitles.iterator().next();
@@ -69,6 +71,7 @@ public class TitleService extends GeneralService {
         }
         movieInfo.setRoles(roles);
 
+        Integer score = 0;
         Iterable<Edge> foundWatches = titleVertex.getEdges(Direction.IN, "Watched");
         List<WatchInfo> watches = new ArrayList<>();
         for (Edge watch : foundWatches) {
@@ -79,8 +82,16 @@ public class TitleService extends GeneralService {
             watchInfo.setWatched(watched);
             watchInfo.setUser(user);
             watches.add(watchInfo);
+            if (watched.getVote() != null) {
+                score += watched.getVote();
+            }
         }
         movieInfo.setWatched(watches);
+        Double avgVote = 0.0;
+        if (score != null) {
+            avgVote = score.doubleValue() / title.getnVotes();
+            movieInfo.setAvgVote(avgVote);
+        }
 
         Iterable<Edge> foundSeries = titleVertex.getEdges(Direction.OUT, "PartOfSeries");
         if (foundSeries.iterator().hasNext()) {
@@ -112,37 +123,19 @@ public class TitleService extends GeneralService {
         }
         movieInfo.setGenres(genres);
 
+        shutdownGraph();
         return movieInfo;
     }
 
     public List<Title> findAll() {
         setGraph();
-        setGraphStandardConstraints();
         List<Title> titles = new ArrayList<>();
         for (Vertex vertex : getGraph().getVerticesOfClass("Title")) {
             Title title = Title.fromVertex(vertex);
             titles.add(title);
         }
+        shutdownGraph();
         return titles;
     }
 
-    public List<Title> findByTitle(String title) {
-        setGraph();
-        setGraphStandardConstraints();
-
-        String titleQueryWords[] = title.split(" ");
-        for (int i = 0; i < titleQueryWords.length; i++) {
-            titleQueryWords[i] = "*" + titleQueryWords[i] + "*";
-        }
-        title = String.join(" ", titleQueryWords);
-
-        String query = "SELECT FROM Title WHERE SEARCH_CLASS(\"name:" + title + "\") = true";
-        OCommandSQL queryCommand = new OCommandSQL(query);
-        List<Title> titles = new ArrayList<>();
-        for (Vertex vertex : getGraph().getVertices("Title.title", title)) {
-            Title foundTitle = Title.fromVertex(vertex);
-            titles.add(foundTitle);
-        }
-        return titles;
-    }
 }

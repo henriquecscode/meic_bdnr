@@ -18,7 +18,6 @@ public class CountryService extends GeneralService {
 
     public List<Country> findAll() {
         setGraph();
-        setGraphStandardConstraints();
 
         List<Country> countries = new ArrayList<>();
 
@@ -27,6 +26,7 @@ public class CountryService extends GeneralService {
             countries.add(country);
         }
 
+        shutdownGraph();
         return countries;
     }
 }

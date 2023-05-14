@@ -287,7 +287,7 @@ public class DocumentSchema {
 
         if (partOfSeries.getProperty("film_number") == null) {
             partOfSeries.createProperty("film_number", OType.INTEGER);
-            partOfSeries.createIndex("partOfSeries_film_number_index", OClass.INDEX_TYPE.UNIQUE, "film_number");
+//            partOfSeries.createIndex("partOfSeries_film_number_index", OClass.INDEX_TYPE.UNIQUE, "film_number");
         }
     }
 

@@ -17,7 +17,6 @@ public class GenreService extends GeneralService {
 
     public List<Genre> findAll() {
         setGraph();
-        setGraphStandardConstraints();
 
         List<Genre> genres = new ArrayList<>();
 
@@ -26,6 +25,7 @@ public class GenreService extends GeneralService {
             genres.add(genre);
         }
 
+        shutdownGraph();
         return genres;
     }
 }
