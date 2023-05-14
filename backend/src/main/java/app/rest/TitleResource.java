@@ -48,6 +48,7 @@ public class TitleResource {
             } else {
                 titles = titleService.findByGenre(body.getGenre());
             }
+            doFilter = true;
         }
 
         if (body.getYear() != null) {
@@ -56,6 +57,7 @@ public class TitleResource {
             } else {
                 titles = titleService.findByYear(body.getYear());
             }
+            doFilter = true;
         }
 
 
