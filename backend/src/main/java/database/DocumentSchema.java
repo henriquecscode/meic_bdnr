@@ -1,11 +1,13 @@
 package database;
 
+import com.orientechnologies.orient.client.remote.OServerAdmin;
 import com.orientechnologies.orient.core.db.ODatabaseSession;
 import com.orientechnologies.orient.core.db.ODatabaseType;
 import com.orientechnologies.orient.core.db.OrientDB;
 import com.orientechnologies.orient.core.db.OrientDBConfig;
 import com.orientechnologies.orient.core.metadata.schema.OClass;
 import com.orientechnologies.orient.core.metadata.schema.OType;
+
 public class DocumentSchema {
     // Using document API
     static ODatabaseSession db;
@@ -14,13 +16,15 @@ public class DocumentSchema {
         // CONTEXT: Graph of people who are friends
         String dbname = "app_sample";
         String user = "root";
-        String password = "rootpwd";
+        String password = "root";
         String dbUser = "root";
-        String dbPassword = "rootpwd";
+        String dbPassword = "root";
         // Established a connection with the server
-        OrientDB orient = new OrientDB("remote:localhost", user, password, OrientDBConfig.defaultConfig());
+        OrientDB orient = new OrientDB("remote:172.17.0.1", user, password, OrientDBConfig.defaultConfig());
         // Established a connection with the database - open a database session
-
+    //        System.out.println("Printing orient");
+    //        System.out.println(orient);
+    //        System.out.println("Printing orient worked");
         boolean dropDb = false;
         if (args.length > 0) {
             for (int i = 0; i < args.length; i++) {
@@ -33,6 +37,8 @@ public class DocumentSchema {
             if (orient.exists(dbname)) {
                 orient.drop(dbname);
             }
+        }
+        if (!orient.exists(dbname)) {
             orient.create(dbname, ODatabaseType.PLOCAL);
         }
         db = orient.open(dbname, dbUser, dbPassword);
@@ -41,6 +47,7 @@ public class DocumentSchema {
 
         db.close();
         orient.close();
+        System.out.println("Done schema");
     }
 
     private static void createSchema() {
@@ -406,8 +413,12 @@ public class DocumentSchema {
         String Title_name_index_query = "create index Title.name on Title (name) FULLTEXT ENGINE LUCENE METADATA {\"allowLeadingWildcard\": true}";
         String Watched_comment_index_query = "create index Watched.comment on Watched (comment) FULLTEXT ENGINE LUCENE METADATA {\"allowLeadingWildcard\": true}";
 
-        db.command(Title_name_index_query);
-        db.command(Watched_comment_index_query);
+        try {
+            db.command(Title_name_index_query);
+            db.command(Watched_comment_index_query);
+        } catch (Exception e) {
+            System.out.println("Index already exists");
+        }
     }
 
 }

@@ -27,9 +27,9 @@ public class CreateSocialNetwork {
     // Using document API
     static String dbname = "app_sample";
     static String user = "root";
-    static String password = "rootpwd";
+    static String password = "root";
     static String dbUser = "root";
-    static String dbPassword = "rootpwd";
+    static String dbPassword = "root";
     static OrientGraphFactory factory;
     static OrientGraph graph;
     static String rootDir = "../";
@@ -43,7 +43,7 @@ public class CreateSocialNetwork {
         // CONTEXT: Graph of people who are friends
 
         // Established a connection with the server
-        factory = new OrientGraphFactory("remote:localhost/" + dbname, user, password).setupPool(1, 10);
+        factory = new OrientGraphFactory("remote:172.17.0.1" + dbname, user, password).setupPool(1, 10);
         graph = factory.getTx();
         // Established a connection with the database - open a database session
 
