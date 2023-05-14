@@ -6,20 +6,31 @@ import MoviesAPI from "../../api/MoviesAPI";
 
 function Movies({ username }) {
   const [movies, setMovies] = useState([]);
-  const [title, setTitle] = useState("");
   const [genres, setGenres] = useState([]);
+  const [title, setTitle] = useState("");
+  const [genre, setGenre] = useState(null);
+  const [year, setYear] = useState(null);
 
   useEffect(() => {
     document.title = "FilmFriend - Movies Search";
 
     const api = new MoviesAPI();
 
-    api.getGenres((json) => {
-      setGenres(json.filter((genre) => genre.name !== "" && genre.name.toLowerCase() !== "\\n").map((genre) => genre.name));
-    }, (error) => {
-      setMovies([]);
-      console.log(error);
-    },);
+    api.getGenres(
+      (json) => {
+        setGenres(
+          json
+            .filter(
+              (genre) => genre.name !== "" && genre.name.toLowerCase() !== "\\n"
+            )
+            .map((genre) => genre.name)
+        );
+      },
+      (error) => {
+        setMovies([]);
+        console.log(error);
+      }
+    );
 
     api.getSearch(
       (json) => {
@@ -52,7 +63,7 @@ function Movies({ username }) {
         setMovies([]);
         console.log(error);
       },
-      { title: title }
+      { title: title, genre: genre, year: year }
     );
   };
 
@@ -60,7 +71,11 @@ function Movies({ username }) {
     let genreOptions = [];
 
     genres.forEach((genre, index) => {
-      genreOptions.push(<option key={index} value={genre}>{genre}</option>);
+      genreOptions.push(
+        <option key={index + 1} value={genre}>
+          {genre}
+        </option>
+      );
     });
 
     return (
@@ -77,19 +92,36 @@ function Movies({ username }) {
             }}
           />
 
-          {/* // TODO ? */}
-          {/* <Form.Label className="mt-3">Genres</Form.Label>
-          <Form.Select aria-label="Genre">
-            <option>Genre</option>
+          <Form.Label className="mt-3">Genres</Form.Label>
+          <Form.Select
+            aria-label="Genre"
+            onChange={(e) => {
+              setGenre(e.target.value);
+              submitForm();
+            }}
+          >
+            <option value={null}>All Genres</option>
             {genreOptions}
           </Form.Select>
 
           <Form.Label className="mt-3">Year</Form.Label>
-          <Form.Control type="number" min={1900} max={2025} placeholder="Enter Year" />
+          <Form.Control
+            type="number"
+            min={1900}
+            max={2025}
+            placeholder="Enter Year"
+            onChange={(e) => {
+              setYear(e.target.value);
+            }}
+            onBlur={() => {
+              // TODO: better if in every change?
+              submitForm();
+            }}
+          />
 
-          <Form.Check className="mt-3" type="checkbox" label="With Awards?" /> */}
+          {/* // TODO ? */}
+          {/*<Form.Check className="mt-3" type="checkbox" label="With Awards?" /> */}
         </Form.Group>
-
       </Form>
     );
   };
