@@ -35,7 +35,7 @@ function NavBar({ username }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             {/* 
-              TODO: if not logged in, show login and signin
+              // if not logged in, show login and signin
               <Nav.Link href={`/login?username=${username}`}>login</Nav.Link>
               <Nav.Link href={`/signin?username=${username}`}>signin</Nav.Link>
             */}
@@ -61,7 +61,7 @@ function NavBar({ username }) {
                 Recommend Me
               </NavDropdown.Item>
               {/*
-                TODO: when implementing authentication 
+                // when implementing authentication 
                 <NavDropdown.Divider />
                 <NavDropdown.Item href={`/logout?username=${username}`}>Log out</NavDropdown.Item>
               */}

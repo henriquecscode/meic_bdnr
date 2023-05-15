@@ -16,7 +16,6 @@ function FriendsList({ username, name, friends }) {
   const showMore = (event) => {
     event.preventDefault();
 
-    // TODO: using a shortcut, not the best way
     const api = new RecommendationsAPI(username);
     api.getFriendsFilms(
       level + 1,
@@ -26,7 +25,7 @@ function FriendsList({ username, name, friends }) {
             return {
               id: index,
               username: element.user.username,
-              picture: "user.png", // TODO: change to f.picture when available
+              picture: "user.png",
               level: level + 1,
             };
           });
@@ -64,7 +63,7 @@ function FriendsList({ username, name, friends }) {
             list.unshift({
               id: list.length,
               username: friend,
-              picture: "user.png", // TODO: change to f.picture when available
+              picture: "user.png",
               level: 1,
             });
           }

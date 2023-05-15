@@ -186,7 +186,6 @@ function MovieDetails({ username, id }) {
   };
 
   const getWorkersList = () => {
-    // TODO: show entityAwards in tooltip if we have this info in endpoint
     let list = [];
 
     filmWorkers.forEach((worker, index) => {

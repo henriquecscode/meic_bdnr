@@ -12,21 +12,6 @@ import UsersAPI from "../../api/UsersAPI";
 import AnalyticsAPI from "../../api/AnalyticsAPI";
 
 function Profile({ username }) {
-  // const series = [
-  //   {
-  //     id: 1,
-  //     image: "series1.jpg",
-  //     title: "Series 1",
-  //     n_movies: 10,
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "series2.jpg",
-  //     title: "Series 2",
-  //     n_movies: 10,
-  //   },
-  // ];
-
   const [user, setUser] = useState({});
   const [friends, setFriends] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -56,7 +41,7 @@ function Profile({ username }) {
                 return {
                   id: i,
                   username: f.username,
-                  picture: "user.png", // TODO: change to f.picture when available
+                  picture: "user.png",
                   level: 1,
                 };
               })

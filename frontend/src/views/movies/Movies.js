@@ -122,19 +122,14 @@ function Movies({ username }) {
               }
             }}
             onBlur={() => {
-              // TODO: better if in every change?
               submitForm();
             }}
           />
-
-          {/* // TODO ? */}
-          {/*<Form.Check className="mt-3" type="checkbox" label="With Awards?" /> */}
         </Form.Group>
       </Form>
     );
   };
 
-  // TODO: Add text search
   return (
     <div>
       <Container className="py-5">

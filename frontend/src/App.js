@@ -16,8 +16,6 @@ function App() {
     ? queryParams.get("username")
     : "username1";
 
-  // TODO: page title personalizado
-
   return (
     <div>
       <Router>
