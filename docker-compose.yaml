@@ -30,7 +30,7 @@ services:
     container_name: filmfriend-react
     build: ./frontend
     image: frontend
-    restart: always
+    restart: on-failure
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
